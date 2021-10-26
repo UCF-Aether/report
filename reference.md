@@ -1,26 +1,33 @@
 # Sections
+```latex
 \section{Section}
 \subsection{Sub Section}
 \subsubsection{Sub Sub Section}
 \paragraph{Sub Sub Sub Section}
+```
 
 # Lists
+```latex
 \begin{itemize}
     \item Item 1
     \item Item 2
     \item Item 3 ...
 \end{itemize}
+```
 
 # Pictures
 ## Vertically aligned
+```latex
 \begin{figure}
     \centering
     \includegraphics[width=2in]{hoq.png}
     \caption{Caption}
     \label{fig:my_label}
 \end{figure}
+```
 
 ## Horizontally aligned
+```latex
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -38,13 +45,14 @@
 \caption{A figure with two subfigures}
 \label{fig:test}
 \end{figure}
+```
 
 # Custom Commands
-- Sulfur dioxide: \sdo
-- Sulfur n-oxides: \sox
-- Sulfur tri-oxide: \sto
-- Nitrogen dioxide: \ndo
-- Nitrogen n-oxides: \nox
-- I2C: \iic
-- Check mark: \yes
-- X mark: \no
+- Sulfur dioxide: `\sdo`
+- Sulfur n-oxides: `\sox`
+- Sulfur tri-oxide: `\sto`
+- Nitrogen dioxide: `\ndo`
+- Nitrogen n-oxides: `\nox`
+- I2C: `\iic`
+- Check mark: `\yes`
+- X mark: `\no`
