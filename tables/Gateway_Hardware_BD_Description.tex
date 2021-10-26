@@ -1,0 +1,15 @@
+\begin{table}[H]
+    \centering
+    \caption{A description of each block in the gateway hardware block diagram.}
+    \begin{tabularx}{\linewidth}{|c|X|}
+        \hline
+        Block Name & Description \\ 
+        \hline
+        Power Subsystem & The power subsystem will take in power from the battery for whatever needs the development board requires. The power subsystem will also invert the DC power from the solar panel and battery to AC if required. \\\hline
+        Mains Power & This is the AC power coming from a wall outlet. \\\hline
+        Ethernet & The Ethernet module will allow the development board to connect to the internet. \\\hline
+        LoRa & The LoRa transceiver will receive data from the sensor nodes and send that data to the development board. \\\hline
+        Development Board & The development board will process the sensor data received from the sensor nodes. This data will then be sent to an external server over the internet where it can be analyzed. \\\hline
+    \end{tabularx}
+    \label{tab:descHWBaseStationBD}
+\end{table}

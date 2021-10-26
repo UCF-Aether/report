@@ -1,0 +1,22 @@
+\begin{table}[H]
+    \centering
+    \caption{A description of each block in the sensor node software block diagram.}
+    \begin{tabularx}{\linewidth}{|c|X|}
+        \hline
+        Block Name & Description \\ 
+        \hline
+        Power Management & This software will responsible for controlling and monitoring the power subsystem.  \\\hline
+        Data Management & This software will be responsible for processing data received from the sensors. \\\hline
+        Sleeping Logic & This software will handle the logic for switching between taking sensor measurements and residing in a low-power "sleep" mode between sensor measurements. \\\hline
+        LoRa & This is a device driver for the LoRa transceiver. \\\hline
+        Temperature Sensor & This is a device driver for the temperature sensor. \\\hline
+        O$_3$ Sensor & This is a device driver for the O$_3$ sensor. \\\hline
+        CO Sensor & This is a device driver for the CO sensor. \\\hline
+        SO$_2$ Sensor & This is a device driver for the SO$_2$ sensor. \\\hline
+        NO$_2$ Sensor & This is a device driver for the NO$_2$ sensor. \\\hline
+        PM Sensor Sensor & This is a device driver for the PM sensor. \\\hline
+        LoRaWAN & This handles the networking for the LoRa networking. \\\hline
+        Multi-hop Routing & This software will control how traffic is routed around the sensor node network. \\\hline
+    \end{tabularx}
+    \label{tab:descSWNodeBD}
+\end{table}

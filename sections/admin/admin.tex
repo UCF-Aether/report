@@ -1,0 +1,282 @@
+\section{Administrative}
+\subsection{Estimated Budget}
+\begin{table}[]
+\centering
+    \begin{tabular}{|r|c|c|l|}
+        \hline
+        Component & Unit Cost & Quantity & Total Cost \\
+        \hline\hline
+        Solar Panel                 & \$30.00 & 1 & \$30.00 \\
+        Solar Charge Regulator      & \$5.00 & 1 & \$5.00 \\
+        Battery                     & \$10.00 & 1 & \$10.00 \\
+        Electronic Components       & \$10.00 & 1 & \$10.00 \\
+        \hline
+        LoRa Transceiver            & \$30.00 & 1 & \$30.00 \\
+        Microcontroller             & \$3.00  & 1 & \$3.00  \\
+        PCB                         & \$10.00 & 1 & \$10.00 \\
+        Electronic Components       & \$10.00 & 1 & \$10.00 \\
+        \hline
+        O$_3$ Sensor                & \$20.00 & 1 & \$20.00\\
+        Temperature Sensor          & \$4.00  & 1 & \$4.00 \\
+        CO Sensor                   & \$20.00 & 1 & \$20.00\\
+        SO$_2$ Sensor               & \$20.00 & 1 & \$20.00\\
+        NO$_2$ Sensor               & \$20.00 & 1 & \$20.00\\
+        PM Sensor                   & \$50.00 & 1 & \$50.00\\
+        \hline\hline
+        \multicolumn{2}{|}{Multirow} & Total & \$371.00 \\
+        \hline
+    \end{tabular}
+    \caption{The budget for each node.}
+\end{table}
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Component & Approx. Unit Cost & Quantity & Total Cost \\
+        \hline\hline
+        Power Subsystem Components  & \$10.00 & 1 & \$10.00 \\
+        \hline
+        LoRa Transceiver            & \$40.00 & 1 & \$40.00 \\
+        Antenna                     & \$40.00 & 1 & \$40.00 \\
+        Raspberry Pi 4              & \$35.00 & 1 & \$35.00   \\
+        Electronic Components       & \$10.00 & 1 & \$10.00 \\
+        \hline\hline
+        \multicolumn{2}{|}{Multirow} & Total & \$135 \\
+        \hline
+    \end{tabular}
+    \caption{The budget for the gateway.} 
+\end{table}
+
+\subsection{Milestones}
+\subsection{Fall Semester}
+
+\begin{table}[H]
+    \begin{tabularx}{\linewidth}{|c|X|X|}
+        \hline
+        Date & Milestone & Deliverables \\
+        \hline\hline
+        Sep. 2nd, 2021 
+        & Sensing mechanism finalized 
+        & Sensor requirements document \\
+        
+        \hline
+        Oct. 1st, 2021
+        & MCU and LoRa module finalized
+        & Order confirmation and, if available, shipment information. \\
+        
+        \hline
+        Oct. 8th, 2021 
+        & Sensors finalized 
+        & Order confirmation and, if available, shipment information. \\
+        
+        \hline
+        Nov. 5th, 2021 
+        & Software alpha 1.0 
+        & Software alpha 1.0 node and base-station release binaries. \\ 
+        
+        \hline
+        Nov. 19th, 2021 & Prototype v1.0 PCB 
+        & PCB masks, fab order confirmation and, if available, shipment information \\
+        
+        \hline
+        Dec 3rd, 2021 & Prototype v1.5 PCB 
+        & PCB masks, fab order confirmation and, if available, shipment information \\
+        
+        \hline
+        Dec 10th, 2021 
+        & Software alpha 1.5 
+        & Software alpha 1.5 node and base-station release binaries. \\ 
+        
+        \hline
+    \end{tabularx}
+    \caption{Fall milestones}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|X|}
+        \hline
+        Project Milestone & Description 
+        \\
+        \hline\hline
+        Sensing mechanism finalized &
+        Finish research and create design requirements for accurately detecting wildfires in a cost effective way.
+        \\
+        
+        
+        \hline
+        MCU and LoRa module finalized &
+        The MCU, LoRa module/daughter-boards, and Raspberry Pi's are chosen, and multiple developer boards have been ordered to design and test mesh networking.
+        \\
+        
+        \hline
+        Sensors finalized 
+        & The required sensors are chosen, and multiple parts/developer-boards have been ordered.
+        \\
+        
+        \hline
+        Software alpha 1.0 
+        & The nodes can communicate and route packets to the gateway, and the gateway can communicate with all or specific nodes on the network. There also exists some sort of command line interface on the gateway to talk to the nodes, but there are no required internet capabilities of the base, yet. The nodes can go to sleep, but a sleep routine isn't configured optimally.
+        \\
+        
+        \hline
+        Prototype v1.0 PCB 
+        & A PCB first version prototype PCB has been designed and ordered from a fast-turnaround PCB fab containing all required functionalities: power subsystem, MCU, LoRa module connectivity, battery and solar I/O, and sensor I/O with adequate noise isolation and filtering.
+        \\
+        
+        \hline
+        Prototype v1.5 PCB
+        & PCB prototype with, if any, major issues fixed. Should also include sensor daughter boards.
+        \\
+        
+        \hline
+        Software alpha 1.5
+        & The software works on the prototype PCB
+        \\
+        
+        \hline
+    \end{tabularx}
+    \caption{Fall milestone descriptions}
+\end{table}
+
+\subsection{Spring Semester}
+% TODO: Change spacing of the columns to make the description wider
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%                       Spring Milestones
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+    \begin{tabularx}{\linewidth}{|X|X|X|}
+        \hline
+        Date & Milestone & Deliverables \\
+        \hline\hline
+        Jan. 19th, 2022 
+        & Prototype v2.0 PCB 
+        & PCB masks, fab order confirmation and, if available, shipment information \\
+        
+        \hline
+        Jan. 19th, 2022
+        & Enclosure prototype
+        & Model and 3D printed enclosure
+        \\
+        
+        \hline
+        Jan. 29th, 2022 
+        & Software alpha 2.0 
+        & Software alpha 2.0 node and base-station release binaries
+        \\
+        
+        \hline
+        Feb. 18th, 2022
+        & REST API created
+        & REST API documentation and testing/validation scripts
+        \\
+        
+        \hline
+        Feb. 18th, 2022
+        & Enclosure finalized
+        & Model and 3D printed enclosure
+        \\
+        
+        \hline
+        Feb. 25th, 2022
+        & Final v1.0 PCB
+        & PCB masks, fab order confirmation and, if available, shipment information 
+        \\
+        
+        \hline
+        Mar. 1st, 2022
+        & Software release v1.0
+        & Software v1.0 node and base-station release binaries. 
+        \\ 
+        
+        \hline
+        Mar. 18st, 2022
+        & Software release v1.1
+        & Software v1.1 node and base-station release binaries. 
+        \\ 
+        
+        \hline
+        Mar. 18st, 2022
+        & Final v1.1 PCB
+        & PCB masks, fab order confirmation and, if available, shipment information 
+        \\
+        
+        \hline
+        Mar. 25th, 2022
+        & Simple website to visualize results
+        & Website front-end and back-end files, and website URL or IP
+        \\
+        
+        \hline
+    \end{tabularx}
+    \caption{Spring milestones}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%                   Spring Milestones Descriptions
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]    
+    \centering
+    \begin{tabularx}{\linewidth}{|c|X|}
+        \hline
+        Project Milestone & Description 
+        \\
+        \hline\hline
+        Prototype v2.0 PCB 
+        & This version should fix most or all remaining hardware bugs, and ensure accurate sensor readings. It should also be mountable in an enclosure.
+        \\
+        
+        \hline
+        Enclosure prototype
+        & An enclosure O-rings, or some other kind of sealant, to keep out dust and water splashes. It should be able to mount the sensors to get environmental readings, and provide space for top-mounted solar-panel.
+        \\
+        
+        \hline
+        Software alpha 2.0 
+        & The gateway should be able to set the node's sleep routine settings, and schedule any specific times to wake up at. The command-line utility should be robust enough with minimal bugs.
+        \\
+        
+        \hline
+        REST API created
+        & The gateway should run a server and/or relay to bigger server to provide a REST API for clients to query data about environmental readings pertaining to wildfires.
+        \\
+        
+        \hline
+        Enclosure finalized
+        & The enclosure that can house a PCB and mostly not get wet should be good enough.
+        \\
+        
+        \hline
+        Final v1.0 PCB
+        & A PCB should be bug-free, and sent to a proper fab to have high-quality board material and a water resistant coating.
+        \\
+        
+        \hline
+        Software release v1.0
+        & The software should be able to handle errors gracefully, reliably establish connections on the mesh network, and reliably wake-up and transmit data.
+        \\ 
+        
+        \hline
+        Software release v1.1
+        & Bug fixes and minor improvements.
+        \\ 
+        
+        \hline
+        Final v1.1 PCB
+        & Only if needed. Bug fixes and minor improvements.
+        \\
+        
+        \hline
+        Simple website to visualize results
+        & The website doesn't need to look pretty, but it should provide a nice visualization of the nodes deployed plus data readings over time displayed in a graph.
+        \\
+        
+        \hline
+    \end{tabularx}
+    \caption{Spring milestone descriptions}
+\end{table}
+

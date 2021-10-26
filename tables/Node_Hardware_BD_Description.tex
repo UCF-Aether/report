@@ -1,0 +1,22 @@
+\begin{table}[H]
+    \centering
+    \caption{A description of each block in the sensor node hardware block diagram.}
+    \begin{tabularx}{\linewidth}{|c|X|}
+        \hline
+        Block Name & Description \\ 
+        \hline
+        Battery & The battery will take in power from the power subsystem and will store whatever is left over from the consumption by the system controller. \\\hline
+        Power Subsystem & The power subsystem will take in and regulate power from the solar panel charging the battery as well as taking power from the battery for whatever needs the system controller requires. The power subsystem will also invert the DC power from the solar panel and battery to AC if required. \\\hline
+        Solar Panel & The solar panel will feed power to the power subsystem where a solar power controller will be placed to take in the generated power. \\\hline
+        System Controller & The system controller take in and process data from the sensors and output data to the LoRa transceiver. \\\hline
+        Temperature Sensor & The temperature sensor will take a measurement of the current temperature and send it to the system controller. \\\hline
+        O$_3$ Sensor & The temperature sensor will take a measurement of the current amount of detected ozone (O$_3$) and send it to the system controller. \\\hline
+        CO Sensor & The temperature sensor will take a measurement of the current amount of detected carbon monoxide (CO) and send it to the system controller. \\\hline
+        SO$_2$ Sensor & The temperature sensor will take a measurement of the current amount of detected sulfur dioxide (SO$_2$) and send it to the system controller. \\\hline
+        NO$_2$ Sensor & The temperature sensor will take a measurement of the current amount of detected nitrogen dioxide (NO$_2$) and send it to the system controller. \\\hline
+        PM Sensor & The temperature sensor will take a measurement of the current amount of detected particulate matter (PM) and send it to the system controller. \\\hline
+        LoRa & The LoRa transceiver will receive data from the system controller and send that data to the gateway. \\\hline
+    \end{tabularx}
+    
+    \label{tab:Node_Hardware_BD_Description}
+\end{table}

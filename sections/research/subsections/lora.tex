@@ -1,0 +1,331 @@
+\subsection{LoRa Networking and Compute Module} 
+Most LoRa modules that have integrated RF solutions already have integrated ARM
+cores of some kind. This makes development easier, lowers power consumption, and
+allows for a cheaper BOM. Many different types of LoRa modules were
+considered. The modules that were most sought after were ones with integrated
+U.FL or SMA connectors in order to ease PCB development. However, modules that
+did not have these connectors were still considered.
+
+\noindent
+\\The main considerations in choosing a LoRa module were the following:
+% Remove paragraph skip between line above and the list.
+{
+  % \setlength{\parskip}{0em}
+  \begin{itemize}
+    \item Power consumption
+    \item Transmit power
+    \item Receive sensitivity
+    \item Software stack quality
+    \item Documentation availability and quality
+    \item Digital I/O
+    \item Analog peripherals
+    \item PCB design complexity
+    \item Cost
+  \end{itemize}
+}
+
+Choosing a module with high enough power consumption and receive sensitivity is
+important for increasing the range of the device. The transmit power, receive
+sensitivity, signal gains, and signal losses affect the link budget.
+
+\subsubsection{The Seeed LoRa-E5}
+The Seeed LoRa-E5 utilizes a STM32WLE5JC microcontroller, which is the first to
+integrate both a microcontroller and a +22dBm LoRa radio into one silicon wafer.
+The Seeed LoRa-E5 simplifies development with the STM32WLE5JC by embedding the
+clocks and main RF front-end circuitry into a single package, obtaining up to
++20.8dBm transmit (TX) output and -136dBm receive sensitivity, and takes care
+of startup and shutdown power sequencing. All in a 12mm by 12mm package. This
+microcontroller provides the best power consumption of 360nA while in standby,
+58$\mu$A while in low power sleep current (LPSleep), and 125$\mu$A while in low
+power run current (LPRun, <2 MHz) with a max LoRa transmit current of 110mA at
+22dBm. STM also provides a hardware abstraction layer (HAL) for the device, and
+middleware, such as FreeRTOS and a FAT filesystem driver, and a LoRaWAN
+software stack all through their STM32Cube software package. The STM32WL
+utilizes an Arm Cortex M4 32-bit RISC core with 256KB flash memory and 64KB of
+SRAM. It also has a 12-bit ADC, which will be needed for the sensing
+sub-system.  I/O connectivity is provided through also has 3 UART controllers,
+1 SPI controller, 1 I$^2$C controller, programming pins, and 6 to 8 GPIO,
+depending on the UART configuration.
+
+However, the module provides no integrated U.FL connector, which increasing the
+complexity of the PCB design and increases the number of components in the BOM.
+When compared to other modules, this poses as a big drawback to using this
+module along with the fact that it provides no USB or Bluetooth connectivity out
+of the box. Even then, the module simplifies the RF traces needed outside the
+module, and the reference design (development board) uses a short, straight
+trace to a SMA connector with a 0$\Omega$ resistor to allow the user to switch
+to a U.FL connector.  Another positive aspect is the fact that it is FCC and CE
+certified \cite{ds-stm32wle5j8}\cite{ds-lora-e5}.
+
+
+\subsubsection{The Midatronics Windy} 
+The Midatronics Windy also utilizes a STM32WLE series microcontroller
+(specifically the STM32WLE5J816), but otherwise is almost identical to the Seeed
+LoRa-E5. The only real difference is the Midatronics Windy is a fully integrated
+surface mount device module that also includes an U.FL connector on the package.
+This drastically decreases the PCB complexity and requirements, but is double
+the cost of the Seeed LoRa-E5. The analysis of the various trade-offs between the
+PCB requirements (material, trace width, trace spacing, etc) and the LoRa module
+chosen is discussed in a later section. Just like the Seeed LoRa-E5, it is FCC
+and CE certified. However, not much else is publicly documented, but the rest
+can be assumed since it uses almost an identical microcontroller to the Seeed
+LoRa-E5 \cite{ds-midatronics-windy}\cite{ds-midatronics-mkr-windy}\cite{ds-stm32wle5j8}.
+
+% TODO: find where the fuck they have more detailed info about power consumption
+% Datasheet doesn't say jack shit about power/sleep modes!
+\subsubsection{The Microchip WLR089U0}
+The Microchip WLR089U0, like the Midatronics Windy, is a fully integrated
+surface mount device module with an U.FL connector. The module utilizes an Arm
+Cortex M0+ processor with 256KB of flash memory and 40KB of SRAM. It has a
+18.6dBm transmit power, and a receive sensitivity of -136dBm. It has ultra-low
+power sleep modes that offer low current consumption of as low as 790nA, 12.6mA
+while receiving, and 114.6mA while transmitting at 18.5dBm. There is not much
+documentation about the various power modes of the device. It does offer a
+12-bit ADC with 7 channels which allows for easier sampling of multiple inputs,
+albeit at a lower rate, with only one physical ADC. Since an air quality sensor
+doesn't need that many readings per second (when active and taking
+measurements), the lower sampling rate doesn't pose as an issue. The module also
+has I$^2$C, SPI, UART, and USB I/O peripherals. Having a USB I/O digital
+interface built into the module saves money and design complexity, and makes up
+for the module's lower performance \cite{ds-wlr089u0}\cite{ds-atsamr34j18}.
+
+\subsubsection{RAK 4600}
+The RAK 4600 LPWAN module is based off the Nordic nRF52832 MCU and the
+Semtech SX1276 Lora transceiver. The Nordic MCU is a general purpose,
+multi-protocol MCU capable of Bluetooth 5.2 with a +4 dBm TX output and Near
+Field Communication (NFC). The addition of peripherals would increase the
+usability and accessibility of the air quality sensor by allowing the user to
+connect and configure the sensor wirelessly through their phone or computer. The
+Semtech SX1276 empowers the RAK 4600 to have a LoRa TX output of +20 dBm while
+using 125mA, and -148 dBm RX sensitivity while using a max of 14mA. However,
+only either BLE or LoRa can be used, not both at the same time. The Nordic MCU
+supports ultra low-power sleep states than can achieve down to 1.2$\mu$A of draw
+current. However, RAK states that that the RAK 4600 module can only get down to
+11.5$\mu$A at 2.0V input and 12.5$\mu$A at 3.3V.
+
+The downsides of the RAK 4600 mostly come down to 1) its sleep power
+consumption, 2) its complete lack of I/O, especially analog I/O, and 3) its lack
+of a LoRaWAN software stack. The RAK module does not allocate any pins for
+analog I/O even though the Nordic MCU has a plethora of digital and analog
+peripherals connected to its pins. The RAK module surprisingly mostly has no
+connect (NC) pins. Not only that, but it only has one set of UART pins and one
+set of I$^2$ pins. While the addition of Bluetooth would be a great addition, it
+would greatly complicate the sensor sub-system by not providing any analog I/O
+whatsoever. While the lack of a LoRaWAN stack is definitely not a deal breaker
+(and would be a great learning experience), it is definitely something to take
+into account, especially since it seems to be the standard across most LoRa
+modules researched \cite{ds-rak4600}.
+
+\subsubsection{The Onethinx Core}
+The Onethinx is another module that supports both LoRa and Bluetooth in a small
+25mm by 20mm package. The module includes embedded wire trace LoRa and Bluetooth
+antennas, greatly simplifying PCB design. The wire LoRa antenna still provides
++20dBm out TX output power, but is lacking compared to the other modules with
+its -94dBm RX sensitivity. It is powered by the Cypress PSoC 6x series MCUs,
+which houses an ARM M0+ core, M4 core, and a Bluetooth transceiver, along with a
+separate chip, the Semtech SX126x, for the LoRa transceiver. The Cypress PSoC
+focuses on power efficiency and security. The Cypress PSoC implements the ARM
+Platform Security Architecture (PSA) which provides three levels of
+hardware-based resource isolation. Since it has two cores, the user code can
+execute separately from the LoRaWAN stack so that the user code can never
+interfere with the LoRaWAN communication link. On top of that, the LoRaWAN stack
+implements a chain of trust, which essentially is a hash chain formed by hashing
+the decrypted code segments at various parts of the stack, and comparing the
+hash with the public key. However, the software stack is not publicly available,
+and there is not much official or online support (StackOverflow, etc), so if
+issues were to arise, it would be much more difficult to fix, especially if
+deadlines are quickly approaching. Another factor to consider with the Onethinx
+Core module is: the availability. The module is not freely purchasable through
+major online electronics distributors (Digikey, Mouser, Arrow, etc). It is only
+purchasable through email correspondence, which has proven to be fruitless, even
+after 5 business days \cite{ds-onethinx}\cite{ds-sx1261}\cite{ds-psoc64bl}.
+
+\subsubsection{LoRa Module Comparison}
+In the following discussion, the LoRa modules are compared. Of the listed
+considerations at the beginning of the section, energy efficiency, documentation
+quality, and cost were the main deciding factors. The reason for prioritizing
+those three characteristics were two-fold: time constraints and cost
+constraints. Choosing the part with ample amounts of documentation significantly
+affects development speed, and consequently allowing for rapid prototyping and
+last-minute changes.
+
+As shown in the table below, the modules are summarized in regard to their
+computing capabilities and cost. Most of the modules have comparable costs for
+the modules, but the development kits for each of them drastically vary. The
+Seeed LoRa-E5 is the most cost effective for both the individual modules and
+development boards. Compared to the Midatronics Windy, it is essentially the
+exact same system with the only difference being that the Midatronics Windy has
+an embedded U.FL connector on the package for double the price. The ARM
+Cortex-M4 (and Cortex-M0+ for that matter) is more than enough to meet the
+computing requirements of the air quality sensor nodes since all they have to do
+is 1) periodically wake up 2) send data to a gateway.  It is more of an added
+benefit that the Onethinx Core has two cores. However, having two cores, and
+requiring both of them for its specialized, secure LoRaWAN stack, increases the
+power usage of the device. Another thing that is a nice-to-have (and uses more
+power), but not necessarily a need-to-have, are the Bluetooth peripherals on the
+Onethinx Core and the RAK4600. However, having Bluetooth would create a better
+user experience, but mainly only for initially configuring the device.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{LoRa Module General Comparison}
+\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\hline
+Module & Core(s) & Core Clock (MHz) & Cost & Dev Board Cost \\ 
+\hline\hline
+
+Seeed LoRa-E5       & Cortex-M4   & 48 & \$8  & \$18  \\\hline
+Midatronics Windy   & Cortex-M4   & 48 & \$20 & \$65  \\\hline
+Microchip WLR089U0  & Cortex-M0+  & 48 & \$15 & \$114 \\\hline
+RAK 4600            & Cortex-M4F  & 64 & \$10 & \$18  \\\hline
+Onethinx Core\footnotemark
+                    & Cortex M0+ \& M4 & 100/150 & \$20 & \$80 \\\hline
+
+\end{tabular}
+% \label{tab:networkingRequirements}
+\end{table}
+\footnotetext{Not readily available at a distributor or official website. Must
+email company.}
+
+
+When researching and comparing the module's electrical characteristics, we
+mostly focused on the power efficiency so that we can meet our goal of having
+the battery life can last as least one year. In order to meet our range
+requirements, we looked for a LoRa tranceiver with a 150dB direct line-of-sight
+link budget. The link budget can be calculated with the equation below, but it
+is provided in most, if not all, cases. 
+
+% https://tex.stackexchange.com/questions/110746/equations-and-defining-equation-variables
+\begin{gather}\label{eq-link-budget}
+P_{RX} = P_{TX} + G - L \\
+\intertext{where}
+\begin{aligned}
+& P_{RX}: \text{received power (dBm)} \\
+& P_{TX}: \text{transmitted power (dBm)} \\
+& G: \text{gains (dB)} \\
+& L: \text{losses (dB)} \\
+\end{aligned}\notag
+\end{gather}
+
+The full link budget equation that accounts for all sources of gain and loss is
+shown below:
+\begin{gather}\label{eq-link-budget-full}
+P_{RX} = P_{TX} + G_{TX} - L_{TX} - L_{FS} - L_M + G_{RX} - L_{RX} \\
+\intertext{where}
+\begin{aligned}
+& P_{RX}: \text{received power (dBm)} \\
+& P_{TX}: \text{transmitter output power (dBm)} \\
+& G_{TX}: \text{transmitter antenna gain (dBi)} \\
+& L_{TX}: \text{transmitter losses (coax, connectors, etc) (dB)} \\
+& L_{FS}: \text{path loss, usually free-space loss (dB)} \\
+& L_{M}: \text{miscellaneous losses (fading margin, body loss, etc)(dB)} \\
+& G_{RX}: \text{receiver antenna gain (dBi)} \\
+& L_{RX}: \text{receiver losses (coax, connectors, etc) (dBm)} \\
+\end{aligned}\notag
+\end{gather}
+
+The following table tabulates the researched module's electrical
+Characteristics. ``TX'' and ``RX'' refer to the transmit power and receive
+sensitivity, respectively. The sleep current is defined as the lowest possible
+sleep state where the core(s) can still be woken up by a timer at 3.3V. The run
+current is the current required to operate all cores on the MCU. Even though all
+the modules researched can operate at lower voltages, only 3.3V is considered in
+the table. I$_{tx}$ and I$_{rx}$ refer to the current required to transmit and
+receive using the LoRa radio, respectively.  The RF characteristics are the
+maximum possible values, and the conditions, such as spreading factor (SF) and
+bandwidth (BW), may vary between modules.  Lastly, V$_{in}$ is the voltage range
+accepted by the module where the module's cores are still operable. By using a
+lower voltage, the device can operate at a lower power, at the expense of
+reduced RF performance, or the inoperability of a peripheral on the MCU. In some
+cases, the run current is either the current in TX or RX modes (LoRa transceiver
+can't be turned off), indicated by ``RX|TX''.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{LoRa Module Electrical Characteristics Comparison}
+\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\hline
+Module & TX (dBm) & RX (dBm) & I$_{sleep}$($\mu$A) & I$_{run}$(mA) & I$_{tx}$
+(mA) & I$_{rx}$ (mA) &  V$_{in}$ (V) \\
+\hline\hline
+
+Seeed LoRa-E5       & +22.0 & -136  & 0.360   & 3.45    & 107 & 4.82  & 1.8 - 3.3 \\\hline
+Midatronics Windy   & +22.0 & -148  & 0.360   & 3.45    & 120 & 12    & 1.8 - 3.3 \\\hline
+Microchip WLR089U0  & +18.6 & -136  & 1.61    & RX|TX   & 115 & 12.6  & 1.8 - 3.3 \\\hline
+RAK 4600            & +20.0 & -148  & 11.2    & RX|TX   & 125 & 17.0  & 2.0 - 3.3 \\\hline
+Onethinx Core       & +20.0 & -137  & 1.66    & 3.67    & 118 & 4.20  & 1.8 - 3.3 \\\hline
+
+\end{tabular}
+% \label{tab:networkingRequirements}
+\end{table}
+
+The next table shows the I/O capabilities of the modules researched. An
+integrated LoRa antenna connector would be ideal, but if the performance of the
+module is good, then it doesn't matter as much. Also, it was a requirement that
+the module have at least one UART, SPI, and I$^2$ port. Note that while the MCUs
+and transceivers used may have a set of I/O capabilities, they may not be
+exposed to use on the module. Also, the I/O capabilities tabulated are not
+mutually exclusive. Meaning, that if one of the UART ports are enabled, then
+there may be less GPIOs available, or even SPI, for example, if they are muxxed
+on the same port. However, in most cases, using UART, SPI, or I$^2$C only
+removes 2-4 GPIO pins. For the Microchip module, it has 4 general I/O ports that
+can configured to be either of the aforementioned communication protocols.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{LoRa Module I/O Comparison}
+\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\hline
+Module & LoRa antenna & BLE? & USB? & ADCs & SPI & I$^2$C & UART & GPIO \\
+\hline\hline
+
+Seeed LoRa-E5       & External  & \no  & \no  & 12-bit, 1ch   & 1 & 1 & 3 & 10 \\\hline
+Midatronics Windy   & U.FL      & \no  & \no  & 12-bit, 1ch   & 1 & 1 & 1 & 23 \\\hline
+Microchip WLR089U0  & U.FL      & \no  & \yes & 12-bit, 7ch   & 4 & 4 & 4 & 27 \\\hline
+RAK 4600            & U.FL      & \yes & \no  & None          & 0 & 1 & 1 & 10 \\\hline
+Onethinx Core       & PCB trace & \yes & \no  & 12-bit, 1ch   & 1 & 1 & 1 & 8  \\\hline
+
+\end{tabular}
+% \label{tab:networkingRequirements}
+\end{table}
+
+\subsubsection{The Chosen LoRa Module: The Seeed LoRa-E5}
+Feature and cost wise, the Onethinx and the RAK4600 is a clear winner. However,
+the RAK4600's power efficiency, specifically its sleep current, is lacking when
+compared to the Seeed LoRa-E5 and Midatronics Windy.  Since the sensor node is
+going to be spending most of its time sleeping, having the lowest possible
+sleep/standby current is going to be one of the most important factors affecting
+the battery life. Not only that, but the documentation is spotty and
+inconsistent. Lastly, the RAK4600 does not come with a LoRaWAN stack, unlike
+every other module.  Writing a LoRaWAN stack from scratch wouldn't be a huge
+hurdle, but since writing a LoRaWAN stack isn't the main goal of our project and
+we would rather use already well-tested code, we opted to not use the RAK4600.
+The Onethinx then would be the next contender, but the development boards are
+costly, and the individual modules are not readily available. In order to
+purchase them, we would have to email them and negotiate a price assuming they
+would sell in super low quantities (<10). We have reached out on many occasions,
+with no response even after two full weeks. Due to not having any confidence
+that we can easily source the Onethinx Core module, we opted out of using it.
+
+Next, we considered the Microchip WLR089U0. This module has the most flexibility
+when it comes to its I/O. It is unmatched in this area when compared to the
+modules tabulated above. Almost everything is great about it, like the
+integrated U.FL connector and embedded USB peripheral hardware. However, there
+is a limitation when it comes to power management: the LoRa module inside of it
+can only be configured in receive or transmit mode and cannot be turned off.
+This, and also the relatively high sleep current (that still has an operational
+clock), is what turned us away this module.
+
+The Seeed LoRa-E5 and the Midatronics Windy are essentially the same exact
+module with the only difference being that the Midatronics Windy has an
+integrated U.FL connector. It uses almost the exact same LoRa transceiver/MCU IC
+as the Seeed LoRa-E5, but is double the price for the modules, and triple the
+price for the development boards. Both of these devices have the best sleep
+currents and transceiver performance. They are able to go into a standby mode
+with a running RTC that is still able to wake up the CPU - all while operating
+at 360nA. One downside of using the Seeed LoRa-E5 is that it does not have an
+integrated antenna connector. However, all of the RF front-end is embedded
+inside the module, and all that is needed outside of it is a very short trace
+connecting to a U.FL or SMA connector. Another added benefit is that Seeed and
+STM worked closely together to create the module, so it can be assumed that the
+module will perform as intended.
