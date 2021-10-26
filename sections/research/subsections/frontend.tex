@@ -323,9 +323,26 @@ waiting on the mutex, then it'll check pxMutexHolder, and if pxMutexHolder
 points to a task that has a lower priority, then the FreeRTOS scheduler/kernel
 will let it inherit the other task's priority.
 
+Lastly, one of FreeRTOS's features that would be of interest for this project is
+its tick-less operation mode. As previously mentioned, tick-less modes allow the
+tick interrupt to be disabled to allow the device to go into a deep sleep. This
+is needed for the MCU to go into deep sleep because the tick interrupt would
+wake up the system, and any currently running tasks that depend on timers would
+be disrupted. Tick-less mode can be enabling tick-less idle in the FreeRTOS
+configuration file. The tick-less idle mode will automatically be entered when
+the following conditions are met:
+
+\begin{enumerate}
+	\item The idle task is the only task able to run because all other tasks are
+		in the \emph{blocked} or \emph{suspended} state
+	\item The idle tasks is expected to be executed for n or more complete ticks,
+		where n is a user configured value called
+		configEXPECTED\_IDLE\_TIME\_BEFORE\_SLEEP
+\end{enumerate}
+
 \subsubsection{Architecture Deliberation}
 One of the main considerations in choosing parts and in making software
-architecture decisions, is power efficiency. A bare-metal architecture would
+architecture decisions is power efficiency. A bare-metal architecture would
 give us the ultimate control in how the microcontroller behaves at the cost of
 flexibly, code re-use, code maintainability, and time required to build a
 complete prototype. A bare-metal architecture typically involves a main loop
