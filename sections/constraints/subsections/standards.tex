@@ -77,10 +77,31 @@ LoRaWAN is often referred to as using a "star of stars" network technology. What
     \label{lorawan-network-stack}
 \end{figure}
 
-The LoRaWAN specification specifies three possible different end-device types, which are described below:
+The LoRaWAN specification specifies three possible different end-device types, which are summarized in Table \ref{tab:lorawan-classes} and described in more detail below:
 
-\textbf{Class A} Class A devices are described as lowest power, bidirectional end-devices. For an end-device to compliant with the LoRaWAN specification, it must be able to function as a Class A device. Class A devices always initiate communication with the central server and can do this asynchronously. Every time a Class A device begins an uplink transmission, it must be followed by two downlink transmissions. This allows the server to send follow-up communication, hence the bidirectional description of the class. The LoRaWAN specification states that the central server must buffer downlink communication until the next uplink transmission from the end-device. Once an end-device has finished sending and receiving transmissions, it can enter a low-power state that it can define.
+\paragraph{Class A}
+Class A devices are described as lowest power, bidirectional end-devices. For an end-device to compliant with the LoRaWAN specification, it must be able to function as a Class A device. Class A devices always initiate communication with the central server and can do this asynchronously. Every time a Class A device begins an uplink transmission, it must be followed by two downlink transmissions. This allows the server to send follow-up communication, hence the bidirectional description of the class. The LoRaWAN specification states that the central server must buffer downlink communication until the next uplink transmission from the end-device. Once an end-device has finished sending and receiving transmissions, it can enter a low-power state that it can define.
 
-\textbf{Class B}
+\paragraph{Class B}
+Class B devices are described bidirectional end-devices with deterministic downlink latency. Class B devices still initiate communication with the central server, however, they initiate this communication during scheduled, periodic intervals. This means that the central server can send a downlink transmission predictably. This means that the end-devices will consume additional power. This transmission latency can be configured up to a maximum of 128 seconds.
 
-\textbf{Class C}
+\paragraph{Class C}
+Class C devices are described as bidirectional end-devices with the lowest possible downlink latency. This lowest possible downlink latency is achieved because the end-device is simply ready to receive at all times. The only time the end-device is not ready to receive is when it is transmitting data back to the central server. Due to the large power consumption, the ideal situation for Class C device would be for it to be connected to external power. For battery operated applications, it is possible to have a device temporarily switch between Class A and Class C.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Class & Latency & Power Consumption & Transmission Pattern \\\hline
+\hline
+Class A & Highest & Lowest & End-device initiated (asynchronous) \\\hline
+Class B & Middle & Middle & End-device initiated (synchronous) \\\hline
+Class C & Lowest & Highest & Continuous \\\hline
+\end{tabular}
+\caption{A summary of the three different LoRaWAN end-device classes.}
+\label{tab:lorawan-classes}
+\end{table}
+
+LoRaWAN also specifies a parameter known as data rate. The data rate parameter controls the relationship between communication range and message duration. In addition, due to how spread-spectrum technology functions, end-devices communicating with different data rates do not interfere with one another. This effectively increases the capacity of each gateway by essentially creating multiple separate channels which are delineated by the data rate parameter. Taking advantage of this information, LoRaWAN specifies the creation of a scheme known as Adaptive Data Rate (ADR). The ADR scheme is defined by having the central server manage the data rate parameter and transmission power for each end-device. This can allow the central server to optimize battery life for end-devices and optimize the capacity of the network. The possible values for the data rate range from 0.3 Kbps to 50 Kbps.
+
+LoRaWAN also

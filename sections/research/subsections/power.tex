@@ -1,5 +1,74 @@
 \subsection{Power Sub-System}
-\subsubsection{Buck-Boost Controllers}
+\subsubsection{Solar Charge Controller}
+Solar Chargers are current and voltage regulators that are solar powered themselves. They take in power from PV arrays and deliver optimal power to their electrical load. Your typical solar charge controller usually consist of 5 basic features.
+1) Low Voltage Protection
+2) Over Voltage Protection
+3) Battery Cutoff Circuit
+4) Back Current Protection
+5) Over Discharge Protection
 \subsubsection{Battery Considerations}
+Lead Acid Batteries 
+
+Lead batteries consist of two electrodes, a negative electrode consisting of lead and a positive electrode consisting of a lead oxide. The two electrodes are submerged in an electrolyte solution comprised of a mixture of water and sulfuric acid. Typically, an electrically insulating material that is chemically permeable is added to ensure the two electrodes do not come into direct contact. The configuration of a lead acid battery can be seen in figure (a), while the chemical equation of the reaction being implemented can be found in figure (b).
+
+Lithium Batteries 
+
+Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure (c). 
+
+Battery Characteristics 
+
+To utterly understand which battery is the right choice for a project one must look at how these methods of constructing a battery will affect the overall characteristics of the battery. The characteristics that impact the usefulness of a battery are as follows: Discharge Curve, Energy Density, Temperature Dependence, Service Life, Charge/Discharge Cycle, and Cost.
+
+Discharge Curve 
+
+A Discharge Curve is a graph that plots Voltage against percentage of the capacity discharged. Essentially the Output voltage of a battery will lower as the battery is used up. Given this factor the most desirable curve would be flat (keeping voltage consistent at every level of discharge), so let us look at the average discharge curve of our lead acid and lithium-ion batteries. Figure (d) shows example discharge curves one might find in a lithium ion and lead acid batteries. The figure has been provided by Power Tech, an energy storage system manufacturer. 
+
+Energy Density 
+
+Energy Density is the amount of energy you can get out of a battery per unit volume of weight required. Clearly the higher the density the better for a battery. The characteristic known as specific energy density is closely related. However, it considers the Discharge curve of the battery and how it would affect the voltage and current during the battery discharge cycle and is solely measured against weight. An example of the range of energy density and specific energy density can be found in Figure (e) and is provided by the National Aeronautics and Space Administration.
+
+Temperature Dependence 
+
+Battery Performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Figure (f). 
+
+Service Life 
+
+As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure (g) shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. 
+
+Charge Curve 
+
+The charge curve shows the process of charging different batteries. This would include information on the voltage needed to charge, current used to charge, charging times, and capacity of battery. Figure (h) shows the charge curve for an example lead acid batteries and figure (I) shows the charge curve for an example lithium-ion battery. While the charging curves will differ from battery to battery meaning the examples are not completely accurate as to what can be expected the overall structure of the curve will match those with similar chemistry. 
+
+Cost 
+
+The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs 13,000(USD) per metric ton, while on the other hand during the same year lead hit an all-time high with 2,600(USD) per metric ton. Figure (j) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. 
+
+Summary 
+
+Within our research many factors of batteries have been observed and noted. Now let's take in our research and decide which battery could best address the needs of this project. 
+
+Decision 
+
+Here is where we will show which battery chemistry, capacity, and amps we will use along with a link to its data sheet. 
+
 \subsubsection{Solar Panel Considerations}
+How Solar Panels Work 
+
+Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized is by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a useable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
+
+Monocrystalline Solar Panels 
+
+Like the name suggests monocrystalline solar panels are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure (a). 
+
+Polycrystalline Solar Panels 
+
+Unlike monocrystalline panels these solar panels are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure (b). 
+
+Thin Film Solar Panels 
+
+Unlike the previous two types of solar panels, thin film solar panels are mostly not made of silicon. They are made of a mixture of materials mostly cadmium telluride, which is comprised into a thin sheet between two transparent conductive layers that help capture sunlight. Thin film solar panels usually have the lowest efficiency and capacity of all solar panel types however they make up for it in durability and flexibility. The main advantage of this type of solar panel is their low weight, profile, and its ability to adhere to whatever required surface it may need to. Figure (c) shows an example of thin film solar panels. 
+
+Decision 
+
+Here is where we will show which solar panel, we will use along with a link to its data sheet. 
 \subsubsection{USB Power Considerations}
