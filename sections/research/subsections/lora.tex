@@ -30,21 +30,21 @@ sensitivity, signal gains, and signal losses affect the link budget.
 
 \subsubsection{The Seeed LoRa-E5}
 The Seeed LoRa-E5 utilizes a STM32WLE5JC microcontroller, which is the first to
-integrate both a microcontroller and a +22dBm LoRa radio into one silicon wafer.
+integrate both a microcontroller and a +22 dBm LoRa radio into one silicon wafer.
 The Seeed LoRa-E5 simplifies development with the STM32WLE5JC by embedding the
 clocks and main RF front-end circuitry into a single package, obtaining up to
-+20.8dBm transmit (TX) output and -136dBm receive sensitivity, and takes care
++20.8 dBm transmit (TX) output and -136 dBm receive sensitivity, and takes care
 of startup and shutdown power sequencing. All in a 12mm by 12mm package. This
-microcontroller provides the best power consumption of 360nA while in standby,
+microcontroller provides the best power consumption of 360 nA while in standby,
 58$\mu$A while in low power sleep current (LPSleep), and 125$\mu$A while in low
-power run current (LPRun, <2 MHz) with a max LoRa transmit current of 110mA at
-22dBm. STM also provides a hardware abstraction layer (HAL) for the device, and
+power run current (LPRun, $<2$ MHz) with a max LoRa transmit current of 110 mA at
+22 dBm. STM also provides a hardware abstraction layer (HAL) for the device, and
 middleware, such as FreeRTOS and a FAT filesystem driver, and a LoRaWAN
 software stack all through their STM32Cube software package. The STM32WL
-utilizes an Arm Cortex M4 32-bit RISC core with 256KB flash memory and 64KB of
+utilizes an Arm Cortex M4 32-bit RISC core with 256 KB flash memory and 64 KB of
 SRAM. It also has a 12-bit ADC, which will be needed for the sensing
 sub-system.  I/O connectivity is provided through also has 3 UART controllers,
-1 SPI controller, 1 I$^2$C controller, programming pins, and 6 to 8 GPIO,
+1 SPI controller, 1 \iic controller, programming pins, and 6 to 8 GPIO,
 depending on the UART configuration.
 
 However, the module provides no integrated U.FL connector, which increasing the
@@ -76,10 +76,10 @@ LoRa-E5 \cite{ds-midatronics-windy}\cite{ds-midatronics-mkr-windy}\cite{ds-stm32
 \subsubsection{The Microchip WLR089U0}
 The Microchip WLR089U0, like the Midatronics Windy, is a fully integrated
 surface mount device module with an U.FL connector. The module utilizes an Arm
-Cortex M0+ processor with 256KB of flash memory and 40KB of SRAM. It has a
-18.6dBm transmit power, and a receive sensitivity of -136dBm. It has ultra-low
-power sleep modes that offer low current consumption of as low as 790nA, 12.6mA
-while receiving, and 114.6mA while transmitting at 18.5dBm. There is not much
+Cortex M0+ processor with 256 KB of flash memory and 40 KB of SRAM. It has a
+18.6 dBm transmit power, and a receive sensitivity of -136 dBm. It has ultra-low
+power sleep modes that offer low current consumption of as low as 790 nA, 12.6 mA
+while receiving, and 114.6 mA while transmitting at 18.5 dBm. There is not much
 documentation about the various power modes of the device. It does offer a
 12-bit ADC with 7 channels which allows for easier sampling of multiple inputs,
 albeit at a lower rate, with only one physical ADC. Since an air quality sensor
@@ -97,7 +97,7 @@ Field Communication (NFC). The addition of peripherals would increase the
 usability and accessibility of the air quality sensor by allowing the user to
 connect and configure the sensor wirelessly through their phone or computer. The
 Semtech SX1276 empowers the RAK 4600 to have a LoRa TX output of +20 dBm while
-using 125mA, and -148 dBm RX sensitivity while using a max of 14mA. However,
+using 125 mA, and -148 dBm RX sensitivity while using a max of 14 mA. However,
 only either BLE or LoRa can be used, not both at the same time. The Nordic MCU
 supports ultra low-power sleep states than can achieve down to 1.2$\mu$A of draw
 current. However, RAK states that that the RAK 4600 module can only get down to
@@ -120,8 +120,8 @@ modules researched \cite{ds-rak4600}.
 The Onethinx is another module that supports both LoRa and Bluetooth in a small
 25mm by 20mm package. The module includes embedded wire trace LoRa and Bluetooth
 antennas, greatly simplifying PCB design. The wire LoRa antenna still provides
-+20dBm out TX output power, but is lacking compared to the other modules with
-its -94dBm RX sensitivity. It is powered by the Cypress PSoC 6x series MCUs,
++20 dBm out TX output power, but is lacking compared to the other modules with
+its -94 dBm RX sensitivity. It is powered by the Cypress PSoC 6x series MCUs,
 which houses an ARM M0+ core, M4 core, and a Bluetooth transceiver, along with a
 separate chip, the Semtech SX126x, for the LoRa transceiver. The Cypress PSoC
 focuses on power efficiency and security. The Cypress PSoC implements the ARM
@@ -158,7 +158,14 @@ exact same system with the only difference being that the Midatronics Windy has
 an embedded U.FL connector on the package for double the price. The ARM
 Cortex-M4 (and Cortex-M0+ for that matter) is more than enough to meet the
 computing requirements of the air quality sensor nodes since all they have to do
-is 1) periodically wake up 2) send data to a gateway.  It is more of an added
+is:
+
+\begin{enumerate}
+    \item Periodically wake up.
+    \item Send data to a gateway.
+\end{enumerate}
+
+It is more of an added
 benefit that the Onethinx Core has two cores. However, having two cores, and
 requiring both of them for its specialized, secure LoRaWAN stack, increases the
 power usage of the device. Another thing that is a nice-to-have (and uses more
@@ -323,7 +330,7 @@ as the Seeed LoRa-E5, but is double the price for the modules, and triple the
 price for the development boards. Both of these devices have the best sleep
 currents and transceiver performance. They are able to go into a standby mode
 with a running RTC that is still able to wake up the CPU - all while operating
-at 360nA. One downside of using the Seeed LoRa-E5 is that it does not have an
+at 360 nA. One downside of using the Seeed LoRa-E5 is that it does not have an
 integrated antenna connector. However, all of the RF front-end is embedded
 inside the module, and all that is needed outside of it is a very short trace
 connecting to a U.FL or SMA connector. Another added benefit is that Seeed and

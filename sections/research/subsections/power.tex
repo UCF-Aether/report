@@ -1,11 +1,6 @@
 \subsection{Power Sub-System}
 \subsubsection{Solar Charge Controller}
-Solar Chargers are current and voltage regulators that are solar powered themselves. They take in power from PV arrays and deliver optimal power to their electrical load. Your typical solar charge controller usually consist of 5 basic features.
-1) Low Voltage Protection
-2) Over Voltage Protection
-3) Battery Cutoff Circuit
-4) Back Current Protection
-5) Over Discharge Protection
+Solar Chargers are current and voltage regulators that are solar powered themselves. They take in power from PV arrays and deliver optimal power to their electrical load. Due to the overall desired design of our project it has been decided that our own solar charge controller will be built. The heart of our design behind a solar charge controller is a buck boost controller. This takes in a certain voltage range and can be manipulated to output the desired voltage. The power considerations that must be taken into account are the voltage of the micro-controller to be powered as well as the solar power output. The selected micro-controller has an input voltage range of 1.8V to 3.6V with peak performance coming from an input of 3.3v. The selected solar panel has a peak performance output of 6.12v. This means that the proper selection for our buck boost controller must be able to take in a range of voltage around 6v and output a voltage of 3.3v. Once we have the power from the solar panel input into the buck boost controller we will have the proper output to power the load and charge the battery with the remaining power.
 \subsubsection{Battery Considerations}
 Lead Acid Batteries 
 
@@ -29,19 +24,19 @@ Energy Density is the amount of energy you can get out of a battery per unit vol
 
 Temperature Dependence 
 
-Battery Performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Figure (f). 
+Battery Performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Table (a). 
 
 Service Life 
 
-As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure (g) shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. 
+As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure (f) shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. 
 
 Charge Curve 
 
-The charge curve shows the process of charging different batteries. This would include information on the voltage needed to charge, current used to charge, charging times, and capacity of battery. Figure (h) shows the charge curve for an example lead acid batteries and figure (I) shows the charge curve for an example lithium-ion battery. While the charging curves will differ from battery to battery meaning the examples are not completely accurate as to what can be expected the overall structure of the curve will match those with similar chemistry. 
+The charge curve shows the process of charging different batteries. This would include information on the voltage needed to charge, current used to charge, charging times, and capacity of battery. Figure (g) shows the charge curve for an example lead acid batteries and figure (h) shows the charge curve for an example lithium-ion battery. While the charging curves will differ from battery to battery meaning the examples are not completely accurate as to what can be expected the overall structure of the curve will match those with similar chemistry. 
 
 Cost 
 
-The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs 13,000(USD) per metric ton, while on the other hand during the same year lead hit an all-time high with 2,600(USD) per metric ton. Figure (j) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. 
+The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs 13,000(USD) per metric ton, while on the other hand during the same year lead hit an all-time high with 2,600(USD) per metric ton. Table (b) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. 
 
 Summary 
 
@@ -52,6 +47,15 @@ Decision
 Here is where we will show which battery chemistry, capacity, and amps we will use along with a link to its data sheet. 
 
 \subsubsection{Solar Panel Considerations}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=6in]{figures/solar panel overview.png}
+    \caption{The three types of solar panels.}
+    \label{label-name} % You can reference this image in-text like this: Figure \ref{image-name}
+    
+\end{figure}
+
 How Solar Panels Work 
 
 Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized is by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
@@ -71,4 +75,6 @@ Unlike the previous two types of solar panels, thin film solar panels are mostly
 Decision 
 
 Here is where we will show which solar panel, we will use along with a link to its data sheet. 
+
+
 \subsubsection{USB Power Considerations}

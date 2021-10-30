@@ -59,6 +59,16 @@ The UART protocol defines that data is sent in a packet structure (Figure \ref{f
 \subsubsection{LoRa}
 LoRa (Long Range) is a proprietary, wireless modulation technique derived from chirp spread spectrum (CSS) technology. LoRa is was developed and patented by Semtech. LoRa only covers the physical layer. An additional protocol is necessary in order to specify the upper layers required for a functioning communication system. LoRaWAN is the one of the most widely used protocols to fulfill this purpose and will be discussed later in this section.
 
+One of the reasons for choosing LoRa over other communication standards, such as WiFi or cellular, is due to where it stands in relation to bandwidth, range, and power. Technologies such as Bluetooth and WiFi are considered high bandwidth, but low range. Cellular technology is high range and can be high bandwidth, but a major drawback is the high operating power required. In contrast, LoRa is low power, high range, and can operate in the license-free frequency band in the United States, as well as in other countries. Figure \ref{fig:lora-range-bandwidth} shows a comparison between these different types of technology.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=6in]{figures/lora-range-bandwidth.png}
+    \caption{A range-bandwidth comparison between WiFi and Bluetooth LE, cellular, and LoRa. Used with permission, according to the terms and conditions.}
+    \label{fig:lora-range-bandwidth}
+\end{figure}
+
+
 In order to explain how LoRa functions, we must first give a brief overview of CSS. CSS is a communication technique that utilizes its entire allocated bandwidth to broadcast a signal. It uses wideband linear frequency modulated chirp pulses to encode information. A chirp is simply a signal whose frequency changes over time according to specific, time-varying function \cite{ieee-std-chirp}. In the case of LoRa, the frequency band that is used is the license-free sub-GHz radio frequency that varies by region. For example, in the United States the license-free radio frequency band is 920 MHz to 928 MHz. The modulation technique that LoRa uses is derived from CSS. It functions by representing each bit of data in a payload as multiple chirps. LoRa defines a term known as spreading factor ($SF$) to refer to the number of symbols sent per bit of information. Since multiple chirps are used to represent a single bit of data, spreading factor is also the relationship between the nominal symbol rate and the nominal chirp rate. The creates a discrete modulation where the $M=2^{SF}$ possible waveforms at the output of the modulator are chirp modulated signals over the frequency interval $(f_0 - B/2, f_0 + B/2)$, where B is the bandwidth. There are $M$ initial frequencies \cite{ieee-lora-modulation}.
 
 LoRa supports the ability to trade fixed sensitivity within a fixed channel bandwidth for data rate. It does this by modifying the $SF$ parameter. A higher $SF$ has the benefit of giving the receiver more chances to sample the signal power, providing better sensitivity. However, the drawback to a higher $SF$ value is the greater transmission time and thus higher energy consumption, which is clearly a negative for the low-power applications that LoRa devices are typically used in. Understandably, a lower $SF$ value results in more chirps per second, meaning worse sensitivity for the receiver. However, the benefit is the lower power consumption \cite{ttn-spreading-factor}.
@@ -79,14 +89,16 @@ LoRaWAN is often referred to as using a "star of stars" network technology. What
 
 The LoRaWAN specification specifies three possible different end-device types, which are summarized in Table \ref{tab:lorawan-classes} and described in more detail below:
 
-\paragraph{Class A}
-Class A devices are described as lowest power, bidirectional end-devices. For an end-device to compliant with the LoRaWAN specification, it must be able to function as a Class A device. Class A devices always initiate communication with the central server and can do this asynchronously. Every time a Class A device begins an uplink transmission, it must be followed by two downlink transmissions. This allows the server to send follow-up communication, hence the bidirectional description of the class. The LoRaWAN specification states that the central server must buffer downlink communication until the next uplink transmission from the end-device. Once an end-device has finished sending and receiving transmissions, it can enter a low-power state that it can define.
+\begin{itemize}
+    \item \textbf{Class A} devices are described as lowest power, bidirectional end-devices. For an end-device to compliant with the LoRaWAN specification, it must be able to function as a Class A device. Class A devices always initiate communication with the central server and can do this asynchronously. Every time a Class A device begins an uplink transmission, it must be followed by two downlink transmissions. This allows the server to send follow-up communication, hence the bidirectional description of the class. The LoRaWAN specification states that the central server must buffer downlink communication until the next uplink transmission from the end-device. Once an end-device has finished sending and receiving transmissions, it can enter a low-power state that it can define.
+    
+    
+    \item \textbf{Class B} devices are described bidirectional end-devices with deterministic downlink latency. Class B devices still initiate communication with the central server, however, they initiate this communication during scheduled, periodic intervals. This means that the central server can send a downlink transmission predictably. This means that the end-devices will consume additional power. This transmission latency can be configured up to a maximum of 128 seconds.
+    
+    
+    \item \textbf{Class C} devices are described as bidirectional end-devices with the lowest possible downlink latency. This lowest possible downlink latency is achieved because the end-device is simply ready to receive at all times. The only time the end-device is not ready to receive is when it is transmitting data back to the central server. Due to the large power consumption, the ideal situation for Class C device would be for it to be connected to external power. For battery operated applications, it is possible to have a device temporarily switch between Class A and Class C.
+\end{itemize}
 
-\paragraph{Class B}
-Class B devices are described bidirectional end-devices with deterministic downlink latency. Class B devices still initiate communication with the central server, however, they initiate this communication during scheduled, periodic intervals. This means that the central server can send a downlink transmission predictably. This means that the end-devices will consume additional power. This transmission latency can be configured up to a maximum of 128 seconds.
-
-\paragraph{Class C}
-Class C devices are described as bidirectional end-devices with the lowest possible downlink latency. This lowest possible downlink latency is achieved because the end-device is simply ready to receive at all times. The only time the end-device is not ready to receive is when it is transmitting data back to the central server. Due to the large power consumption, the ideal situation for Class C device would be for it to be connected to external power. For battery operated applications, it is possible to have a device temporarily switch between Class A and Class C.
 
 \begin{table}[]
 \centering
