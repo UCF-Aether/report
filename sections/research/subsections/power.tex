@@ -5,8 +5,22 @@ Solar Chargers are current and voltage regulators that are solar powered themsel
 \subsection{Batteries}
 In this section, we provide an overview of the different types of batteries that we considered for use in our design. These types include lead acid batteries and lithium batteries. We also cover the different characteristics that we considered during the process of choosing a battery type.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{figures/lead-acid-battery.png}
+    \caption{The configuration of a lead acid battery.}
+    \label{lead-acid-battery} 
+\end{figure}
+
 \subsubsection{Lead Acid Batteries}
-Lead batteries consist of two electrodes, a negative electrode consisting of lead and a positive electrode consisting of a lead oxide. The two electrodes are submerged in an electrolyte solution comprised of a mixture of water and sulfuric acid. Typically, an electrically insulating material that is chemically permeable is added to ensure the two electrodes do not come into direct contact. The configuration of a lead acid battery can be seen in figure (a), while the chemical equation of the reaction being implemented can be found in figure (b).
+Lead batteries consist of two electrodes, a negative electrode consisting of lead and a positive electrode consisting of a lead oxide. The two electrodes are submerged in an electrolyte solution comprised of a mixture of water and sulfuric acid. Typically, an electrically insulating material that is chemically permeable is added to ensure the two electrodes do not come into direct contact. The configuration of a lead acid battery can be seen in Figure \ref{lead-acid-battery}, while the chemical equation of the reaction being implemented can be found in Equation \ref{lead-acid-eqn}.
+
+\begin{equation}
+    \text{PbO}_2 + \text{Pb} + 2\text{H}_2\text{SO}_4
+    \xLeftrightarrow[charge]{discharge}
+    2\text{PbSO}_4 + \text{H}_2\text{O}
+    \label{lead-acid-eqn}
+\end{equation}
 
 \subsubsection{Lithium Batteries}
 Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure (c). 
@@ -44,15 +58,14 @@ Here is where we will show which battery chemistry, capacity, and amps we will u
     \centering
     \includegraphics[width=6in]{figures/solar panel overview.png}
     \caption{The three types of solar panels.}
-    \label{label-name} % You can reference this image in-text like this: Figure \ref{image-name}
-    
+    \label{solar-panel-overview} 
 \end{figure}
 
 In this section, we will discuss the different types of solar panels that are being considered for use in our design. Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized is by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
 
 \subsubsection{Monocrystalline Solar Panels}
 
-Like the name suggests monocrystalline solar panels are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure (a). 
+Like the name suggests monocrystalline solar panels are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{solar-panel-overview}. 
 
 \subsubsection{Polycrystalline Solar Panels}
 

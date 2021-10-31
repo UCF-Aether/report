@@ -350,9 +350,11 @@ that polls various register values until certain conditions (application
 specific) are met, does a few actions, then repeats. Interrupt service routines
 (ISRs) are written specifically for that application. If more functionality
 needs to be added, it could touch every piece of the bare-metal architecture.
-These leads to more complicated implementations that don't tend to scale well.
+These lead to more complicated implementations that don't tend to scale well.
 Adding a `simple' feature could end up requiring a complete re-write of the
-application.  For simple applications, a bare-metal architecture is perfect.
+application.  
+
+For simple applications, a bare-metal architecture is perfect.
 However, if there are lots of asynchronous events, such as I/O, it becomes more
 difficult to maintain. Also, by using a RTOS, it allows the programmer to use
 middleware, such as a FAT file system driver. So, ideally, we would like to use
@@ -364,7 +366,9 @@ for process timers. Luckily, FreeRTOS has a tick-less mode which allows the
 device to go into deep-sleep and standby mode. Therefore, since we need to deal
 with both USB and LoRa communication, as well as other asynchronous
 communication with the sensors, we chose to go with FreeRTOS for the main part
-of the front-end stack. The middleware provided for free for the LoRa-E5 is the
+of the front-end stack. 
+
+The middleware provided for free for the LoRa-E5 is the
 following: FatFS, FreeRTOS, LoRaWAN, KMS (key management service), cURL,
 mbed-crypto (cryptographic services). For the sensor nodes, we will be using
 FreeRTOS, LoRaWAN, FatFS for training the sensor ML models, STM FUOTA (Firmware
