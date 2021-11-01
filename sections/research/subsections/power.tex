@@ -23,28 +23,69 @@ Lead batteries consist of two electrodes, a negative electrode consisting of lea
 \end{equation}
 
 \subsubsection{Lithium Batteries}
-Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure (c). 
+Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure \ref{lithium-ion-battery}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/lithium ion battery.png}
+    \caption{The configuration of a lithium ion battery.}
+    \label{lithium-ion-battery} 
+\end{figure}
 
 \subsubsection{Battery Characteristics}
 To utterly understand which battery is the right choice for a project one must look at how these methods of constructing a battery will affect the overall characteristics of the battery. The characteristics that impact the usefulness of a battery are as follows: Discharge Curve, Energy Density, Temperature Dependence, Service Life, Charge/Discharge Cycle, and Cost.
 
 \paragraph{Discharge Curve}
-A discharge curve is a graph that plots Voltage against percentage of the capacity discharged. Essentially the Output voltage of a battery will lower as the battery is used up. Given this factor the most desirable curve would be flat (keeping voltage consistent at every level of discharge), so let us look at the average discharge curve of our lead acid and lithium-ion batteries. Figure (d) shows example discharge curves one might find in a lithium ion and lead acid batteries. The figure has been provided by Power Tech, an energy storage system manufacturer. 
+A discharge curve is a graph that plots Voltage against percentage of the capacity discharged. Essentially the Output voltage of a battery will lower as the battery is used up. Given this factor the most desirable curve would be flat (keeping voltage consistent at every level of discharge), so let us look at the average discharge curve of our lead acid and lithium-ion batteries. Figure \ref{fig:discharge-curve} shows example discharge curves one might find in a lithium ion and lead acid batteries. The figure has been provided by Power Tech, an energy storage system manufacturer.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/discharge curve.png}
+    \caption{A comparison of a lithium ion battery discharge curve and a lead acid battery discharge curve.}
+    \label{fig:discharge-curve} 
+\end{figure}
 
 \paragraph{Energy Density}
-Energy density is the amount of energy you can get out of a battery per unit volume of weight required. Clearly the higher the density the better for a battery. The characteristic known as specific energy density is closely related. However, it considers the Discharge curve of the battery and how it would affect the voltage and current during the battery discharge cycle and is solely measured against weight. An example of the range of energy density and specific energy density can be found in Figure (e) and is provided by the National Aeronautics and Space Administration.
+Energy density is the amount of energy you can get out of a battery per unit volume of weight required. Clearly the higher the density the better for a battery. The characteristic known as specific energy density is closely related. However, it considers the Discharge curve of the battery and how it would affect the voltage and current during the battery discharge cycle and is solely measured against weight. An example of the range of energy density and specific energy density can be found in Figure \ref{fig:energy-density} and is provided by the National Aeronautics and Space Administration.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/energy density.png}
+    \caption{A comparison between volume energy density and specific energy density for various battery types.}
+    \label{fig:energy-density} 
+\end{figure}
 
 \paragraph{Temperature Dependence}
 Battery performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Table (a). 
 
 \paragraph{Service Life}
-As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure (f) shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. 
+As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure \ref{fig:service-life} shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{figures/service life.png}
+    \caption{A comparison between the service life of lead acid and lithium ion batteries.}
+    \label{fig:service-life} 
+\end{figure}
 
 \paragraph{Charge Curve}
-The charge curve shows the process of charging different batteries. This would include information on the voltage needed to charge, current used to charge, charging times, and capacity of battery. Figure (g) shows the charge curve for an example lead acid batteries and figure (h) shows the charge curve for an example lithium-ion battery. While the charging curves will differ from battery to battery meaning the examples are not completely accurate as to what can be expected the overall structure of the curve will match those with similar chemistry. 
+The charge curve shows the process of charging different batteries. This would include information on the voltage needed to charge, current used to charge, charging times, and capacity of battery. Figure \ref{fig:lead-acid-charge-curve} shows the charge curve for an example lead acid batteries and figure \ref{fig:lithium-charge-curve} shows the charge curve for an example lithium-ion battery. While the charging curves will differ from battery to battery meaning the examples are not completely accurate as to what can be expected the overall structure of the curve will match those with similar chemistry.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{figures/lithium charge curve.png}
+    \caption{The charge curve for a lithium ion battery.}
+    \label{fig:lithium-charge-curve} 
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{figures/lead acid charge curve.png}
+    \caption{The charge curve for a lead acid battery.}
+    \label{fig:lead-acid-charge-curve} 
+\end{figure}
 \paragraph{Cost}
-The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs 13,000(USD) per metric ton, while on the other hand during the same year lead hit an all-time high with 2,600(USD) per metric ton. Table (b) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. 
+The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs \$13,000 per metric ton, while on the other hand during the same year lead hit an all-time high with \$2,600 per metric ton. Table (b) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. 
 
 \paragraph{Summary}
 Within our research many factors of batteries have been observed and noted. Now let's take in our research and decide which battery could best address the needs of this project. 
@@ -56,7 +97,7 @@ Here is where we will show which battery chemistry, capacity, and amps we will u
 
 \begin{figure}
     \centering
-    \includegraphics[width=6in]{figures/solar panel overview.png}
+    \includegraphics[scale=0.25]{figures/solar panel overview.png}
     \caption{The three types of solar panels.}
     \label{solar-panel-overview} 
 \end{figure}
