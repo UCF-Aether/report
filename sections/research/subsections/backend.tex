@@ -1,10 +1,29 @@
 \subsection{The Backend Software Stack}
-\subsubsection{ChirpStack}
+The backend software stack will be responsible for collecting data from the
+sensor nodes and displaying the air quality data on webpage. It will also be
+responsible for sending alerts via text or on Twitter about poor air quality
+conditions. It will be the main way users will interact with their deployed
+sensors and view data. The backend will also allow users to manage, configure,
+and send commands to the sensor nodes remotely. The backend is composed of three
+main components: (1) the LoRaWAN gateways running the LoRaWAN Network Server,
+(2) a server running on an IoT host provider that can collate data from the
+gateways and provide other backend services, and (3) a web user interface
+running on the IoT backend provider (such as AWS IoT or Azure IoT) that displays
+statistics and user specific information.
+
+The sensor nodes communicate over LoRa using the LoRaWAN protocol to gateways.
+These gateways are running what is called the LoRaWAN Network Server (LNS),
+which is a standardized protocol for connecting devices using LoRaWAN to the
+internet.  LoRaWAN network servers are the bridge between LoRa and the Internet.
+LoRa network servers can be public or private. As previously mentioned in the
+LoRaWAN standardization section, devices communicating over LoRaWAN perform a
+handshake, and exchange a set of IDs that identify the device, the join server,
+and the application/network session. These IDs are: DevEUI, JoinEUI (known
+previously as the AppEUI), and AppKey.
+
+\subsubsection{The Chirpstack Network Server Stack}
 \subsubsection{The Things Network}
-
 \subsubsection{The Helium Network}
-
-
 \subsubsection{Other Private Networks}
 \subsubsection{Microsoft Azure IoT}
 \subsubsection{AWS IoT}
