@@ -11,18 +11,45 @@ gateways and provide other backend services, and (3) a web user interface
 running on the IoT backend provider (such as AWS IoT or Azure IoT) that displays
 statistics and user specific information.
 
-The sensor nodes communicate over LoRa using the LoRaWAN protocol to gateways.
-These gateways are running what is called the LoRaWAN Network Server (LNS),
-which is a standardized protocol for connecting devices using LoRaWAN to the
-internet.  LoRaWAN network servers are the bridge between LoRa and the Internet.
-LoRa network servers can be public or private. As previously mentioned in the
-LoRaWAN standardization section, devices communicating over LoRaWAN perform a
-handshake, and exchange a set of IDs that identify the device, the join server,
-and the application/network session. These IDs are: DevEUI, JoinEUI (known
-previously as the AppEUI), and AppKey.
+\subsubsection{LoRaWAN Network Servers} The sensor nodes communicate over LoRa
+using the LoRaWAN protocol to gateways.  These gateways are running what is
+called the LoRaWAN Network Server (LNS), which is a standardized protocol for
+connecting devices using LoRaWAN to the internet.  LoRaWAN network servers are
+the bridge between LoRa and the Internet.  LoRa network servers can be public or
+private, and end-devices must first be registered on the network before it can
+join it.  All packets sent by an unregistered and unverified end-device will be
+discarded.  As previously mentioned in the LoRaWAN standardization section,
+devices communicating over LoRaWAN perform a handshake (joining the network),
+and exchange a set of IDs that identify the device, the join server, and the
+application/network session. These IDs are: DevEUI, JoinEUI (known previously as
+the AppEUI), and AppKey, respectively. The remainder of the keys are generated
+from this set of keys. The AppKey is the only key that isn't transmitted over
+the network, and is stored on both the end-device and the network server. For
+LoRaWAN 1.1+, an additional key is required to be stored on the end-device and
+the network server: the NwkKey. The NwkKey is like the AppKey in that it is
+never transferred and is used as an extra encryption layer. The network server
+will need to be integrated and capable of communication with the application
+server, which in for the project, will either be Amazon AWS or Microsoft Azure.
+For public networks, which are basically like Verizon or AT\&T for LoRa, the
+network server software is provided to users who want to setup a gateway. Once
+setup, anyone with reception will be able to use the network. The Things Network
+is a free, public network. Users that create a gateway are not financially
+incentivised, but only are if they have a end-device they would like to use in
+their area. On the other hand, The Helium Network provides financial incentives
+without a central authority through a specialized blockchain. For people and
+companies that would like to setup a private network, an open-source network
+server, called Chipstack, is available.
 
-\subsubsection{The Chirpstack Network Server Stack}
-\subsubsection{The Things Public Network}
-\subsubsection{The Helium Public Network}
-\subsubsection{Microsoft Azure IoT Application Service Provider}
-\subsubsection{AWS IoT Application Service Provider}
+
+\paragraph{The Chirpstack Network Server Stack}
+
+\subsubsection{Public Networks}
+\paragraph{The Things Network}
+\paragraph{The Helium Network}
+
+\subsubsection{Application Service Providers}
+\paragraph{Microsoft Azure}
+\paragraph{Amazon AWS}
+
+\subsubsection{The Web Application Software Stack}
+
