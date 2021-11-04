@@ -9,8 +9,33 @@ main components: (1) the LoRaWAN gateways running the LoRaWAN Network Server,
 (2) a server running on an IoT host provider that can collate data from the
 gateways and provide other backend services, and (3) a web user interface
 running on the IoT backend provider (such as AWS IoT or Azure IoT) that displays
-statistics and user specific information.
+statistics and user specific information. Additionally, the LNS can optionally
+be ran in the cloud. In this scenario, the gateway runs a LoRa packet forwarder
+that understands the LNS protocol. Packets can be forwarded to the LNS data
+endpoint server, and the gateway is managed through a configuration and update
+server (CUPS) using the CUPS protocol along with HTTPS. While the following
+software solutions offer support for LoRaWAN versions 1.0.x and 1.1, since the
+chosen LoRa module only supports up to 1.0.3, the following discussions will be
+with LoRaWAN 1.0.3 as there are some differences with the architecture. The
+changes are in regard to the process of join the network. 
 
+There are two types of LoRaWAN networks: public and private. Public networks are
+networks akin to Verizon or AT\&T. They provide coverage and networking. Two of
+the biggest LoRaWAN public networks are The Things Network and The Helium
+Network. Once registered on the network, LoRaWAN devices can operate with the
+developer's application server which is configured during registration. The
+other option is to configure a private network. When creating a private network,
+there are generally two main architectures to choose between in order to route
+packets to an application server. The first option, which will be referenced as
+local-LNS, is to run the entire LNS on a gateway device. This means that the
+gateway needs to manage more information about the end-devices and the state of
+the network. The second option, cloud-LNS, is where the gateway operates purely
+as an access point, and forwards packets to a LNS in the cloud.  This offers
+greater scalability and lower compute and power requirements of the gateway
+device at the expense of added complexity. Luckily, there are many solutions
+available through service providers, such as AWS.
+
+\subsubsection{LoRa Packer Forwarding}
 \subsubsection{LoRaWAN Network Servers} The sensor nodes communicate over LoRa
 using the LoRaWAN protocol to gateways.  These gateways are running what is
 called the LoRaWAN Network Server (LNS), which is a standardized protocol for
@@ -44,8 +69,7 @@ server, called Chipstack, is available.
 \paragraph{The Chirpstack Network Server Stack}
 
 \subsubsection{Public Networks}
-Public LoRaWAN networks
-\paragraph{The Things Network}
+\paragraph{The Things Community Network}
 \paragraph{The Helium Network}
 
 \subsubsection{Application Service Providers}
