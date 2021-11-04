@@ -57,10 +57,10 @@ Energy density is the amount of energy you can get out of a battery per unit vol
 
 \paragraph{Temperature Dependence}
 Battery performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Table (a). This information came from Battery University(TM) an online free website teaching hands on battery information. This tables shows that the temperature ranges during charge and discharge are relatively similar with the only difference coming in charging advisories. As one can see lead acid is suited better below freezing during charging mean while lithium performs better at higher temperatures at the cost of its life span. 
-\begin{table}[H]
+\begin{table}
 \centering\scriptsize
 \caption{Temperature Dependence}
-\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\begin{tabularx}{\linewidth}{|c|c|c|X|}
 \hline
 Battery Type & Charge Temperature & Discharge Temperature & Charge Advisory \\ 
 \hline\hline
@@ -68,7 +68,7 @@ Battery Type & Charge Temperature & Discharge Temperature & Charge Advisory \\
 Lead Acid     & -20C to 50C   & -20C to 50C & Charge at 0.3C or less below freezing Lower V-threshold by 3mV/C when hot  \\\hline
 Li-ion        & 0C to 45C     & -20C to 60C & No charge recommended below freezing. Good charge/discharge performance at higher temperature but shorter life.  \\\hline
 
-\end{tabular}
+\end{tabularx}
 % \label{tab:networkingRequirements}
 \end{table}
 \paragraph{Service Life}
@@ -100,16 +100,16 @@ The charge curve shows the process of charging different batteries. This would i
 \paragraph{Cost}
 The cost category is self-explanatory. When it comes down to the devices components certain materials can be acquired for a much lower cost than others. For example, according to the US government in 2018 lithium costs \$13,000 per metric ton, while on the other hand during the same year lead hit an all-time high with \$2,600 per metric ton. Table (b) is a handy chart to estimate the cost one could expect to pay for the batteries we have researched. Information within the table comes from "Off Grid Solar: a handbook for Photovoltaics with Lead-Acid and Lithium-Ion batteries" by Joseph P. O'Conner.
 
-\begin{table}[H]
+\begin{table}
 \centering\scriptsize
 \caption{Cost}
-\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|r|c|c|}
 \hline
   & Flooded Lead Acid & Lithium-Ion \\ 
-\hline\hline
+\hline
 
-Initial Cost per Capacity(USD/kWh)    & 131   & 530  \\\hline
-Cost per Life Cycle(USD/kWh)    & 0.17     & 0.19 \\\hline
+Initial Cost per Capacity (USD/kWh)    & 131   & 530  \\\hline
+Cost per Life Cycle (USD/kWh)    & 0.17     & 0.19 \\\hline
 
 \end{tabular}
 % \label{tab:networkingRequirements}
@@ -119,7 +119,7 @@ Cost per Life Cycle(USD/kWh)    & 0.17     & 0.19 \\\hline
 Within our research many factors of batteries have been observed and noted. Now let's take in our research and decide which battery could best address the needs of this project. 
 \begin{table}[H]
 \centering\scriptsize
-\caption{Cost}
+\caption{Summary}
 \begin{tabularx}{\linewidth}{|r|X|X|X|X|X|X|X|X|}
 \hline
  Characteristic & Findings \\ 
@@ -164,7 +164,7 @@ Like the name suggests monocrystalline solar panel cells are made from a single 
 Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure (b). 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{figures/polycrystaline solar.png}
+    \includegraphics[scale=0.4]{figures/polycrystaline solar.png}
     \caption{Polycrystaline Solar Panel.}
     \label{solar-panel-overview} 
 \end{figure}
@@ -173,7 +173,7 @@ Unlike monocrystalline panels these solar panel cells are made from many crystal
 Unlike the previous two types of solar panels, thin film solar panels are mostly not made of silicon. They are made of a mixture of materials mostly cadmium telluride, which is comprised into a thin sheet between two transparent conductive layers that help capture sunlight. Thin film solar panels usually have the lowest efficiency and capacity of all solar panel types however they make up for it in durability and flexibility. The main advantage of this type of solar panel is their low weight, profile, and its ability to adhere to whatever required surface it may need to. Figure (c) shows an example of thin film solar panels. 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{figures/thin film solar.png}
+    \includegraphics[scale=0.4]{figures/thin film solar.png}
     \caption{Thin Film Solar Panel Solar Panel.}
     \label{solar-panel-overview} 
 \end{figure}

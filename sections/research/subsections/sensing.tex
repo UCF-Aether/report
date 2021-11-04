@@ -100,14 +100,27 @@ There will be 3 main sensors used in this design, a particulate matter (PM2.5) s
 The Sensirion SPS30 sensor is a particulate matter sensor designed for use in air quality monitoring system applications. It’s an optical PM sensor using the principle of laser scattering to detect particulate matter concentrations of varying diameters including PM1.0, PM2.5, PM4 and PM10. With an expected lifetime of over 8 years, the SPS30 sensor provides reliable consistent use without the need for cleaning or maintenance, making it an ideal choice for a stationary indoor/outdoor air quality monitoring system such as Aether.
 
 The SPS30 operates off a laser-based scattering principle alongside sophisticated algorithms to provide accurate measurements for different kinds of particulate matters in the atmosphere. It has a mass concentration range of 0 to 1,000 $\mu$g/$m^3$ with a +/- 10\%  accuracy. EPA standards list acceptable 24-hr average PM concentrations can reach up to 35 $\mu$g/m3 making the sensor range more than capable of detecting dangerous levels of particulate matter. As previously stated, the SPS30 can detect particulate matters of varying diameters including PM1.0, PM2.5, PM4 and PM10. It’s lowest limit of detection for PM is 0.3 micrometers with a minimum sampling interval of 1s when on continuous mode and an operating temperature ranging from -10 to 60º C. The sensor dimensions of 40.6 x 40.6 x 12.2 mm3 provide a small ultra-compact package that allow for easy integration onto the Aether sensing network, contributing to a smaller more compact overall design. It’s compatible with both UART and \iic interfaces and requires a constant voltage supply of 4.5-5.5 V. The design outline and table of specification obtained from Sensirion’s SPS30 datasheet can be seen below.
-	
-	%need to insert figures%
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=6in]{figures/PM sensor layout.jpg}
+\caption{Sensirion SPS30 Layout}
+\label{fig:Renesas Sensor Op}
+\end{figure}
+
 \paragraph{Renesas ZMOD4510 – \ndo/\ozone Gas Sensor }
 The Renesas ZMOD4510 is a solid-state gas sensor that utilizes a heating element on a MEMS structure and a MOx resistor to detect gases. An IC regulates the temperature of the heating element and measures the resistance across the MOx resistor which is a function of the accumulation of ions resulting in the interaction of targeted gas molecules and the metal oxides. This change in conductivity measured is then converted to gas concentration in the ambient air. The device can be used in several different indoor and outdoor applications but is ideal for measuring outdoor air quality. It’s equipped with 2 different sensor outputs based on the selected operating method, a non-selective ozone and nitrogen dioxide reading or a selective ozone-only reading using the chips ultra-low power mode.
 
 The ZMOD4510 is a 12-pin LGA assembly with dimensions of 3.0 × 3.0 × 0.7 mm. It uses an I2C communication link supporting up to 400kHz with an average low power consumption of 0.2 mW making it an ideal choice for use in this design. The sensor’s operating temperature ranges from -40°C to +65°C and requires a supply voltage of 1.7V – 3.6V. In its first operation mode, although not able to detect gas concentrations of other gases the ZMOD4510 sensor module is capable of directly calculating the AQI based on EPA standards. It does this by using embedded artificial intelligence (AI) and machine learning (ML) algorithms to detect several gases in the atmosphere. Additionally, its second mode of operation is a selective O3 measurement using a low power mode. This provides flexibility to the overall design of the system, as it can be used to directly calculate AQI or just have the sensor output an Ozone concentration reading and using that along with the other sensors in Aether to calculate the AQI. The different measurement capabilities and characteristics of the ZMOD4510 sensor  based on its selected operation method are shown in the figure below. 
 
-%need to insert figures%
+\begin{figure}[h]
+\centering
+\includegraphics[width=6in]{figures/Renesas Sensor Op.png}
+\caption{Renesas Module Characteristics}
+\label{ZMOD4510 Table}
+\end{figure}
+
 \paragraph{Bosch BME688 Gas Sensor – VOCs and VSCs}
 The Bosch BME688 detects Volatile Organic Compounds (VOCs) and Volatile Sulfur Compounds (VSCs) and through the use of sophisticated AI embedded in the system, machine learning algorithms can be implemented to detect a variety of other gases and compounds including carbon monoxide (CO2) and hydrogen. Additionally, through the use the BME AI studio provided by Bosch, the sensor can be customized and trained to detect different smells such as methane or smoke making the overall design of the Aether much more flexible and capable of detecting early on set symptoms of methane leaks, fires, and other smells hazardous to humans. BME688 also provides consistent and stable temperature and humidity readings eliminating the need to integrate another sensor onto the design and thus saving time and space. Since VOC and VSC concentrations are always higher in indoor environments, it gives the Aether sensing network the ability to be an effective indoor air quality IoT sensing system while also contributing to its ability to measure the AQI in outdoor environments. 
 
