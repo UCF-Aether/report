@@ -117,6 +117,24 @@ Cost per Life Cycle(USD/kWh)    & 0.17     & 0.19 \\\hline
 
 \paragraph{Summary}
 Within our research many factors of batteries have been observed and noted. Now let's take in our research and decide which battery could best address the needs of this project. 
+\begin{table}[H]
+\centering\scriptsize
+\caption{Cost}
+\begin{tabularx}{\linewidth}{|r|X|X|X|X|X|X|X|X|}
+\hline
+ Characteristic & Findings \\ 
+\hline\hline
+
+Discharge Curve    & The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge.   \\\hline
+Energy Density     & In terms of materials lithium has a much higher energy density than lead meaning that the batteries will be smaller, weigh less, and have a higher capacity. \\\hline
+Temperature Dependence     & The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge. When it's come to temperature charge lead acid has a higher temperature range and vice versa for discharge and lithium. Charging advisory for lithium is higher and not supposed to occur below freezing which can be a factor in colder climates.   \\\hline
+Service Life     & TAs we can see the depth of discharge has a much steeper curve for lead acid. This tells us that lithium can go through more charge cycles before becoming reaching the 80 percent capacity threshold.   \\\hline
+Charge Curve     & The only large difference in the charge curve is lithium's much shorter charge time.   \\\hline
+Cost     & The cost of lead acid and lithium are clear and square from the table. The operational cost per cycle is slightly higher and the upfront cost is much higher.   \\\hline
+
+\end{tabularx}
+% \label{tab:networkingRequirements}
+\end{table}
 
 \paragraph{Decision}
 Here is where we will show which battery chemistry, capacity, and amps we will use along with a link to its data sheet. 
@@ -130,11 +148,11 @@ Here is where we will show which battery chemistry, capacity, and amps we will u
     \label{solar-panel-overview} 
 \end{figure}
 
-In this section, we will discuss the different types of solar panels that are being considered for use in our design. Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized is by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
+In this section, we will discuss the different types of solar panels that are being considered for use in our design. Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
 
 \subsubsection{Monocrystalline Solar Panels}
 
-Like the name suggests monocrystalline solar panels are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{solar-panel-overview}. 
+Like the name suggests monocrystalline solar panel cells are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{solar-panel-overview}. 
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/monocrystaline.png}
@@ -143,7 +161,7 @@ Like the name suggests monocrystalline solar panels are made from a single cryst
 \end{figure}
 \subsubsection{Polycrystalline Solar Panels}
 
-Unlike monocrystalline panels these solar panels are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure (b). 
+Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure (b). 
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/polycrystaline solar.png}
@@ -165,3 +183,4 @@ Here is where we will show which solar panel, we will use along with a link to i
 
 
 \subsection{USB Power}
+In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. As such a design has been implemented as seen in Figure X. This design places a multiplexer than normally receives power from the solar panel and a USB charging connection. The multiplexor would take power from the solar panel and feed it to the buck booster, unless power from the USB connection were to flow. This way the battery could take in power from soley either the solar panel or USB connection.
