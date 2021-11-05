@@ -39,7 +39,7 @@ for configuration or view real-time sensor measurements. The software
 requirements are shown below.
 
 
-The device should be able to...
+The device should be able to:
 \begin{itemize}
 	\item Enter the standby low-power mode
 	\item Perform over-the-air firmware or configuration updates
@@ -125,13 +125,13 @@ on task scheduling and communication. In fact, the main source files provided
 for FreeRTOS are:
 
 \begin{itemize}
-	\item tasks.c - for creating and managing task's priority and state
-	\item queue.c - for task to task communication - also includes mutex and
+	\item \texttt{tasks.c} - for creating and managing task's priority and state
+	\item \texttt{queue.c} - for task to task communication - also includes mutex and
 		semaphors implemented with queues
-	\item list.c - a generic linked-list implementation
-	\item timers.c - timer implementation
-	\item port.c - MCU specific code for porting FreeRTOS
-	\item FreeRTOSConfig.h - FreeRTOS configuration
+	\item \texttt{list.c} - a generic linked-list implementation
+	\item \texttt{timers.c} - timer implementation
+	\item \texttt{port.c} - MCU specific code for porting FreeRTOS
+	\item \texttt{FreeRTOSConfig.h} - FreeRTOS configuration
 \end{itemize}
 
 All of the data structures provided by FreeRTOS integrate with tasks and will
@@ -140,7 +140,7 @@ Code written for FreeRTOS can also be transferred to other microcontrollers that
 are not necessarily from the same vendor. This is because of the layered
 software abstraction architecture. At the lowest level, is bare metal
 programming with a HAL. Above that, is MCU specific code to implement low-level
-FreeRTOS code, called a port (\emph{port.c} as shown in the list above). On top
+FreeRTOS code, called a port (\texttt{port.c} as shown in the list above). On top
 of the platform specific FreeRTOS port code is the platform independent FreeRTOS
 code. This is the code that is responsibly for the main logic of FreeRTOS, such
 as the kernel, queue and list data structures, and other middleware. The
@@ -156,9 +156,9 @@ them. Most of the code is oriented around configuring and initializing tasks.
 FreeRTOS is deterministic because of its scheduling algorithm. Generally, the
 task with the highest priority should be running. A task with a priority of 0
 has the lowest priority, like the idle task, and a task with priority
-$configMAX\_PRIORITY - 1$ has the highest priority. The
-\emph{configMAX\_PRIORITY} definition is a user defined parameter inside of
-FreeRTOSConfig.h that defines how many priorities there are for scheduling. The
+\texttt{configMAX\_PRIORITY - 1} has the highest priority. The
+\texttt{configMAX\_PRIORITY} definition is a user defined parameter inside of
+\texttt{FreeRTOSConfig.h} that defines how many priorities there are for scheduling. The
 more priorities there are, the more memory the kernel will need since each
 priority needs a list allocated for each task state. Priorities are manually
 assigned by the programmer, so with knowledge of the scheduling algorithm (which
@@ -173,7 +173,7 @@ resources.  However, this can lead to some tasks being starved and are not able
 to make progress even though they have a higher priority than the task currently
 running since it never blocks or suspends. Each task state is represented as an
 array of lists where the index into the array represents the task's priority.
-The number of priority levels is defined by the programmer in FreeRTOSConfig.h.
+The number of priority levels is defined by the programmer in \texttt{FreeRTOSConfig.h}.
 For example, when a task with priority 2 moves from the blocked to ready state,
 the scheduler will find it in the blocked array at index 2. It'll then search
 through the list that's at index 2 until it finds the task, and it'll move it to
@@ -189,8 +189,8 @@ Not-running is a super state, which means it has sub-states. If a task is not
 running, then it can be either suspended, blocked, or ready. A task that is
 suspended is not available to the scheduler, and therefore cannot make progress
 unless manually resumed by another task. Tasks can be put in the suspended list
-from any other state, and can be done through the vTaskSuspend() function. When
-vTaskResume() is called, a task is moved from the suspended state (list) to the
+from any other state, and can be done through the \texttt{vTaskSuspend()} function. When
+\texttt{vTaskResume()} is called, a task is moved from the suspended state (list) to the
 ready state (list). A blocked task is similar to a suspended task except that a
 blocked tasks is available to the scheduler and can make progress once it is
 unblocked. A task can be unblocked from many different kinds of events, such as
@@ -200,7 +200,7 @@ executed, it must first be moved into the ready state. Whenever the scheduler
 runs, either after each tick or when a running process stops running, it looks
 in the ready list and looks for the highest task to run.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=3.25in]{freertos-task-sm.png}
 \caption{The FreeRTOS Task State Machine}
@@ -209,12 +209,12 @@ in the ready list and looks for the highest task to run.
 
 A preemptive scheduler interrupts tasks whether they want to be or not. A
 preemptive scheduler interrupts tasks at a pre-defined interval, set in
-FreeRTOSConfig.h, called a ``tick''. Preemption can also occur when a task with
+\texttt{FreeRTOSConfig.h}, called a ``tick''. Preemption can also occur when a task with
 a higher priority becomes ready for execution. At every tick, the scheduler will
 set the tasks with the highest priority as the active task, choosing tasks with
 an identical priority using a round-robin algorithm. Whenever there are no tasks
-in the ready list, the idle tasks is executed. It has the lowest priority
-level, 0. The idle tasks also allows the programmer to hook into it to execute a
+in the ready list, the idle tasks is executed. The idle task has the lowest priority
+level, which is 0. The idle tasks also allows the programmer to hook into it to execute a
 handler each time the idle task is entered. The idle tasks performs maintenance,
 such as cleaning up freed memory freed during the task execution. When a task
 frees memory, that memory isn't actually removed from the heap until the idle
@@ -230,23 +230,23 @@ scheduler/kernel runs and swaps the currently running task with another. Each
 time there's a red bar, the kernel is running instead of a previously running
 task, but arrows are not included so the diagram doesn't look too busy. Thin,
 horizontal bars between tasks on the same priority represents that task moving
-into the ready list, and is based on the task color. Initially, \emph{Task A}
-is running, but it preempted by \emph{Task D} when it becomes unblocked due to
-an asynchronous event at time \emph{t1}, such as a timer or a transaction is
-received over \iic. At time \emph{t2}, \emph{Task D} is blocked, so the next
-available task to run with the highest priority is selected, \emph{Task B}.
-Since \emph{Task B} and \emph{Task C} share the same priority level, on the
-second tick (time \emph{t3}), \emph{Task C} is ran since the scheduler tries to
+into the ready list, and is based on the task color. Initially, Task A
+is running, but it preempted by Task D when it becomes unblocked due to
+an asynchronous event at time $t_1$, such as a timer or a transaction is
+received over \iic. At time $t_2$, Task D is blocked, so the next
+available task to run with the highest priority is selected, Task B.
+Since Task B and Task C share the same priority level, on the
+second tick (time $t_3$), Task C is ran since the scheduler tries to
 be as fair as possible for tasks sharing priority.  Similarly, at time
-\emph{t4}, \emph{Task C} is ran instead of \emph{Task B} since \emph{Task B} and
-\emph{Task C} are the only tasks that share a priority of 2. At time \emph{t5},
-\emph{Task B} is blocked, so \emph{Task A} is ran since has the highest priority
-level of all ready tasks.  Next, at time \emph{t6}, \emph{Task A} is blocked or
+$t_4$, Task C is ran instead of Task B since Task B and
+Task C are the only tasks that share a priority of 2. At time $t_5$,
+Task B is blocked, so Task A is ran since has the highest priority
+level of all ready tasks.  Next, at time $t_6$, Task A is blocked or
 suspended, and since there are no ready tasks, the idle task is ran. Finally, at
-time \emph{t7}, \emph{Task D} is moved into the ready state, and the scheduler
+time $t_7$, Task D is moved into the ready state, and the scheduler
 starts executing it.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=4.25in]{freertos-tick-arch.png}
 \caption{FreeRTOS Preemptive Execution}
@@ -254,18 +254,18 @@ starts executing it.
 \end{figure}
 
 However, preemptive scheduling can cause synchronization issues for accessing
-shared resources.  Consider the following example: two tasks, task A and task B,
+shared resources.  Consider the following example: two tasks, Task A and Task B,
 have the same priority and want to transmit strings over same UART channel, the
-shared resource. Task A wants to send "abcdefghi" and task B wants to send
-"123456".  However, the example would still work if task B had a higher priority
+shared resource. Task A wants to send "\texttt{abcdefghi}" and task B wants to send
+"\texttt{123456}".  However, the example would still work if task B had a higher priority
 than task A, task B is blocked or suspended initially while task A is running.
 At tick, t$_0$, task A is running and starts sending its message. At tick,
 t$_1$, since task A and task B have an identical priority, task B is swapped
-with task A.  But, at t$_1$, task A was only able to send "abcd". Now, consider
+with task A.  But, at t$_1$, task A was only able to send "\texttt{abcd}". Now, consider
 just for the example, that task B is able to send the entirety of its message,
-"123456". At this point in time, "abcd123456" has been transmitted over UART.
+"\texttt{123456}". At this point in time, "\texttt{abcd123456}" has been transmitted over UART.
 Finally, at tick t$_3$, task A is able to complete sending its message by
-sending the remainder, "efghi". The end result is that "abcd123456efghi" was
+sending the remainder, "\texttt{efghi}". The end result is that "\texttt{abcd123456efghi}" was
 transmitted over UART. The message was corrupted. 
 
 Luckily, FreeRTOS, like other operating systems, provide utilities for
@@ -317,9 +317,9 @@ the higher priority task can make progress as soon as possible. The higher
 priority task might be performing safety critical or just critical sections of
 code, so it's important that they preempt lower priority tasks or let them
 finish as soon as possible if they hold mutexes. FreeRTOS implements priority
-inheritance by adding a pointer field, pxMutexHolder, which holds a pointer to
+inheritance by adding a pointer field, \texttt{pxMutexHolder}, which holds a pointer to
 the task that currently owns the mutex. If a task with a higher priority is
-waiting on the mutex, then it'll check pxMutexHolder, and if pxMutexHolder
+waiting on the mutex, then it'll check \texttt{\texttt{pxMutexHolder}}, and if \texttt{pxMutexHolder}
 points to a task that has a lower priority, then the FreeRTOS scheduler/kernel
 will let it inherit the other task's priority.
 

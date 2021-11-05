@@ -33,7 +33,7 @@ Lithium batteries differ in a few substantial ways from their lead acid counterp
 \end{figure}
 
 \subsubsection{Battery Characteristics}
-To utterly understand which battery is the right choice for a project one must look at how these methods of constructing a battery will affect the overall characteristics of the battery. The characteristics that impact the usefulness of a battery are as follows: Discharge Curve, Energy Density, Temperature Dependence, Service Life, Charge/Discharge Cycle, and Cost. Once we have amassed information around each characteristic we can then compare Lead acid to lithium batteries more thoroughly. From there if there is not an overall better choice in each and every category we will decide based on which characteristic is most important to complete the objectives of the project. For instance if it is determined that lithium would put us out of our needed price range but is only marginally better than lead acid in other categories then our overall decision will be impacted. Much like any well thought out purchase we must look at each characteristic to gain a better understanding of how our project is being designed and where money is being allocated to.
+To utterly understand which battery is the right choice for a project one must look at how these methods of constructing a battery will affect the overall characteristics of the battery. The characteristics that impact the usefulness of a battery are as follows: discharge curve, energy density, temperature dependence, service life, charge/discharge cycle, and cost. Once we have amassed information around each characteristic we can then compare Lead acid to lithium batteries more thoroughly. From there if there is not an overall better choice in each and every category we will decide based on which characteristic is most important to complete the objectives of the project. For instance if it is determined that lithium would put us out of our needed price range but is only marginally better than lead acid in other categories then our overall decision will be impacted. Much like any well thought out purchase, we must look at each characteristic to gain a better understanding of how our project is being designed and where money is being allocated to.
 
 \paragraph{Discharge Curve}
 A discharge curve is a graph that plots Voltage against percentage of the capacity discharged. Essentially the Output voltage of a battery will lower as the battery is used up. Given this effect the most desirable curve would be flat (keeping voltage consistent at every level of discharge), so let us look at the average discharge curve of our lead acid and lithium-ion batteries. Figure \ref{fig:discharge-curve} shows example discharge curves one might find in a lithium ion and lead acid batteries. The figure has been provided by Power Tech, an energy storage system manufacturer. This figure shows first hand how steadily lead acid batteries drop in voltage as the depth of discharge increases. Meanwhile lithium is kept at a steady for the most part until the depth of discharge reaches upwards of 80 percent.
@@ -56,7 +56,7 @@ Energy density is the amount of energy you can get out of a battery per unit vol
 \end{figure}
 
 \paragraph{Temperature Dependence}
-Battery performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Table (a). This information came from Battery University(TM) an online free website teaching hands on battery information. This tables shows that the temperature ranges during charge and discharge are relatively similar with the only difference coming in charging advisories. As one can see lead acid is suited better below freezing during charging mean while lithium performs better at higher temperatures at the cost of its life span. 
+Battery performance and temperature are highly correlated. Rates of reaction within battery cells themselves are temperature dependent as well as the internal resistance. Low temperatures give higher resistances in a battery, could freeze the electrolyte giving a lower voltage, and cause a steeper discharge curve. At higher temperatures chemicals may decompose or cause enough energy to become available to activate unintended reactions reducing the capacity. The temperature ranges for charging and discharging the viewed battery types are shower in Table \ref{tab:temperature-dependence}. This information came from Battery University(TM) an online free website teaching hands on battery information. This tables shows that the temperature ranges during charge and discharge are relatively similar with the only difference coming in charging advisories. As one can see lead acid is suited better below freezing during charging mean while lithium performs better at higher temperatures at the cost of its life span. 
 \begin{table}
 \centering\scriptsize
 \caption{Temperature Dependence}
@@ -65,11 +65,11 @@ Battery performance and temperature are highly correlated. Rates of reaction wit
 Battery Type & Charge Temperature & Discharge Temperature & Charge Advisory \\ 
 \hline\hline
 
-Lead Acid     & -20C to 50C   & -20C to 50C & Charge at 0.3C or less below freezing Lower V-threshold by 3mV/C when hot  \\\hline
-Li-ion        & 0C to 45C     & -20C to 60C & No charge recommended below freezing. Good charge/discharge performance at higher temperature but shorter life.  \\\hline
+Lead Acid     & -20 C to 50 C   & -20 C to 50 C & Charge at 0.3 C or less below freezing Lower V-threshold by 3 mV/C when hot  \\\hline
+Li-ion        & 0 C to 45 C     & -20 C to 60 C & No charge recommended below freezing. Good charge/discharge performance at higher temperature but shorter life.  \\\hline
 
 \end{tabularx}
-% \label{tab:networkingRequirements}
+\label{tab:temperature-dependence}
 \end{table}
 \paragraph{Service Life}
 As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure \ref{fig:service-life} shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. As seen within the figure lithium batteries could go through 2-3 times the number of cycles as lithium batteries with a similar depth of discharge available.
@@ -102,42 +102,22 @@ The cost category is self-explanatory. When it comes down to the devices compone
 
 \begin{table}
 \centering\scriptsize
-\caption{Cost}
+\caption{Initial cost per capacity and cost per life cycle comparison between lead acid and lithium ion batteries.}
 \begin{tabular}{|r|c|c|}
 \hline
-  & Flooded Lead Acid & Lithium-Ion \\ 
+& Flooded Lead Acid & Lithium-Ion \\ 
 \hline
-
 Initial Cost per Capacity (USD/kWh)    & 131   & 530  \\\hline
 Cost per Life Cycle (USD/kWh)    & 0.17     & 0.19 \\\hline
-
 \end{tabular}
-% \label{tab:networkingRequirements}
+\label{tab:battery-cost-comparison}
 \end{table}
 
-\paragraph{Summary}
-Within our research many factors of batteries have been observed and noted. Now let's take in our research and decide which battery could best address the needs of this project. 
-\begin{table}[H]
-\centering\scriptsize
-\caption{Summary}
-\begin{tabularx}{\linewidth}{|r|X|X|X|X|X|X|X|X|}
-\hline
- Characteristic & Findings \\ 
-\hline\hline
+Throughout this section, we have researched and explored the different characteristics that impact how a specific type of battery functions. Here we will provide a provide a brief summary of the comparison of the battery characteristics between lithium ion batteries and lead acid batteries. The overall discharge curve of lithium batteries is much flatter than lead acid, indicating that they give a constant voltage as they discharge. In terms of materials, lithium ion batteries have a much higher energy density than lead acid batteries meaning that the batteries will be smaller, weigh less, and have a higher capacity.  In terms of temperature change, lead acid batteries have a higher temperature range and vice versa for discharge and lithium ion batteries. The charging advisory for lithium ion batteries is higher and not supposed to occur below freezing, which can be an issue in colder climates. We can see the depth of discharge has a much steeper curve for lead acid batteries. This tells us that lithium ion batteries can go through more charge cycles before becoming reaching the 80\% capacity threshold. The only large difference in the charge curve between lead acid batteries and lithium ion batteries is that lithium ion batteries have a much shorter charge time. Finally, the comparison between initial cost per capacity and cost per life cycle between both battery types can be observed in Table \ref{tab:battery-cost-comparison}. The operational cost per cycle is slightly higher and the upfront cost is much higher for lithium ion batteries. Due to these factors we have decided to use a lithium ion battery in our design.
 
-Discharge Curve    & The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge.   \\\hline
-Energy Density     & In terms of materials lithium has a much higher energy density than lead meaning that the batteries will be smaller, weigh less, and have a higher capacity. \\\hline
-Temperature Dependence     & The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge. When it's come to temperature charge lead acid has a higher temperature range and vice versa for discharge and lithium. Charging advisory for lithium is higher and not supposed to occur below freezing which can be a factor in colder climates.   \\\hline
-Service Life     & TAs we can see the depth of discharge has a much steeper curve for lead acid. This tells us that lithium can go through more charge cycles before becoming reaching the 80 percent capacity threshold.   \\\hline
-Charge Curve     & The only large difference in the charge curve is lithium's much shorter charge time.   \\\hline
-Cost     & The cost of lead acid and lithium are clear and square from the table. The operational cost per cycle is slightly higher and the upfront cost is much higher.   \\\hline
-
-\end{tabularx}
-% \label{tab:networkingRequirements}
-\end{table}
 
 \paragraph{Decision}
-Here is where we will show which battery chemistry, capacity, and amps we will use along with a link to its data sheet. 
+Here is where we will show the battery we will use along with its chemistry, capacity, and amps we will use along with a link to its data sheet. 
 
 \subsection{Solar Panel}
 
@@ -152,30 +132,32 @@ In this section, we will discuss the different types of solar panels that are be
 
 \subsubsection{Monocrystalline Solar Panels}
 
-Like the name suggests monocrystalline solar panel cells are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{solar-panel-overview}. 
+Like the name suggests monocrystalline solar panel cells are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{fig:mono-sp}.
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/monocrystaline.png}
-    \caption{Monocrystaline Solar Panel.}
-    \label{solar-panel-overview} 
+    \caption{An example of a monocrystaline solar panel.}
+    \label{fig:mono-sp} 
 \end{figure}
 \subsubsection{Polycrystalline Solar Panels}
 
-Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure (b). 
+Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. An example of the features one can expect from a polycrystalline panel can be seen in Figure \ref{fig:poly-sp}. 
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/polycrystaline solar.png}
     \caption{Polycrystaline Solar Panel.}
-    \label{solar-panel-overview} 
+    \label{fig:poly-sp} 
 \end{figure}
 \subsubsection{Thin Film Solar Panels}
 
-Unlike the previous two types of solar panels, thin film solar panels are mostly not made of silicon. They are made of a mixture of materials mostly cadmium telluride, which is comprised into a thin sheet between two transparent conductive layers that help capture sunlight. Thin film solar panels usually have the lowest efficiency and capacity of all solar panel types however they make up for it in durability and flexibility. The main advantage of this type of solar panel is their low weight, profile, and its ability to adhere to whatever required surface it may need to. Figure (c) shows an example of thin film solar panels. 
+Unlike the previous two types of solar panels, thin film solar panels are mostly not made of silicon. They are made of a mixture of materials mostly cadmium telluride, which is comprised into a thin sheet between two transparent conductive layers that help capture sunlight. Thin film solar panels usually have the lowest efficiency and capacity of all solar panel types however they make up for it in durability and flexibility. The main advantage of this type of solar panel is their low weight, profile, and its ability to adhere to whatever required surface it may need to. Figure \ref{fig:thin-film-sp} shows an example of thin film solar panels. 
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/thin film solar.png}
-    \caption{Thin Film Solar Panel Solar Panel.}
-    \label{solar-panel-overview} 
+    \caption{An example of a thin film solar panel.}
+    \label{fig:thin-film-sp} 
 \end{figure}
 \subsubsection{Summary}
 

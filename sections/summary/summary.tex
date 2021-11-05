@@ -1,15 +1,23 @@
 \section{Executive Summary}
-For this project, we plan to create a sensor network used for measuring
-quantities of certain pollutants over a certain area in an urban environment.
-The sensor network will consist of multiple identical nodes. These nodes will be
-physically mounted in various locations and evenly spread throughout the area to
-be monitored. Each node will contain various sensors that will be used to
-measure certain pollutants. Each node will also contain a LoRa transceiver that
-will be used to send the sensor data to a gateway. This gateway will process
-then send this data to an external server over the internet, where it can be
-further processed and analyzed. This network should help determine areas of
-concern with regards to pollution and, hopefully, allow for measures to be taken
-to reduce it. Through the LoRaWAN network server protocol, the nodes will be
-able to operate on public networks, such as The Things Network and the Helium
-Network, as well as private networks with minimal configuration.
+The goal of our project is to design a sensor node that can detect and measure the quantities of various pollutants within its immediate surrounding and send this data to an external server, where it can be displayed to the user over a web interface. The sensor data will be transmitted via a LoRa transceiver on the sensor node over a LoRaWAN network, consisting of a gateway and an external server. In addition, the electronics of the sensor node will be encased in a 3D-printed shell that will both protect the electronics and provide a method of securely mounting the sensor node to various surfaces.
+
+The sensor nodes will be the primary design focus of our project. We plan to design them with cost in mind, so that it will be cost-effective to build multiple sensor nodes. Having multiple sensor nodes will provide greater coverage over a given area and will provide be more useful to the user. Similarly, another objective for the sensor node design will be to make them relatively small. We will be using the U.S. Environmental Protection Agency's (EPA) Air Quality Index (AQI) as the basis for selecting the sensors in our design. 
+
+As part of the LoRaWAN specification, a LoRaWAN gateway is required to route data from a LoRa transceiver to a server. The gateway will not be included as a part of the design aspect of our project, however, one is needed to have a functioning LoRa device. As such, we plan on allowing our sensor node to support various public networks, such as The Things Network and the Helium Network. We also plan using off-the-shelf components to assemble a basic, functioning network for testing the sensor node.
+
+The network server will also be a critical part of our design. We plan on hosting the server on existing cloud infrastructure, such as Amazon Web Services (AWS) or Microsoft Azure. We will need to configure this server with a LoRaWAN server software stack in order to allow LoRa-enabled devices, such as our sensor nodes, to connect to it. We plan on using existing, open-source solutions for this purpose. The main design efforts that will be required in this part of the project will focus on the user interface. We plan on creating a web user interface that will allow the user to view the data coming from our sensor nodes in an intuitive way, such as overlaying pollution data on a map. We also plan on adding integration with Twitter and possibly SMS. This will allow the application to send notifications to the user with various information regarding the status of pollution in the area.
+
+% For this project, we plan to create a sensor network used for measuring
+% quantities of certain pollutants over a certain area in an urban environment.
+% The sensor network will consist of multiple identical nodes. These nodes will be
+% physically mounted in various locations and evenly spread throughout the area to
+% be monitored. Each node will contain various sensors that will be used to
+% measure certain pollutants. Each node will also contain a LoRa transceiver that
+% will be used to send the sensor data to a gateway. This gateway will process
+% then send this data to an external server over the internet, where it can be
+% further processed and analyzed. This network should help determine areas of
+% concern with regards to pollution and, hopefully, allow for measures to be taken
+% to reduce it. Through the LoRaWAN network server protocol, the nodes will be
+% able to operate on public networks, such as The Things Network and the Helium
+% Network, as well as private networks with minimal configuration.
 

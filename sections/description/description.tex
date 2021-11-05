@@ -39,9 +39,9 @@ coverage centered around a LoRa gateway.
 
 \subsection{Goals and Objectives}
 \begin{itemize}
-    \item The sensor nodes should be low cost. 
-    \item The sensor nodes should be lightweight. 
-    \item The sensor nodes should be able to read data from the sensors and transmit that data to a LoRa gateway. 
+    \item The sensor nodes should be low cost.
+    \item The sensor nodes should be lightweight.
+    \item The sensor nodes should be able to read data from the sensors and transmit that data to a LoRa gateway.
     \item The sensors nodes should be able to communicate over a large enough distance in order to make it feasible to cover large enough area with nodes.
     \item The nodes should require little to no maintenance.
     \item The sensor nodes should be easy to install.
@@ -50,7 +50,7 @@ coverage centered around a LoRa gateway.
 
 
 \subsection{Requirements Specifications}
-Randy, put a paragraph here about the gateway requirements.
+One the first requirements considered for the gateway was total cost. The goal is to keep the cost of the gateway portion of the design to under \$200. Next, a demonstrable requirement specification for this design is its dimensions. Aether’s gateway shall not exceed dimensions greater than 6 x 6 x 6 inches. Given the size and versatility of the sensors that will be used, this should be easily accomplished. Another demonstrable requirement specification the team will focus on is ensuring the gateway does not exceed 5 pounds. This should not be a problem given the fact that most of the components used in the design are extremely compact and lightweight. In regards to communication, each gateway must be capable of supporting a minimum of 8 channels. In addition to this, a gateway must be able to communicate with a node that is located anywhere from 0 to 10 km away from it. These requirements are shown in Table \ref{tab:gateway-requirements}.
 
 \begin{table}[H]
 \centering
@@ -59,16 +59,16 @@ Randy, put a paragraph here about the gateway requirements.
 \hline
 No. & Requirement \\
 \hline\hline
-1.0 & The gateway should cost less than \$200.\\\hline
-1.1 & The gateway should be no larger than 6 x 6 x 6 inches. \\\hline
-1.2 & The gateway weight should be no more than than 5 pounds. \\\hline
-1.3 & The gateway should support at least 8 channels. \\\hline
-1.4 & The gateway should be able to communicate with nodes up to 10 km away with ideal conditions. \\\hline
+1.0 & The gateway should cost less than \$200 \\\hline
+1.1 & The gateway should be no larger than 6 x 6 x 6 inches \\\hline
+1.2 & The gateway weight should be no more than than 5 pounds \\\hline
+1.3 & The gateway should support at least 8 channels \\\hline
+1.4 & The gateway should be able to communicate with nodes up to 10 km away with ideal conditions \\\hline
 \end{tabularx}
 \label{tab:gateway-requirements}
 \end{table}
 
-Randy, put a paragraph here about the node requirements.
+For the node requirement specifications, the first thing considered was total cost. It was determined that the node should cost no more than \$150 dollars. It should be cheaper than the gateway design since the node will not have the Lo-Ra-WAN board. Similar to the gateway, the dimensions should not exceed 6 x 6 x 6 inches and the weight should be under 5 pounds, two demonstrable features for the node requirements. Additionally, the nodes should be able to successfully send packets of data to the main server through central Lo-Ra-WAN gateway. Each node will be equipped with a solar panel capable of charging the lithium-ion batteries inside the node, thus giving the nodal system the ability to operate off the grid. The nodes will also be equipped with different power modes to support different demands and efficiently manage battery life. When calculating the AQI level, the nodes must be able to output AQI values in the 300 to 400 range since anything above 300 on an AQI scale is considered hazardous breathing conditions. Node data should be able to be sent to the gateway at a distance up to 10km. Lastly, the node should be able to be configured remotely from the server so field maintenance is kept at a minimum. In Table \ref{tab:node-requirements}, we list the node requirement specifications.  
 
 \begin{table}[H]
 \centering
@@ -77,20 +77,20 @@ Randy, put a paragraph here about the node requirements.
 \hline
 No. & Requirement \\
 \hline\hline
-2.0 & The nodes should cost less than \$150 each. \\\hline
-2.1 & The nodes should be no larger than 6 x 6 x 6 inches. \\\hline
-2.2 & The nodes should weigh no more than than 5 pounds. \\\hline
-2.3 & The nodes should be able to send data packets to the server through a LoRaWAN gateway. \\\hline
-2.4 & The nodes should each have a solar panel for charging. \\\hline
-2.5 & The nodes must support different power usage modes. \\\hline
-2.6 & The nodes must be able to calculate the AQI. \\\hline
-2.7 & The nodes should be able to send data to a gateway up to 10 km away with ideal conditions. \\\hline
-2.8 & The nodes should be able to be configured remotely from the server. \\\hline
+2.0 & The nodes should cost less than \$150 each \\\hline
+2.1 & The nodes should be no larger than 6 x 6 x 6 inches \\\hline
+2.2 & The nodes should weigh no more than than 5 pounds \\\hline
+2.3 & The nodes should be able to send data packets to the server through a LoRaWAN gateway \\\hline
+2.4 & The nodes should each have solar panel(s) to run off the grid indefinitely \\\hline
+2.5 & The nodes must support different power usage modes depending on the power budget \\\hline
+2.6 & The nodes must be able to calculate the AQI up to at least the 300 to 400 range \\\hline
+2.7 & The nodes should be able to send data to a gateway up to 10 km away with ideal conditions \\\hline
+2.8 & The nodes should be able to be configured remotely from the server \\\hline
 \end{tabularx}
 \label{tab:node-requirements}
 \end{table}
 
-Randy, put a paragraph here about the server requirements.
+On the server side, a host website should be able to display a map overlaid with different air quality data collected from the field. Additionally, the server will have the ability to send air quality reports and alerts via Twitter and SMS. Another requirement specification for the server will be its ability to register nodes with other supported LoRaWAN IoT network servers such as Helium. The server should have the ability to remotely configure nodes in the field to the user's desired operating modes and specifications. The server requirements are listed in Table \ref{tab:server-requirements}. 
 
 \begin{table}[H]
 \centering
@@ -99,9 +99,9 @@ Randy, put a paragraph here about the server requirements.
 \hline
 No. & Requirement \\
 \hline\hline
-3.0 & The server must be able to display the data from the nodes overlayed on a map. \\\hline
-3.1 & The server should be able to send air quality alerts over Twitter. \\\hline
-3.2 & The server should be able to register nodes to communicate with it so that it can send commands to the nodes for configuring them and to receive logging information. \\\hline
+3.0 & The server will host a website to display a map overlaid with air quality data \\\hline
+3.1 & The server should be able to send air quality alerts over Twitter and SMS \\\hline
+3.2 & The server will be able to automatically register nodes with other supported LoRaWAN Network Servers (Helium, The Things Community, and private networks) \\\hline
 \end{tabularx}
 \label{tab:server-requirements}
 \end{table}
@@ -192,14 +192,14 @@ No. & Requirement \\
 \hline
 Constraint \\
 \hline
-The nodes must be light enough so that they can be affixed to a building or other structure and not be of a concern to fall off.\\\hline
-The nodes must low cost to be able to placed in greater number. \\\hline
-The nodes must be able to withstand water from rainfall.\\\hline
-The nodes must be able to withstand high winds. \\\hline
-The nodes must be able to withstand temperature extremes. \\\hline
+The nodes must be light enough so that they can be affixed to a building or other structure and not be of a concern to fall off \\\hline
+The nodes must low cost to be able to placed in greater number \\\hline
+The nodes must be able to withstand water from rainfall \\\hline
+The nodes must be able to withstand high winds \\\hline
+The nodes must be able to withstand temperature extremes \\\hline
 The nodes must be able to support a communication range of at least 1 km\\\hline
-The nodes must be able to operate on less power than what one solar panel could generate in a single day to allow for operation when there is no sunlight present.\\\hline
-The gateway must be able to operate off of mains power.\\\hline
+The nodes must be able to operate on less power than what one solar panel could generate in a single day to allow for operation when there is no sunlight present \\\hline
+The gateway must be able to operate off of mains power \\\hline
 \end{tabularx}
 \label{tab:constraints}
 \end{table}
@@ -208,10 +208,10 @@ The gateway must be able to operate off of mains power.\\\hline
 In Figure \ref{fig:hoq}, we provide a comparison between our marketing parameters and our engineering requirements. The marketing parameters are qualitative in nature and are chosen based on the qualities that we imagine customers would be looking for in this product. Light refers to the node having a low weight. Accurate means that the sensors produce a reading that reflects the correct concentration of gases in the air around the node. It could also refer to having enough nodes to cover an area to provide a high resolution of sensor data. Low maintenance and reliable are somewhat related parameters, however, low maintenance refers to the ability of the node to operate for a long enough period of time without needing to replace various components and reliable refers to the ability of the node to survive the outdoor elements and continue to provide quality sensor data over time. Real time means that the node should be transmitting and reading data from its sensors as often as possible. Easy to install means that the nodes should be able to placed in the desired location with minimal effort. Ideally, the nodes would be able to be placed in wide variety of situations and locations with relative ease.
 
 In contrast to the marketing parameters, the engineering requirements are quantitative in nature. Battery life is key since it determines how long the nodes can be deployed without having to have batteries replaced or recharged. Node-to-gateway distance refers to how far away a node can be away from a gateway and is a critical requirement because it directly impacts how large of and area you can cover with nodes. The number of nodes per gateway is also important because we would like to minimize the number of gateways required for any given number of nodes in the network. Sensor accuracy refers specifically to how far the true measurement of a given gas is from the value outputted by the sensor. It is given as a $\pm$percentage. Finally, the nodes should of course be as small, light, and cost as little as possible.
-\begin{figure}[tbh]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=6.25in]{./figures/hoq.png} 
-    \caption{The house of quality diagram.}
+    \includegraphics[width=5in]{./figures/hoq.png} 
+    \caption{The house of quality diagram}
     \label{fig:hoq}
 \end{figure}
 
