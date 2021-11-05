@@ -205,15 +205,60 @@ The gateway must be able to operate off of mains power \\\hline
 \end{table}
 
 \subsection{House of Quality}
-In Figure \ref{fig:hoq}, we provide a comparison between our marketing parameters and our engineering requirements. The marketing parameters are qualitative in nature and are chosen based on the qualities that we imagine customers would be looking for in this product. Light refers to the node having a low weight. Accurate means that the sensors produce a reading that reflects the correct concentration of gases in the air around the node. It could also refer to having enough nodes to cover an area to provide a high resolution of sensor data. Low maintenance and reliable are somewhat related parameters, however, low maintenance refers to the ability of the node to operate for a long enough period of time without needing to replace various components and reliable refers to the ability of the node to survive the outdoor elements and continue to provide quality sensor data over time. Real time means that the node should be transmitting and reading data from its sensors as often as possible. Easy to install means that the nodes should be able to placed in the desired location with minimal effort. Ideally, the nodes would be able to be placed in wide variety of situations and locations with relative ease.
+In Figure \ref{fig:hoq}, we provide a comparison between our marketing
+parameters and our engineering requirements. The marketing parameters are
+qualitative in nature and are chosen based on the qualities that we imagine
+customers would be looking for in this product. Accurate means that the sensors
+produce a reading that reflects the correct concentration of gases in the air
+around the node. It could also refer to having enough nodes to cover an area to
+provide a high resolution of sensor data. Low maintenance and reliable are
+somewhat related parameters, however, low maintenance refers to the ability of
+the node to operate for a long enough period of time without needing to replace
+various components and reliable refers to the ability of the node to survive the
+outdoor elements and continue to provide quality sensor data over time. Real
+time means that the node should be transmitting and reading data from its
+sensors as often as possible. Easy to install means that the nodes should be
+able to placed in the desired location with minimal effort. Ideally, the nodes
+would be able to be placed in wide variety of situations and locations with
+relative ease.
 
-In contrast to the marketing parameters, the engineering requirements are quantitative in nature. Battery life is key since it determines how long the nodes can be deployed without having to have batteries replaced or recharged. Node-to-gateway distance refers to how far away a node can be away from a gateway and is a critical requirement because it directly impacts how large of and area you can cover with nodes. The number of nodes per gateway is also important because we would like to minimize the number of gateways required for any given number of nodes in the network. Sensor accuracy refers specifically to how far the true measurement of a given gas is from the value outputted by the sensor. It is given as a $\pm$percentage. Finally, the nodes should of course be as small, light, and cost as little as possible.
+In contrast to the marketing parameters, the engineering requirements are
+quantitative in nature. Battery life is key since it determines how long the
+nodes can be deployed without having to have batteries replaced or recharged.
+Node-to-gateway distance refers to how far away a node can be away from a
+gateway and is a critical requirement because it directly impacts how large of
+and area you can cover with nodes. The number of nodes per gateway is also
+important because we would like to minimize the number of gateways required for
+any given number of nodes in the network. Sensor accuracy refers specifically to
+how far the true measurement of a given gas is from the value outputted by the
+sensor. It is given as a $\pm$percentage. Finally, the nodes should of course be
+as small, light, and cost as little as possible.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=5in]{./figures/hoq.png} 
     \caption{The house of quality diagram}
     \label{fig:hoq}
 \end{figure}
+
+Almost all of the engineering requirements negatively impact one or more of the
+other engineering requirements. Every requirement has a negative impact on the
+cost of the nodes and gateways. To increase the battery life, either more
+engineering work will be needed to optimize the system (and potentially increase
+the BOM) or simply increase the battery capacity. Both of these options increase
+the cost.  Likewise, the same is true for the range of the nodes. The range of
+the nodes involves finding some way to increase the link-budget. As for the
+node's weight and size, these correlate to increased raw material costs and/or
+increased manufacturing costs, especially for the node size. Lastly, sensor
+accuracy affects the cost because of the engineering, material costs, and
+manufacturing needed to create more accurate sensors. Battery life also heavily
+negatively affects battery life, because of the need for active RF circuitry,
+namely amplification when transmitting data. The size of the nodes helps battery
+life since it allows for a battery with a higher capacity. It also helps the
+range of the nodes by allowing for a larger antenna, which helps with increasing
+the receive sensitivity. Lastly, the weight and size of the nodes negatively
+impact each other since, generally, the larger the thing is, the more material
+it needs to construct it.
 
 % \subsection{Similar Existing Products}
 %     \subsubsection{Product 1}
