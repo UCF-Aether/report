@@ -82,7 +82,7 @@ bare metal programming might be chosen over using an operating system is that
 bare metal programming can provide the best performance for both compute and
 memory usage.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=3.25in]{bare-metal-arch.png}
 \caption{Typical Bare Metal Embedded System Software Architecture}
@@ -271,15 +271,17 @@ transmitted over UART. The message was corrupted.
 Luckily, FreeRTOS, like other operating systems, provide utilities for
 synchronizing asynchronous operations: mutexes and semaphors. While similar,
 they are used for vastly different scenarios.  Mutexes act as keys for locked
-doors. Only one person, or process/task, can hold onto the key at the same time
-- they are binary. Mutexes are used for synchronizing access to shared
+doors. Only one person, or process/task, can hold onto the key at the same time.
+In other words, they are binary. Mutexes are used for synchronizing access to shared
 resources. For each resource, akin to having multiple locked doors, requires an
 unique mutex, or key, to gain permission to access it. Semaphors, while similar
 in implementation to mutexes as they can be explained as non-binary mutexes,
 their purpose is vastly different. Semaphors are meant for signalling events.
 The key difference here is that with semaphors, there is a producer and
 consumer, and they don't need to be the same task/process. Whereas with mutexes,
-only the task that holds the mutex can release it. A problem with using
+only the task that holds the mutex can release it.
+
+A problem with using
 semaphors as mutexes is that a semaphore doesn't portray which resource has been
 taken. Say there are two UART channels and two tasks. If a semaphore were used
 to allocate one of the UART channels, then the other task wouldn't know which
