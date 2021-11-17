@@ -8,7 +8,7 @@ The addressing scheme for \iic specifies the use of a 7-bit address. Each \iic d
 
 The \iic protocol defines a set of states that the SCL and SDA wires can be in. This defines what the overall state of the \iic bus is in. In the idle state, the SCL and SDA wires are both high. Communication begins when the master device generates the start condition. The start condition is defined when SCL is high and SDA transitions from high to low. The master then sends the address of the slave device it wants to communicate with. The address itself is sent over the SDA line along with a series of high/low pulses on the SCL line, indicating when the SDA line should be read. If the read/write bit of the address is set to 0, the master will begin writing to the slave device, otherwise, if the read/write bit is 1, the next byte will be read from the slave device. Once all bytes have been read or written, the master device will generate the stop condition. The stop condition is defined when SCL is high and SDA SDA transitions from low to high. This puts the bus back into the idle state.
 
-In our design, \iic will be utilized as the communication protocol between the gas sensors and the microcontroller.
+In our design, \iic will be utilized as the communication protocol between the gas sensors and the microcontroller. Using the \iic standard will make it simpler and easier read data from the sensors, as opposed to trying to convert and analyze direct analog inputs.
 
 \begin{figure}
     \centering

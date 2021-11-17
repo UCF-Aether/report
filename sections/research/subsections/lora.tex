@@ -149,7 +149,7 @@ constraints. Choosing the part with ample amounts of documentation significantly
 affects development speed, and consequently allowing for rapid prototyping and
 last-minute changes.
 
-As shown in the table below, the modules are summarized in regard to their
+As shown in Table \ref{lora-module-general-comparison}, the modules are summarized in regard to their
 computing capabilities and cost. Most of the modules have comparable costs for
 the modules, but the development kits for each of them drastically vary. The
 Seeed LoRa-E5 is the most cost effective for both the individual modules and
@@ -174,7 +174,7 @@ Onethinx Core and the RAK4600. However, having Bluetooth would create a better
 user experience, but mainly only for initially configuring the device.
 
 \begin{table}[H]
-\centering\scriptsize
+\centering\footnotesize
 \caption{LoRa Module General Comparison}
 \begin{tabular}{|r|c|c|c|c|c|c|c|c|}
 \hline
@@ -189,7 +189,7 @@ Onethinx Core\footnotemark
                     & Cortex M0+ \& M4 & 100/150 & \$20 & \$80 \\\hline
 
 \end{tabular}
-% \label{tab:networkingRequirements}
+\label{lora-module-general-comparison}
 \end{table}
 \footnotetext{Not readily available at a distributor or official website. Must
 email company.}
@@ -231,7 +231,7 @@ P_{RX} = P_{TX} + G_{TX} - L_{TX} - L_{FS} - L_M + G_{RX} - L_{RX} \\
 \end{aligned}\notag
 \end{gather}
 
-The following table tabulates the researched module's electrical
+Table \ref{lora-module-electrical-comp} tabulates the researched module's electrical
 Characteristics. ``TX'' and ``RX'' refer to the transmit power and receive
 sensitivity, respectively. The sleep current is defined as the lowest possible
 sleep state where the core(s) can still be woken up by a timer at 3.3V. The run
@@ -250,7 +250,7 @@ can't be turned off), indicated by ``RX|TX''.
 \begin{table}[H]
 \centering\scriptsize
 \caption{LoRa Module Electrical Characteristics Comparison}
-\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|r|c|c|c|c|c|c|c|}
 \hline
 Module & TX (dBm) & RX (dBm) & I$_{sleep}$($\mu$A) & I$_{run}$(mA) & I$_{tx}$
 (mA) & I$_{rx}$ (mA) &  V$_{in}$ (V) \\
@@ -263,17 +263,17 @@ RAK 4600            & +20.0 & -148  & 11.2    & RX|TX   & 125 & 17.0  & 2.0 - 3.
 Onethinx Core       & +20.0 & -137  & 1.66    & 3.67    & 118 & 4.20  & 1.8 - 3.3 \\\hline
 
 \end{tabular}
-% \label{tab:networkingRequirements}
+\label{lora-module-electrical-comp}
 \end{table}
 
-The next table shows the I/O capabilities of the modules researched. An
+Table \ref{lora-module-io} shows the I/O capabilities of the modules researched. An
 integrated LoRa antenna connector would be ideal, but if the performance of the
 module is good, then it doesn't matter as much. Also, it was a requirement that
 the module have at least one UART, SPI, and I$^2$ port. Note that while the MCUs
 and transceivers used may have a set of I/O capabilities, they may not be
 exposed to use on the module. Also, the I/O capabilities tabulated are not
 mutually exclusive. Meaning, that if one of the UART ports are enabled, then
-there may be less GPIOs available, or even SPI, for example, if they are muxxed
+there may be less GPIOs available, or even SPI, for example, if they are mux-ed
 on the same port. However, in most cases, using UART, SPI, or I$^2$C only
 removes 2-4 GPIO pins. For the Microchip module, it has 4 general I/O ports that
 can configured to be either of the aforementioned communication protocols.
@@ -293,7 +293,7 @@ RAK 4600            & U.FL      & \yes & \no  & None          & 0 & 1 & 1 & 10 \
 Onethinx Core       & PCB trace & \yes & \no  & 12-bit, 1ch   & 1 & 1 & 1 & 8  \\\hline
 
 \end{tabular}
-% \label{tab:networkingRequirements}
+\label{lora-module-io}
 \end{table}
 
 \subsubsection{The Chosen LoRa Module: The Seeed LoRa-E5}

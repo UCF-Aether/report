@@ -260,7 +260,33 @@ the receive sensitivity. Lastly, the weight and size of the nodes negatively
 impact each other since, because usually the larger the node is the more it is
 going to weigh.
 
-% \subsection{Similar Existing Products}
-%     \subsubsection{Product 1}
-%     \subsubsection{Product 2}
+\subsection{Block Diagrams}
+In this section, we show the block diagrams for different parts of our design. Our block diagrams also indicate who is going to be responsible for each part of the design. We also indicate the current status of each block in the diagram. These statuses include RES, meaning that this portion of the design is currently being investigated, and TBA, meaning that this portion of the design will be purchased outright. The sensor node is our primary design focus for this project. The block diagram for the sensor node shows how the various sensors will interface with the selected system controller as well as how we plan to power the system via a battery and a solar panel. The interface between the system controller and the LoRa module is also shown. This block diagram can be found in Figure \ref{fig:hwNodeBD}. In addition, a more detailed description of each block in the diagram can found in Table \ref{tab:Node_Hardware_BD_Description}.
 
+% Block Diagram for Node HW
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5.3in]{"./figures/hwNodeBD.png"} 
+    \caption{The block diagram for the sensor node hardware.}
+    \label{fig:hwNodeBD}
+\end{figure}
+
+Another key component of our design is the LoRaWAN gateway. We do not plan on entirely designing the gateway. However, we did create a block diagram demonstrating how we we would plan to set up a gateway using off-the-shelf components. The block diagram for the gateway shows how a selected LoRa module would interface with a development board. This development board would need to be able to support connecting with a LoRa module. This development board would also need to be able to interface with an Ethernet port. Ethernet is essential for the gateway to be able to connect to the internet. The block diagram also shows how we plan to simply connect the gateway to mains power. It is unnecessary for the gateway to be powered via battery. This will make worrying about power consumption less of a design constraint for the gateway. This block diagram can be found in Figure \ref{fig:hwBaseStationBD}. In addition, a more detailed description of each block in the diagram can found in Table \ref{tab:descHWBaseStationBD}.
+
+% Block Diagram for gateway HW
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5.3in]{"./figures/hwGatewayBD.png"} 
+    \caption{The block diagram for the gateway hardware.}
+    \label{fig:hwBaseStationBD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4in]{"./figures/swNodeBD.png"} 
+    \caption{The block diagram for the node software.}
+    \label{fig:swNodeBD}
+\end{figure}
+\input{./tables/Node_Hardware_BD_Description.tex}
+\input{./tables/Gateway_Hardware_BD_Description.tex}
+\input{./tables/Node_Software_BD_Description}

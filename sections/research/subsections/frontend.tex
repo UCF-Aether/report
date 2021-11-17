@@ -20,7 +20,9 @@ power constraints, such as the current battery level, the rate at which it's
 charging, the rate at which it uses power, and whether it is plugged into USB
 power. It should make decisions based on these characteristics, such as how
 often to take sensor readings, and therefore, how long it should sleep for (and
-the sleep mode). On the LoRa-E5, the device is equipped with a ARM Cortex-M4
+the sleep mode).
+
+On the LoRa-E5, the device is equipped with a ARM Cortex-M4
 microcontroller capable of sleep, deep-sleep, and standby low-power modes, each
 have the ability to be woken up from the real-time clock (RTC) or specific I/O
 pins. Any choice in choosing front-end software stack components should not
@@ -63,7 +65,9 @@ HAL provides facilities for controlling the microcontroller and accessing its
 peripherals independent of the specific model, but only for the same vendor. The
 other method of bare metal programming is through using the MCU's header files
 that contain register definitions (addresses), and manually reading from and
-writing to them. The architecture of a bare metal program typically includes an
+writing to them. 
+
+The architecture of a bare metal program typically includes an
 initialization phase followed by an infinite loop. Inside the infinite loop,
 registers might be polled and tasks can be done. The infinite loop can
 essentially be a synchronous event loop. Asynchronous execution can only happen
@@ -163,7 +167,9 @@ more priorities there are, the more memory the kernel will need since each
 priority needs a list allocated for each task state. Priorities are manually
 assigned by the programmer, so with knowledge of the scheduling algorithm (which
 can be configured), the programmer can reason about potential issues much
-easier. The scheduler can be configured to be preemptive or non-preemptive. With
+easier.
+
+The scheduler can be configured to be preemptive or non-preemptive. With
 non-preemptive scheduling, tasks must either block, suspend, or complete before
 another task can be executed. Once a task is put into a not-running state, the
 task with the highest priority is selected. If two tasks have the same priority,
@@ -218,8 +224,9 @@ level, which is 0. The idle tasks also allows the programmer to hook into it to 
 handler each time the idle task is entered. The idle tasks performs maintenance,
 such as cleaning up freed memory freed during the task execution. When a task
 frees memory, that memory isn't actually removed from the heap until the idle
-task is ran in order to keep user tasks deterministic. Figure
-\ref{fig:freertos-tick-arch} shows an example of the execution of three tasks
+task is ran in order to keep user tasks deterministic.
+
+Figure \ref{fig:freertos-tick-arch} shows an example of the execution of three tasks
 each with different priorities. The vertical axis represents the task's
 priority, while the horizontal axis represents time and how long tasks executed.
 The kernel tasks and interrupts always have the highest priority, and are
@@ -230,8 +237,9 @@ scheduler/kernel runs and swaps the currently running task with another. Each
 time there's a red bar, the kernel is running instead of a previously running
 task, but arrows are not included so the diagram doesn't look too busy. Thin,
 horizontal bars between tasks on the same priority represents that task moving
-into the ready list, and is based on the task color. Initially, Task A
-is running, but it preempted by Task D when it becomes unblocked due to
+into the ready list, and is based on the task color.
+
+ Initially, Task A is running, but it preempted by Task D when it becomes unblocked due to
 an asynchronous event at time $t_1$, such as a timer or a transaction is
 received over \iic. At time $t_2$, Task D is blocked, so the next
 available task to run with the highest priority is selected, Task B.

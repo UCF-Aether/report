@@ -44,37 +44,71 @@ connecting devices using LoRaWAN to the internet.  LoRaWAN network servers are
 the bridge between LoRa and the Internet.  LoRa network servers can be public or
 private, and end-devices must first be registered on the network before it can
 join it. All packets sent by an unregistered and unverified end-device will be
-discarded. As previously mentioned in the LoRaWAN standardization section,
+discarded.
+
+As previously mentioned in the LoRaWAN standardization section,
 devices communicating over LoRaWAN perform a handshake (joining the network),
 and exchange a set of IDs that identify the device, the join server, and the
-application/network session. These IDs are: DevEUI, JoinEUI (known previously as
-the AppEUI), and AppKey, respectively. The remainder of the keys are generated
-from this set of keys. The AppKey is the only key that isn't transmitted over
+application/network session. These IDs are: \texttt{DevEUI}, \texttt{JoinEUI} (known previously as
+the \texttt{AppEUI}), and \texttt{AppKey}, respectively. The remainder of the keys are generated
+from this set of keys. The \texttt{AppKey} is the only key that isn't transmitted over
 the network, and is stored on both the end-device and the network server. For
 LoRaWAN 1.1+, an additional key is required to be stored on the end-device and
-the network server: the NwkKey. The NwkKey is like the AppKey in that it is
+the network server: the \texttt{NwkKey}. The \texttt{NwkKey} is like the \texttt{AppKey} in that it is
 never transferred and is used as an extra encryption layer. The network server
 will need to be integrated and capable of communication with the application
 server, which in for the project, will either be Amazon AWS or Microsoft Azure.
+
 For public networks, which are basically like Verizon or AT\&T for LoRa, the
 network server software is provided to users who want to setup a gateway. Once
-setup, anyone with reception will be able to use the network. The Things Network
+setup, anyone with reception will be able to use the network. The Things Community Stack
 is a free, public network. Users that create a gateway are not financially
-incentivised, but only are if they have a end-device they would like to use in
+incentivized, but only are if they have a end-device they would like to use in
 their area. On the other hand, The Helium Network provides financial incentives
 without a central authority through a specialized blockchain. For people and
 companies that would like to setup a private network, an open-source network
-server, called Chipstack, is available.
+server, called Chirpstack, is available.
 
 
 \paragraph{The Chirpstack Network Server Stack}
 
-\subsubsection{Public Networks} \label{public-networks}
+\subsubsection{Public LoRaWAN Networks} \label{public-networks}
+Public LoRaWAN networks allow users to connect their own LoRa end-devices to them and begin sending data to the internet. These networks make it easier start using LoRaWAN devices and removing the need to purchase, set up, and maintain large amounts of LoRaWAN gateways. Some public networks, like The Things Community Network, are entirely free to connect to and use. However, there are others, such as The Helium Network, that take advantage of blockchain technology to charge users for the usage of the network. This functions as a way to provide a monetary incentive for users to add gateways to the network, making it larger and increasing it's coverage.
+
 \paragraph{The Things Community Network}
+The Things Community Network is a public LoRaWAN network that uses The Things Network Stack. This network was previously known as simply The Things Network. The software for this network is entirely open source, so it would be possible for someone to run their own instance of this network on their own servers. Currently, The Things Network has over 21,000 gateways in operation providing great network coverage. However, the vast majority of network coverage is in Europe. In the United States, coverage is largely centered around the northeast, with some coverage in Florida.
+
+The Things Community Network provides a tool for adding LoRaWAN devices to the network known as The Console. It is a web application which can be used to register applications, end devices or gateways, monitor network traffic, or configure network related options, among other things. When adding a device to the The Things Community Network, there are preset device profiles for mainstream, off-the-shelf devices to make set up very straightforward. Otherwise, if a user is attempting to add a custom device, they will have to manually provide their device information (\texttt{DevEUI}, \texttt{JoinEUI}, etc.). Due to the free and public nature of The Things Community Network, they specifically mention that users should take actions to limit network use, such as limiting data transmission frequency, optimizing message encoding for size, and avoiding confirmed uplink messages \cite{the-things-network}. They recommend these practices to ensure that no single user is hoarding the usage of network resources. These sort of policies and suggestions are necessary when there is no cost to use a network.
+
 \paragraph{The Helium Network}
+The Helium Network is a public LoRaWAN network that takes advantage of blockchain and cryptocurrency technology and is made up of so-called Helium Hotspots. Hotspots produce and are compensated in HNT, which is the native cryptocurrency of the Helium blockchain. The goal of the Helium blockchain is to incentivize people to set up LoRaWAN gateways to increase the coverage of the network itself.
+
+The Helium blockchain itself is based off of a concept known as Proof of Coverage. The goal of the Proof of Coverage algorithm is to verify that Hotspots are located where they claim to be located, as well as that they are accurately reporting the area that they claim to cover. The algorithm attempts to continuously verify these details. The Proof of Coverage does this by taking advantage of the unique properties of radio frequencies. Due the fact that the strength of a radio frequency signal is inversely proportional to the square of the distance from the transmitter and the fact that radio frequencies travel at the speed of light with effectively no delay, the Helium network can use these properties to issue challenges to the Hotspots. Completing challenges is used to determine how much HNT a Hotspot is paid.
+
+The developers provide a tool designed to assist users in registering their devices for use on the Helium Network. This tool is known as the Helium Console. Helium requires the creation of a user account. To add a device to Helium, users must either provide the \texttt{DevEUI}, \texttt{AppEUI}, and \texttt{AppKey} that came on the device or use the one auto-generated by the Console. All devices are also provided a unique identifier when connecting to the network. The Helium network supports any LoRaWAN capable device meeting the LoRaWAN v1.0.2 specification. The LoRa module we chose for our design meets this specification.
+
+In order to discuss how to set up your own LoRaWAN gateway as a Helium Hotspot, we must first describe the different classifications of Hotspots that Helium describes. The first type is known as a Full Hotspots. Full Hotspots maintain a full copy of the HNT blochain. This class of Hotspot is able to participate in Proof of Coverage rewards and receive awards for forwarding data packets. However, in order to be classified as a Full Hotspot, the hardware vendor of the gateway must submit an approval form that is approved by the Helium Community and the Decentralized Wireless Alliance (DeWi). The second type of Hotspot is known as a Light Hotspot. Light Hotspots use Validators to get information about the HNT blockchain. This class of Hotspot is able to participate in Proof of Coverage rewards and receive awards for forwarding data packets. The final type of Hotspot is known as a Data Only Hotpsot. These Hotspots can only receive HNT through participating in data packet forwarding. There is no community permission required to add a Data Only Hotspot to the Helium Network. A summary of these Hotspot types can be found in Table \ref{tab:helium-hotspot-classes}.
+
+It is important to note that there is an additional entity that is a part of the Helium Network, but it is not a Hotspot. It is known as a Validator. A consensus group of Validator nodes receive Proof of Coverage and device-related transaction requests from Light Hotspots and both verifies these requests and reaches an agreement on the ordering before forming a new block and adding it to the blockchain.
+
+\begin{table}
+
+\centering
+\caption{Summary of Helium Hotspot types}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Rewards Type & Data Only Hotspots & Full Hotspots & Light Hotspots \\
+\hline
+Network Data Forwarding & Yes & Yes & Yes \\\hline
+Proof of Coverage & No & Yes & Yes \\\hline
+\end{tabular}
+\label{tab:helium-hotspot-classes}
+\end{table}
 
 \subsubsection{Application Service Providers}
 \paragraph{Microsoft Azure}
+Microsoft Azure is a cloud computing service that is operated by Microsoft through their own data centers.
+
 \paragraph{Amazon AWS}
 
 \subsubsection{The Web Application Software Stack}

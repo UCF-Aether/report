@@ -1,6 +1,10 @@
 \section{Administrative}
+In this section, we discuss content related to the planning of our project. This will include items such as budgeting and project milestones. These items are key to any successful project to ensure that the design stays within the desired cost range and that the project is completed in time.
+
 \subsection{Estimated Budget}
-\begin{table}[]
+Here we display the budget for each of the major components of our project including the sensor node, one LoRaWAN gateway, and costs related to the server. Since the sensor node is the main design aspect of our project, it is composed of a custom PCB with a multitude of selected ICs and gas sensors. The budget for this sensor node is shown in Table \ref{tab:sensor-budget}. This is in contrast to the LoRaWAN gateway, which we decided we would not be designing. For this component, we simply used a Raspberry Pi, which one of our group members already owned, and a RAK 4600. The budget for the gateway can be found in Table \ref{tab:gateway-budget}. Similarly, we decided that we would be building and hosting our own server cluster and would instead be using Amazon Web Services under the free pricing tier.
+
+\begin{table}[H]
 \centering
     \begin{tabular}{|r|c|c|l|}
         \hline
@@ -9,24 +13,19 @@
         Solar Panel                 & \$30.00 & 1 & \$30.00 \\
         Solar Charge Regulator      & \$5.00 & 1 & \$5.00 \\
         Battery                     & \$10.00 & 1 & \$10.00 \\
-        Electronic Components       & \$10.00 & 1 & \$10.00 \\
         \hline
-        LoRa Transceiver            & \$30.00 & 1 & \$30.00 \\
-        Microcontroller             & \$3.00  & 1 & \$3.00  \\
+        LoRa Module                 & \$9.90  & 1 & \$3.00  \\
         PCB                         & \$10.00 & 1 & \$10.00 \\
-        Electronic Components       & \$10.00 & 1 & \$10.00 \\
         \hline
-        O$_3$ Sensor                & \$20.00 & 1 & \$20.00\\
-        Temperature Sensor          & \$4.00  & 1 & \$4.00 \\
-        CO Sensor                   & \$20.00 & 1 & \$20.00\\
-        SO$_2$ Sensor               & \$20.00 & 1 & \$20.00\\
-        NO$_2$ Sensor               & \$20.00 & 1 & \$20.00\\
-        PM Sensor                   & \$50.00 & 1 & \$50.00\\
+        PM Sensor                   & \$53.83 & 1 & \$53.83\\
+        Renesas ZMOD 4510           & \$7.77  & 1 & \$7.77 \\
+        Bosch BME688                & \$20.50 & 1 & \$20.50\\
         \hline\hline
-        \multicolumn{2}{|}{Multirow} & Total & \$371.00 \\
+        \multicolumn{2}{|}{Multirow} & Total & \$147.00 \\
         \hline
     \end{tabular}
-    \caption{The budget for each node.}
+    \caption{The budget for a single sensor node.}
+    \label{tab:sensor-budget}
 \end{table}
 
 \begin{table}[H]
@@ -35,21 +34,18 @@
         \hline
         Component & Approx. Unit Cost & Quantity & Total Cost \\
         \hline\hline
-        Power Subsystem Components  & \$10.00 & 1 & \$10.00 \\
-        \hline
-        LoRa Transceiver            & \$40.00 & 1 & \$40.00 \\
-        Antenna                     & \$40.00 & 1 & \$40.00 \\
-        Raspberry Pi 4              & \$35.00 & 1 & \$35.00   \\
-        Electronic Components       & \$10.00 & 1 & \$10.00 \\
+        Raspberry Pi 4              & \textit{free} & 1 & \$0.00   \\
+        RAK 4600       & \$120.00 & 1 & \$120.00 \\
         \hline\hline
-        \multicolumn{2}{|}{Multirow} & Total & \$135 \\
+        \multicolumn{2}{|}{Multirow} & Total & \$120.00 \\
         \hline
     \end{tabular}
     \caption{The budget for the gateway.} 
+    \label{tab:gateway-budget}
 \end{table}
 
 \subsection{Milestones}
-In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our current milestones for the fall and spring semesters respectively. The goal of creating these milestones is to ensure that we stay on track as the semester progresses and that we do not fall behind. As is often the case, we will likely need to add new milestones as new challenges arise.
+In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our current milestones for the fall and spring semesters respectively. The full descriptions for the fall milestones can be found in Table \ref{fall-milestone-descriptions} and the full descriptions for the spring milestones can be found in Table \ref{spring-milestone-descriptions}. The goal of creating these milestones is to ensure that we stay on track as the semester progresses and that we do not fall behind. As is often the case, we will likely need to add new milestones as new challenges arise.
 \subsubsection{Fall Semester}
 
 \begin{table}[H]
@@ -141,16 +137,10 @@ In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our
         \hline
     \end{tabularx}
     \caption{Fall milestone descriptions}
-    \label{spring-milestones}
+    \label{fall-milestone-descriptions}
 \end{table}
 
 \subsubsection{Spring Semester}
-% TODO: Change spacing of the columns to make the description wider
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%                       Spring Milestones
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[H]
     \begin{tabularx}{\linewidth}{|X|X|X|}
         \hline
@@ -217,12 +207,11 @@ In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our
         \hline
     \end{tabularx}
     \caption{Spring milestones}
+    \label{spring-milestones}
 \end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%                   Spring Milestones Descriptions
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \begin{table}[H]    
     \centering
     \begin{tabularx}{\linewidth}{|c|X|}
@@ -282,5 +271,6 @@ In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our
         \hline
     \end{tabularx}
     \caption{Spring milestone descriptions}
+    \label{spring-milestone-descriptions}
 \end{table}
 
