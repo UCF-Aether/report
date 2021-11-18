@@ -110,6 +110,41 @@ Proof of Coverage & No & Yes & Yes \\\hline
 Microsoft Azure is a cloud computing service that is operated by Microsoft through their own data centers.
 
 \paragraph{Amazon AWS}
+Amazon AWS is another major cloud computing service provider, especially known
+for their mature products and services, as well as consistent and dependable
+uptime. Amazon owns FreeRTOS, so there is dedicated middleware support for
+connecting to the cloud and using a variety of services. This includes update
+over the air and digital signing service functionalities. Amazon offers
+dedicated IoT services, as well as anything else to meet the needs of your
+application. The entire software stack, ranging from IoT device management, IoT
+event transactions, and IoT analytics to the SQL or NoSQL database, website
+hosting, and social integration, such as Twitter, email, or SMS. AWS most
+importantly has direct support for LoRaWAN IoT devices. This means that you can
+run a LNS in the cloud, further securing the LoRa network. 
+
+Because the LoRa network server doesn't have to run on the gateway, the gateway
+can have lower processing requirements and the data on the network is  less
+susceptible to be able to be compromised since the gateway won't be managing the
+state of the network. In this scenario, the gateway would only implement a
+LoRaWAN packet forward, otherwise known as a \emph{bridge}, to purely translate
+packets between LoRaWAN and the internet protocol (IP), and forward them to the
+LNS running in the AWS cloud. AWS' IoT Core allows the LNS service to integrate
+with the rest of an application's services through the MQTT protocol. MQTT
+stands for "Message Queueing Telemetry Transport", and it is a protocol built
+for IoT devices to provide an easier-to-use, light-weight publish/subscribe
+message transport protocol to take place of HTTP/HTTPS. It's perfect for
+resource-limited IoT devices where mainly all they need to do is inform a server
+of some event that happened. The MQTT protocol runs on top of the TCP/IP
+protocol.
+
+Through AWS' IoT device management service, devices can be registered in bulk.
+It also allows users the ability to organize, track, and manage their devices
+depending on their business and security needs. Through the manager, firmware
+upgrades can be dispatched, and automatically manage which specific devices need
+to be updated. Commands can be operated on fleets of devices, and allow for
+secure remote execution. The IoT device manager has integration with many of
+Amazon's other IoT specific and non-IoT services to provide a cohesive
+experience for the developer, and speed users expect.
 
 \subsubsection{The Web Application Software Stack}
 
