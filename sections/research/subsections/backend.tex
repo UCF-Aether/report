@@ -122,6 +122,7 @@ hosting, and social integration, such as Twitter, email, or SMS. AWS most
 importantly has direct support for LoRaWAN IoT devices. This means that you can
 run a LNS in the cloud, further securing the LoRa network. 
 
+
 Because the LoRa network server doesn't have to run on the gateway, the gateway
 can have lower processing requirements and the data on the network is  less
 susceptible to be able to be compromised since the gateway won't be managing the
@@ -135,7 +136,20 @@ for IoT devices to provide an easier-to-use, light-weight publish/subscribe
 message transport protocol to take place of HTTP/HTTPS. It's perfect for
 resource-limited IoT devices where mainly all they need to do is inform a server
 of some event that happened. The MQTT protocol runs on top of the TCP/IP
-protocol.
+protocol. The IoT core also provides AWS Lambda execution, which are quick start
+up, server-less, and reactive compute service that automatically scales based on
+need. Lambdas, and other forms of server processing, can be triggered based on
+event rules. Rules are filters and binning services that allow an application to
+trigger events and/or run certain functions when an IoT message matching a
+rule-set is received. Rules can be created to filter messages based on device,
+node types, device groups, or any other field in MQTT messages.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=5in]{aws-iot-core.png}
+  \caption{Amazon Web Services IoT Core Network Diagram}
+  \label{aws-iot-core}
+\end{figure}
 
 Through AWS' IoT device management service, devices can be registered in bulk.
 It also allows users the ability to organize, track, and manage their devices
