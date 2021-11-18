@@ -115,9 +115,33 @@ Cost per Life Cycle (USD/kWh)    & 0.17     & 0.19 \\\hline
 
 Throughout this section, we have researched and explored the different characteristics that impact how a specific type of battery functions. Here we will provide a provide a brief summary of the comparison of the battery characteristics between lithium ion batteries and lead acid batteries. The overall discharge curve of lithium batteries is much flatter than lead acid, indicating that they give a constant voltage as they discharge. In terms of materials, lithium ion batteries have a much higher energy density than lead acid batteries meaning that the batteries will be smaller, weigh less, and have a higher capacity.  In terms of temperature change, lead acid batteries have a higher temperature range and vice versa for discharge and lithium ion batteries. The charging advisory for lithium ion batteries is higher and not supposed to occur below freezing, which can be an issue in colder climates. We can see the depth of discharge has a much steeper curve for lead acid batteries. This tells us that lithium ion batteries can go through more charge cycles before becoming reaching the 80\% capacity threshold. The only large difference in the charge curve between lead acid batteries and lithium ion batteries is that lithium ion batteries have a much shorter charge time. Finally, the comparison between initial cost per capacity and cost per life cycle between both battery types can be observed in Table \ref{tab:battery-cost-comparison}. The operational cost per cycle is slightly higher and the upfront cost is much higher for lithium ion batteries. Due to these factors we have decided to use a lithium ion battery in our design.
 
+\subsubsection{Summary}
+Throughout this section we have noticed many large and small differences between our possible selections. These have been complied and are presented as such in table (c). You can plainly see when compared lithium ion out performs lead acid in terms of quality however in terms of cost lead acid clearly leads. As a result our project must choose if lithium acids' quality exceeds the increase in price tag and it has been decided that it has. As a result of sing a lithium ion battery our project will be better equipped in colder climates, last longer, and give a more constant output during use. 
+\begin{table}
+\centering\scriptsize
+\caption{Differences between Lead Acid and Lithium Ion Batteries}
+\begin{tabular}{|r|c|c|}
+\hline
+Characteristic&Findings \\\hline
+
+Discharge Curve&The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge. 
+  \\\hline
+Energy Density&In terms of materials lithium has a much higher energy density than lead meaning that the batteries will be smaller, weigh less, and have a higher capacity. 
+  \\\hline
+Temperature Dependence&When it's come to temperature charge lead acid has a higher temperature range and vice versa for discharge and lithium. Charging advisory for lithium is higher and not supposed to occur below freezing which can be a factor in colder climates. 
+  \\\hline
+Service Life&As we can see the depth of discharge has a much steeper curve for lead acid. This tells us that lithium can go through more charge cycles before becoming reaching the 80% capacity threshold. 
+  \\\hline
+Charge Curve&The only large difference in the charge curve is lithium's much shorter charge time.  
+Cost&The cost of lead acid and lithium are clear and square from the table. The operational cost per cycle is slightly higher and the upfront cost is much higher.
+  \\\hline
+\end{tabular}
+\label{tab:battery-comparison}
+\end{table}
 
 \paragraph{Decision}
-Here is where we will show the battery we will use along with its chemistry, capacity, and amps we will use along with a link to its data sheet. 
+The chosen battery is the PRT-13856. This is a 3 cell battery with a voltage of 3.7V and 6AH. This means we can expect 22.2WH of capacity allowing our device to run for months without need of even recharging. This battery will be a major asset when it comes to concerns of keeping our system supplied with power in more extreme conditions over longer periods of time. A link to the data sheet is as follows:
+https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-13856/6605200
 
 \subsection{Solar Panel}
 
@@ -161,8 +185,9 @@ Unlike the previous two types of solar panels, thin film solar panels are mostly
 \end{figure}
 \subsubsection{Summary}
 
-Here is where we will show which solar panel, we will use along with a link to its data sheet. 
+The selection of solar panels comes down to less factors than the battery. Here the differences between the first two types monocrystaline and poly crystaline are very straight forward. Monocrystaline will provide more efficiency but polycrystaline will be more affordable. However when thin film solar panel are introduced we must consider different factors such as placement of the solar panel. Show we provide the solar panel with a jagged or uneven surface to be placed on then extra precautions would be needed to have one of the first two panels making thin film more convienient and reliable. How ever due to the nature of our project and its intended use we can comfortably provide our solar panel with a reliable and safe solar panle placement leading once again if the increase in efficiency is worth the increase in cost. Seeing as on average monocrystaline is between 6-53% 
+more efficient than polycrystaline our team has decided that the increase in cost is justified. As a result the solar panel we have decided upon is the P105, a monocrystaline 5.5W 6V solar panel. This should provide our system with a reliable and powerful source of power capable of keeping the system independently online.
 
 
 \subsection{USB Power}
-In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. As such a design has been implemented as seen in Figure X. This design places a multiplexer than normally receives power from the solar panel and a USB charging connection. The multiplexer would take power from the solar panel and feed it to the buck booster, unless power from the USB connection were to flow. This way the battery could take in power from either only the solar panel or USB connection.
+In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. This design incorperates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.
