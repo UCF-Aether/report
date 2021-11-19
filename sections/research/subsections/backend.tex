@@ -126,6 +126,12 @@ hosting, and social integration, such as Twitter, email, or SMS. AWS most
 importantly has direct support for LoRaWAN IoT devices. This means that you can
 run a LNS in the cloud, further securing the LoRa network. 
 
+\begin{figure}
+  \centering
+  \includegraphics[width=5in]{aws-iot-core.png}
+  \caption{Amazon Web Services IoT Core Network Diagram}
+  \label{aws-iot-core}
+\end{figure}
 
 Because the LoRa network server doesn't have to run on the gateway, the gateway
 can have lower processing requirements and the data on the network is  less
@@ -148,12 +154,6 @@ trigger events and/or run certain functions when an IoT message matching a
 rule-set is received. Rules can be created to filter messages based on device,
 node types, device groups, or any other field in MQTT messages.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=5in]{aws-iot-core.png}
-  \caption{Amazon Web Services IoT Core Network Diagram}
-  \label{aws-iot-core}
-\end{figure}
 
 Through AWS' IoT device management service, devices can be registered in bulk.
 It also allows users the ability to organize, track, and manage their devices
@@ -166,3 +166,9 @@ experience for the developer, and speed users expect.
 
 \subsubsection{The Web Application Software Stack}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=5in]{server-stack}
+  \caption{Backend Server and Web Application Stack}
+  \label{server-stack}
+\end{figure}
