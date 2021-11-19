@@ -113,7 +113,9 @@ Microsoft Azure is a cloud computing service that is operated by Microsoft throu
 
 One of these tools is known as Azure IoT Central. This is a tool that allows for the rapid and easy creation of web applications due to the plug-and-play nature and large quantity of templates. This tool makes it easy to quickly setup a web application that can display data from our sensor nodes.
 
-Another tool is known as Azure IoT Hub. The goal of this tool is to enable secure and reliable communication between an IoT web application and the devices that it manages. It is essentially a cloud-hosted backend that connects virtually any device. Azure IoT Hub also supports the ability to send cloud-to-device messages.Azure IoT Hub also supports the ability to send cloud-to-device messages. The messages allow the user to reliably send commands and notifications to any connected devices and track message delivery with acknowledgement receipts. This allows for bidirectional
+Another tool is known as Azure IoT Hub. The goal of this tool is to enable secure and reliable communication between an IoT web application and the devices that it manages. It is essentially a cloud-hosted backend that connects virtually any device. Azure IoT Hub also supports the ability to send device-to-cloud messages. These messages allow the user to understand the state of the device and define message routes to other Azure tools and services. Azure IoT Hub also supports the ability to send cloud-to-device messages. These messages allow the user to reliably send commands and notifications to any connected devices and track message delivery with acknowledgement receipts. This allows for bidirectional communication between devices and the cloud.
+
+% Write about pricing for azure here
 
 \paragraph{Amazon AWS}
 Amazon AWS is another major cloud computing service provider, especially known
@@ -166,7 +168,12 @@ secure remote execution. The IoT device manager has integration with many of
 Amazon's other IoT specific and non-IoT services to provide a cohesive
 experience for the developer, and speed users expect.
 
+% Add final price table for AWS
+
+% Add paragraph describing why we went with AWS
+
 \subsubsection{The Web Application Software Stack}
+The front facing user web application will be the main way of interfacing and managing the nodes, as well as viewing the measured data in a visual and graphical format. The application will need to a
 
 \begin{figure}
   \centering
