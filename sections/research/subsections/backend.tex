@@ -36,6 +36,7 @@ device at the expense of added complexity. Luckily, there are many solutions
 available through service providers, such as AWS.
 
 \subsubsection{LoRa Packet Forwarding}
+LoRa packet forwarding is the key function of a LoRaWAN gateway. As stated before, the 
 
 \subsubsection{LoRaWAN Network Servers} The sensor nodes communicate over LoRa
 using the LoRaWAN protocol to gateways.  These gateways are running what is
@@ -92,7 +93,6 @@ In order to discuss how to set up your own LoRaWAN gateway as a Helium Hotspot, 
 It is important to note that there is an additional entity that is a part of the Helium Network, but it is not a Hotspot. It is known as a Validator. A consensus group of Validator nodes receive Proof of Coverage and device-related transaction requests from Light Hotspots and both verifies these requests and reaches an agreement on the ordering before forming a new block and adding it to the blockchain.
 
 \begin{table}
-
 \centering
 \caption{Summary of Helium Hotspot types}
 \begin{tabular}{|l|l|l|l|}
@@ -108,6 +108,20 @@ Proof of Coverage & No & Yes & Yes \\\hline
 \subsubsection{Application Service Providers}
 In this section we will describe two of the major competitors in the cloud hosting business, Amazon's AWS and Microsoft Azure. We will use the infrastructure from one of these two companies to host the software that will manage the data received from LoRaWAN gateways as well as to host the web-based user interface that will display statistics and information related to data collected from the sensor nodes. It should be noted that while we could explore the option where we perform our own hosting, the required initial monetary and time investment is far too great for our needs. This is in addition to the fact that both of these cloud service providers have free usage pricing tiers that include a feature set that is more than enough to meet our requirements.
 
+\begin{table}[t]
+\centering\footnotesize
+\caption{Microsoft Azure pricing structure}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Pricing Tier & Standard Tier 0 & Standard Tier 1 & Standard Tier 2 \\\hline
+Price per device per month & \$0.08 per Month & \$0.40 per Month & \$0.70 per Month \\\hline
+Monthly device message allocation & 400 messages & 5,000 messages & 30,000 messages \\\hline
+Included free quantities per application & 2 free devices & 2 free devices  & 2 free devices  \\\hline
+Overage pricing per 1K messages & \$0.07 & \$0.015 & \$0.015 \\\hline
+\end{tabular}
+\label{tab:azure-pricing}
+\end{table}
+
 \paragraph{Microsoft Azure}
 Microsoft Azure is a cloud computing service that is operated by Microsoft through their own data centers. Azure is composed of large number of different services. One of those services is known as Azure IoT. This is the service that we would primarily be using for our project. Azure IoT itself is made up of a large quantity of tools and sub-services that were created to assist users of Azure IoT with building their application. These would be the features of Azure that we would need to use and interact with to build our project.
 
@@ -115,7 +129,9 @@ One of these tools is known as Azure IoT Central. This is a tool that allows for
 
 Another tool is known as Azure IoT Hub. The goal of this tool is to enable secure and reliable communication between an IoT web application and the devices that it manages. It is essentially a cloud-hosted backend that connects virtually any device. Azure IoT Hub also supports the ability to send device-to-cloud messages. These messages allow the user to understand the state of the device and define message routes to other Azure tools and services. Azure IoT Hub also supports the ability to send cloud-to-device messages. These messages allow the user to reliably send commands and notifications to any connected devices and track message delivery with acknowledgement receipts. This allows for bidirectional communication between devices and the cloud.
 
-% Write about pricing for azure here
+Besides features, another critical factor when deciding what cloud hosting service we are going to use is price. Azure IoT has three pricing tiers. As you move up in the tiers you gain access to resources, meaning you can connect more IoT devices and send more messages, however, you start to pay more per month. For our purposes, Standard Tier 0 is more than enough. We plan to connect no more than two to three devices (one or two sensor nodes and a gateway). This would mean that we stay within the "2 free devices" portion of the tier and even if we were to connect more, the price would still only be \$0.08 per additional device per month. Additionally, our design does require the transmission of that many messages per day, meaning that should stay well within the limit of 400 messages per month. The breakdown of the pricing scheme can be found in Table \ref{tab:azure-pricing}.
+
+
 
 \paragraph{Amazon AWS}
 Amazon AWS is another major cloud computing service provider, especially known
