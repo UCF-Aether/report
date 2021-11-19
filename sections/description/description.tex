@@ -50,7 +50,7 @@ coverage centered around a LoRa gateway.
 
 
 \subsection{Requirements Specifications}
-
+In this section, we will describe in detail all of the requirements for our design. However, before going through the entire list, we will first explore three critical requirements. These three requirements will be the ones that we will demonstrate that our finished project satisfies once it has been built. These three requirements can be found in Table \ref{tab:demon-requirements}.
 \begin{table}[H]
 \centering
 \caption{Demonstrable requirements}
@@ -70,14 +70,14 @@ user via Twitter, SMS, and/or email \\\hline
 \label{tab:demon-requirements}
 \end{table}
 
-One the first requirements considered for the gateway was total cost. The goal is to keep the cost of the gateway portion of the design to under \$200. Next, a demonstrable requirement specification for this design is its dimensions. Aether’s gateway shall not exceed dimensions greater than 6 x 6 x 6 inches. Given the size and versatility of the sensors that will be used, this should be easily accomplished. Another demonstrable requirement specification the team will focus on is ensuring the gateway does not exceed 5 pounds. This should not be a problem given the fact that most of the components used in the design are extremely compact and lightweight. In regards to communication, each gateway must be capable of supporting a minimum of 8 channels. In addition to this, a gateway must be able to communicate with a node that is located anywhere from 0 to 10 km away from it. These requirements are shown in Table \ref{tab:gateway-requirements}.
+One the first requirements considered for the gateway was total cost. The goal is to keep the cost of the gateway portion of the design to under \$200. Next, a demonstrable requirement specification for this design is its dimensions. Aether’s gateway shall not exceed dimensions greater than 6 x 6 x 6 inches. Given the size and versatility of the sensors that will be used, this should be easily accomplished. Another demonstrable requirement specification the team will focus on is ensuring the gateway does not exceed 5 pounds. This should not be a problem given the fact that most of the components used in the design are extremely compact and lightweight. In regards to communication, each gateway must be capable of supporting a minimum of 8 channels. In addition to this, a gateway must be able to communicate with a node that is located anywhere from 0 to 10 km away from it. These requirements are shown in Table \ref{tab:list-of-requirements}.
 
-For the node requirement specifications, the first thing considered was total cost. It was determined that the node should cost no more than \$150 dollars. It should be cheaper than the gateway design since the node will not have the Lo-Ra-WAN board. Similar to the gateway, the dimensions should not exceed 6 x 6 x 6 inches and the weight should be under 5 pounds, two demonstrable features for the node requirements. Additionally, the nodes should be able to successfully send packets of data to the main server through central Lo-Ra-WAN gateway. Each node will be equipped with a solar panel capable of charging the lithium-ion batteries inside the node, thus giving the nodal system the ability to operate off the grid. The nodes will also be equipped with different power modes to support different demands and efficiently manage battery life. When calculating the AQI level, the nodes must be able to output AQI values in the 300 to 400 range since anything above 300 on an AQI scale is considered hazardous breathing conditions. Node data should be able to be sent to the gateway at a distance up to 10km. Lastly, the node should be able to be configured remotely from the server so field maintenance is kept at a minimum. In Table \ref{tab:node-requirements}, we list the node requirement specifications.  
+For the node requirement specifications, the first thing considered was total cost. It was determined that the node should cost no more than \$150 dollars. It should be cheaper than the gateway design since the node will not have the Lo-Ra-WAN board. Similar to the gateway, the dimensions should not exceed 6 x 6 x 6 inches and the weight should be under 5 pounds, two demonstrable features for the node requirements. Additionally, the nodes should be able to successfully send packets of data to the main server through central Lo-Ra-WAN gateway. Each node will be equipped with a solar panel capable of charging the lithium-ion batteries inside the node, thus giving the nodal system the ability to operate off the grid. The nodes will also be equipped with different power modes to support different demands and efficiently manage battery life. When calculating the AQI level, the nodes must be able to output AQI values in the 300 to 400 range since anything above 300 on an AQI scale is considered hazardous breathing conditions. Node data should be able to be sent to the gateway at a distance up to 10km. Lastly, the node should be able to be configured remotely from the server so field maintenance is kept at a minimum. In Table \ref{tab:list-of-requirements}, we list the node requirement specifications.  
 
 
 \begin{table}[H]
 \centering
-\caption{The gateway requirements}
+\caption{List of requirements}
 \begin{tabularx}{\linewidth}{|c|X|}
 \hline
 No. & Requirement \\
@@ -102,11 +102,11 @@ S.0 & The server will host a website to display a map overlaid with air quality 
 S.1 & The server should be able to send air quality alerts over Twitter and SMS \\\hline
 S.2 & The server will be able to automatically register nodes with other supported LoRaWAN Network Servers (Helium, The Things Community, and private networks) \\\hline
 \end{tabularx}
-\label{tab:server-requirements}
+\label{tab:list-of-requirements}
 \end{table}
 
+On the server side, a host website should be able to display a map overlaid with different air quality data collected from the field. Additionally, the server will have the ability to send air quality reports and alerts via Twitter and SMS. Another requirement specification for the server will be its ability to register nodes with other supported LoRaWAN IoT network servers such as Helium. The server should have the ability to remotely configure nodes in the field to the user's desired operating modes and specifications. The server requirements are listed in Table \ref{tab:list-of-requirements}.
 
-On the server side, a host website should be able to display a map overlaid with different air quality data collected from the field. Additionally, the server will have the ability to send air quality reports and alerts via Twitter and SMS. Another requirement specification for the server will be its ability to register nodes with other supported LoRaWAN IoT network servers such as Helium. The server should have the ability to remotely configure nodes in the field to the user's desired operating modes and specifications. The server requirements are listed in Table \ref{tab:server-requirements}. 
 
 % \begin{table}[H]
 % \centering
@@ -188,6 +188,7 @@ On the server side, a host website should be able to display a map overlaid with
 \centering
 \caption{The constraints.}
 \begin{tabularx}{\linewidth}{|X|}
+
 \hline
 Constraint \\
 \hline

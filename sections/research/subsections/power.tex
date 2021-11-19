@@ -29,8 +29,25 @@ The MCP73871 comes with a constant voltage regulation feature that is fixed with
 \subsubsection{Charge Controller Chosen for Power System}
 Microchip's MCP73871 charge controller was ultimately chosen as the best option for the solar/USB powered Aether node sensor network system. In the end, the decision for which solar/USB charge controller would be used in the power system ultimately came down to the two charge controllers discussed above. Both met the requirements of having dual-input power lines for operating the system with both a solar panel or a USB input. Additionally, both chargers came with built in circuit protection features and timers to make sure the Li-Io battery was not charged under dangerous conditions. The BQ2416xx and MCP73871 charge controllers both implemented a load sharing design where the system can be powered directly from the input voltage while simultaneously charging the battery. Although these charge controllers were similar in price and other features, there were some differences which led to choosing the MCP73871 charge controller over Texas Instrument's BQ2416xx IC. 
 
-The first difference that leaned the decision towards our chosen charge controller was the operating input voltage range. MCP73871 required a minimum of 0.3 V to operate with a maximum input of 6 V. On the other hand, the BQ2416xx charge controller needed a minimum of 4.2V input to properly operate with a max of 6 V. Since the input voltage line would be directly connected to the solar panel output, the voltage output could not be guaranteed to always provide 4.2 V to the charge controller. By using the MCP73871 chip, it gave a certain degree of flexibility to the required output of the solar panel. If the solar panel's input voltage was not enough to meet load demand the chip would still be operational and draw current from the Li-Io battery. However, if the solar panel was not outputting a minimum of 4.2V, the chip would not properly operate and the system may only be powered through USB input. Another factor contributing to the decision was the charge controllers charge rate range. The MCP73871 charge controller can output a low fast charge rate of 100mA and can be controlled through resistors. On the other hand, the BQ2416xx charge controller had a fast charge rate ranging from 550mA to 2500mA, given more than what is needed and not being able to provide a lower fast charge rate for low power mode system operation. One feature Microchip's IC had over Texas Instruments was the battery status lines that would play a crucial role in monitoring battery status remotely and on the field. From the table comparing both choices, it can also be seen that the leakage current for the BQ2416xx chip was slightly higher than that of the MCP73871. Microchip's MCP73871 was determined to be the best choice for a solar/USB charge controller given its added features and flexibility along with the ease of integration to the system. 
+The first difference that leaned the decision towards our chosen charge controller was the operating input voltage range. MCP73871 required a minimum of 0.3 V to operate with a maximum input of 6 V. On the other hand, the BQ2416xx charge controller needed a minimum of 4.2V input to properly operate with a max of 6 V. Since the input voltage line would be directly connected to the solar panel output, the voltage output could not be guaranteed to always provide 4.2 V to the charge controller. By using the MCP73871 chip, it gave a certain degree of flexibility to the required output of the solar panel. If the solar panel's input voltage was not enough to meet load demand the chip would still be operational and draw current from the Li-Io battery. However, if the solar panel was not outputting a minimum of 4.2V, the chip would not properly operate and the system may only be powered through USB input. Another factor contributing to the decision was the charge controllers charge rate range. The MCP73871 charge controller can output a low fast charge rate of 100mA and can be controlled through resistors. On the other hand, the BQ2416xx charge controller had a fast charge rate ranging from 550 mA to 2500 mA, given more than what is needed and not being able to provide a lower fast charge rate for low power mode system operation. One feature Microchip's IC had over Texas Instruments was the battery status lines that would play a crucial role in monitoring battery status remotely and on the field. From the table comparing both choices, it can also be seen that the leakage current for the BQ2416xx chip was slightly higher than that of the MCP73871. Microchip's MCP73871 was determined to be the best choice for a solar/USB charge controller given its added features and flexibility along with the ease of integration to the system. We provide a comparison between these two components in Table \ref{tab:charge-controller-part-comparison}.
 %IAN NEED HELP ADDING TABLE COMPARISON HERE
+
+\begin{table}
+\centering\footnotesize
+\caption{Comparison between two candidate solar panel charge controller}
+\begin{tabular}{|c|c|c|}
+\hline
+Part Name & MCP73871 & BQ2416xx \\
+\hline\hline
+Price (\$) & 3 & 3 \\\hline
+IN Operating Voltage Range (V) & $0.3 - 6$ & $4.2-18$ \\\hline
+I$_{\text{SS}}$ Max Charge Range (mA) & $2.5-3.75$ & $0-2.5$ \\\hline
+Leakage Current ($\mu$A) & 1 & 5 \\\hline
+Fast Charge Rate (mA) & $100-500$ & $550-2500$ \\\hline
+Charge Voltage Range (V) & $4.10/4.2/4.35/4.4$ & $3.5-4.44$ \\\hline
+\end{tabular}
+\label{tab:charge-controller-part-comparison}
+\end{table}
 
 \subsection{Batteries}
 In this section, we provide an overview of the different types of batteries that we considered for use in our design. These types include lead acid batteries and lithium batteries. We also cover the different characteristics that we considered during the process of choosing a battery type.
@@ -148,24 +165,24 @@ Throughout this section, we have researched and explored the different character
 \subsubsection{Summary}
 Throughout this section we have noticed many large and small differences between our possible selections. These have been complied and are presented as such in table (c). You can plainly see when compared lithium ion out performs lead acid in terms of quality however in terms of cost lead acid clearly leads. As a result our project must choose if lithium acids' quality exceeds the increase in price tag and it has been decided that it has. As a result of sing a lithium ion battery our project will be better equipped in colder climates, last longer, and give a more constant output during use. 
 \begin{table}
-\centering\scriptsize
+\centering\footnotesize
 \caption{Differences between Lead Acid and Lithium Ion Batteries}
-\begin{tabular}{|r|c|c|}
+\begin{tabularx}{\linewidth}{|r|X|}
 \hline
-Characteristic&Findings \\\hline
+Characteristic & Findings \\\hline
 
-Discharge Curve&The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge. 
+Discharge Curve & The overall discharge curve of lithium was much flatter showing that they give a constant voltage as they discharge. 
   \\\hline
-Energy Density&In terms of materials lithium has a much higher energy density than lead meaning that the batteries will be smaller, weigh less, and have a higher capacity. 
+Energy Density & In terms of materials lithium has a much higher energy density than lead meaning that the batteries will be smaller, weigh less, and have a higher capacity. 
   \\\hline
-Temperature Dependence&When it's come to temperature charge lead acid has a higher temperature range and vice versa for discharge and lithium. Charging advisory for lithium is higher and not supposed to occur below freezing which can be a factor in colder climates. 
+Temperature Dependence & When it's come to temperature charge lead acid has a higher temperature range and vice versa for discharge and lithium. Charging advisory for lithium is higher and not supposed to occur below freezing which can be a factor in colder climates. 
   \\\hline
-Service Life&As we can see the depth of discharge has a much steeper curve for lead acid. This tells us that lithium can go through more charge cycles before becoming reaching the 80% capacity threshold. 
+Service Life&As we can see the depth of discharge has a much steeper curve for lead acid. This tells us that lithium can go through more charge cycles before becoming reaching the 80\% capacity threshold. 
   \\\hline
-Charge Curve&The only large difference in the charge curve is lithium's much shorter charge time.  
+Charge Curve&The only large difference in the charge curve is lithium's much shorter charge time. \\\hline
 Cost&The cost of lead acid and lithium are clear and square from the table. The operational cost per cycle is slightly higher and the upfront cost is much higher.
   \\\hline
-\end{tabular}
+\end{tabularx}
 \label{tab:battery-comparison}
 \end{table}
 
@@ -186,22 +203,22 @@ In this section, we will discuss the different types of solar panels that are be
 
 \subsubsection{Monocrystalline Solar Panels}
 
-Like the name suggests monocrystalline solar panel cells are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. This structure also provides more durability enabling the panel to last for years longer than its alternatives. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{fig:mono-sp}. Here one can see the EVA films on either side of the silicon wafers. The wafers itself made up of a single bar of silicon giving the solar panel its name monocrystaline. This figure was provided by Alternative Energy Solutions, as alternative energy information source.
+Like the name suggests monocrystalline solar panel cells are made from a single crystal of silicon. Having a single crystal gives electrons more room to flow providing greater efficiency providing more power to the load which is the largest advantage of this type of panel. This, however, is more difficult to create, making it the more expensive option. This structure also provides more durability enabling the panel to last for years longer than its alternatives. An example of the features one can expect from a monocrystalline panel can be seen in Figure \ref{fig:mono-sp}. Here one can see the EVA films on either side of the silicon wafers. The wafers itself made up of a single bar of silicon giving the solar panel its name monocrystalline. This figure was provided by Alternative Energy Solutions, as alternative energy information source.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/monocrystaline.png}
-    \caption{An example of a monocrystaline solar panel.}
+    \caption{An example of a monocrystalline solar panel.}
     \label{fig:mono-sp} 
 \end{figure}
-\subsubsection{Polycrystalline Solar Panels}
+\subsubsection{Polycrystalline solar panels}
 
 Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. This structure also provides not as much durability as its monocrystalline counterpart however it does last longer than its thin film competition. An example of the features one can expect from a polycrystalline panel can be seen in Figure \ref{fig:poly-sp}. Here one can see the EVA films on either side of the silicon wafers. The wafers itself made up of silicon fragments melted together to produce individual wafers giving the solar panel its name polycrystalline. This figure was provided by Clean Energy Reviews an independent energy source review site.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/polycrystaline solar.png}
-    \caption{Polycrystaline Solar Panel.}
+    \caption{Polycrystalline solar panel.}
     \label{fig:poly-sp} 
 \end{figure}
 \subsubsection{Thin Film Solar Panels}
@@ -219,20 +236,38 @@ The selection of solar panels comes down to less factors than the battery. Here 
 
 \begin{table}
 \centering\footnotesize
-\caption{Differences between Solar Panel Subtypes}
+\caption{Differences between solar panel subtypes}
 \begin{tabular}{|r|c|c|c|}
 \hline
-Solar Panel Type & Efficiency (\%) & Price Per Watt (USD/W) & Projected Life Span (years) \\\hline
+Solar Panel Type & Efficiency (\%) & Price Per Watt (USD/W) & Projected Life Span (years) \\ 
+\hline\hline
 Monocrystalline & $17-20$ & $1.00-1.50$ & $25-35$ \\\hline
 Polycrystalline & $13-16$ & $0.70-1.00$ & $23-27$ \\\hline
 Thin Film & $4-12$ & $1.00-1.50$ & $14-17$ \\\hline
 \end{tabular}
-\label{tab:Solar-Panel-comparison}
+\label{tab:solar-Panel-comparison}
 \end{table}
 
 \subsubsection{Solar Panel Chosen for Nodes}
-The decision of which solar panel to use ultimately only came down to very few factors and was trivial. Output voltage was the only main requirement that needed to be met. The charge controllers for Li-Io batteries operate best with 6V solar panels. Both of the Voltaic solar panels considered were 6V panels and were similar in dimensions. The final decision came down to cost and wattage. Voltaic's P105 was chosen for this design due to its lower cost and higher wattage output. When compared to the other option, this solar panel was higher in wattage by 2W and \$10 cheaper, contributing to a lower overall cost. The maximum voltage output was 6.2V versus 6.7V, also making it a safer choice to use on the battery charge controller used in the design. The table comparison can be seen below.
+The decision of which solar panel to use ultimately only came down to very few factors and was trivial. Output voltage was the only main requirement that needed to be met. The charge controllers for Li-Io batteries operate best with 6V solar panels. Both of the Voltaic solar panels considered were 6V panels and were similar in dimensions. The final decision came down to cost and wattage. Voltaic's P105 was chosen for this design due to its lower cost and higher wattage output. When compared to the other option, this solar panel was higher in wattage by 2W and \$10 cheaper, contributing to a lower overall cost. The maximum voltage output was 6.2V versus 6.7V, also making it a safer choice to use on the battery charge controller used in the design. The comparison between these two components can be found in Table \ref{tab:solar-panel-part-comparison}.
 %DONT KNOW HOW TO REFERNCE TABLES AND NEED HELP PUTTING SOLAR PANEL TABLE HERE. THANKS!
 
+\begin{table}
+\centering
+\caption{Comparison between two candidate solar panels}
+\begin{tabular}{|l|l|l|}
+\hline
+Part Name & Voltaic Systems P105 & Voltaic Systems 3.5W 6V \\
+\hline\hline
+Type & Monocrystalline & Monocrystalline \\\hline
+Dimensions & 8.740" L x 5.394" W x 0.157" H & 8.3"L x 4.4"W x 0.2"H \\\hline
+Price (\$) & 35 & 45 \\\hline
+Max Power (W) & 5.75 & 3.69 \\\hline
+I$_{\text{p}}$/I$_{\text{sc}}$ (mA) & $940/990$ & $550/590$ \\\hline
+V$_{\text{p}}$/V$_{\text{oc}}$ (V) & $6.12/7.13$ & $6.7/7.7$ \\\hline
+\end{tabular}
+\label{tab:solar-panel-part-comparison}
+\end{table}
+
 \subsection{USB Power}
-In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. This design incorperates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.
+In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.
