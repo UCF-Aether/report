@@ -269,12 +269,12 @@ Onethinx Core       & +20.0 & -137  & 1.66    & 3.67    & 118 & 4.20  & 1.8 - 3.
 Table \ref{lora-module-io} shows the I/O capabilities of the modules researched. An
 integrated LoRa antenna connector would be ideal, but if the performance of the
 module is good, then it doesn't matter as much. Also, it was a requirement that
-the module have at least one UART, SPI, and I$^2$ port. Note that while the MCUs
+the module have at least one UART, SPI, and \iic port. Note that while the MCUs
 and transceivers used may have a set of I/O capabilities, they may not be
 exposed to use on the module. Also, the I/O capabilities tabulated are not
 mutually exclusive. Meaning, that if one of the UART ports are enabled, then
 there may be less GPIOs available, or even SPI, for example, if they are mux-ed
-on the same port. However, in most cases, using UART, SPI, or I$^2$C only
+on the same port. However, in most cases, using UART, SPI, or \iic only
 removes 2-4 GPIO pins. For the Microchip module, it has 4 general I/O ports that
 can configured to be either of the aforementioned communication protocols.
 
@@ -283,7 +283,7 @@ can configured to be either of the aforementioned communication protocols.
 \caption{LoRa Module I/O Comparison}
 \begin{tabular}{|r|c|c|c|c|c|c|c|c|}
 \hline
-Module & LoRa antenna & BLE? & USB? & ADCs & SPI & I$^2$C & UART & GPIO \\
+Module & LoRa antenna & BLE? & USB? & ADCs & SPI & \iic & UART & GPIO \\
 \hline\hline
 
 Seeed LoRa-E5       & External  & \no  & \no  & 12-bit, 1ch   & 1 & 1 & 3 & 10 \\\hline

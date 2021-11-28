@@ -36,7 +36,9 @@ device at the expense of added complexity. Luckily, there are many solutions
 available through service providers, such as AWS.
 
 \subsubsection{LoRa Packet Forwarding}
-LoRa packet forwarding is the key function of a LoRaWAN gateway. As stated before, the goal of  the LoRaWAN gateway is to take data being transmitted from LoRa end-devices and route it to the internet via another communication protocol, such as WiFi. T
+LoRa packet forwarding is the key function of a LoRaWAN gateway. As stated before, the goal of  the LoRaWAN gateway is to take data being transmitted from LoRa end-devices and route it to the internet via another communication protocol, such as WiFi. To perform this action, a LoRaWAN gateway contains a software that is referred to as the packet forwarding. This software is responsible for demodulating LoRa RF packets received from end-nodes and transmitting them to the server. 
+
+Many different LoRa packet forwarding software exists already and can be used by anyone setting up a custom gateway. An example is the Semtech UDP Packet Forwarding. This is the original LoRa packet forwarding created by the company who created the LoRa standard. In fact, most off-the-shelf gateways include a pre-compiled version of this software. Another popular LoRa packet forwarding protocol is MQTT, which is used with Chirpstack.
 
 \subsubsection{LoRaWAN Network Servers} The sensor nodes communicate over LoRa
 using the LoRaWAN protocol to gateways.  These gateways are running what is
@@ -98,7 +100,7 @@ It is important to note that there is an additional entity that is a part of the
 \begin{tabular}{|l|l|l|l|}
 \hline
 Rewards Type & Data Only Hotspots & Full Hotspots & Light Hotspots \\
-\hline
+\hline\hline
 Network Data Forwarding & Yes & Yes & Yes \\\hline
 Proof of Coverage & No & Yes & Yes \\\hline
 \end{tabular}
@@ -113,7 +115,8 @@ In this section we will describe two of the major competitors in the cloud hosti
 \caption{Microsoft Azure pricing structure}
 \begin{tabular}{|l|l|l|l|}
 \hline
-Pricing Tier & Standard Tier 0 & Standard Tier 1 & Standard Tier 2 \\\hline
+Pricing Tier & Standard Tier 0 & Standard Tier 1 & Standard Tier 2 \\
+\hline\hline
 Price per device per month & \$0.08 per Month & \$0.40 per Month & \$0.70 per Month \\\hline
 Monthly device message allocation & 400 messages & 5,000 messages & 30,000 messages \\\hline
 Included free quantities per application & 2 free devices & 2 free devices  & 2 free devices  \\\hline
@@ -161,7 +164,7 @@ LoRaWAN packet forward, otherwise known as a \emph{bridge}, to purely translate
 packets between LoRaWAN and the internet protocol (IP), and forward them to the
 LNS running in the AWS cloud. AWS' IoT Core allows the LNS service to integrate
 with the rest of an application's services through the MQTT protocol. MQTT
-stands for "Message Queueing Telemetry Transport", and it is a protocol built
+stands for "Message Queuing Telemetry Transport", and it is a protocol built
 for IoT devices to provide an easier-to-use, light-weight publish/subscribe
 message transport protocol to take place of HTTP/HTTPS. It's perfect for
 resource-limited IoT devices where mainly all they need to do is inform a server
@@ -206,7 +209,9 @@ services make up the "Web Server and Backend Interface" layer in the figure. The
 the gap between the IoT layers and the web app layers. The Amazon DynamoDB is a
 NoSQL database, and is where the API gateway, AWS Lambda, and AWS IoT Events
 will share data. The Amazon Cognito user authentication is for logging in users
-in securely. AWS IoT Events provides a rule making service for identifying and
+in securely. 
+
+AWS IoT Events provides a rule making service for identifying and
 notifying of extenuating circumstances from data received from IoT devices on
 the network. This service will be utilized to help create the email, SMS, and/or
 Twitter alerts as previously mentioned. Events and rules, just like the rule
@@ -217,9 +222,11 @@ devices, and is continuously monitoring devices for failures, or other special
 case. The IoT rule engine, however, is for routing incoming MQTT messages to AWS
 Lambda, or other services to be further processed. IoT Events can also integrate
 with AWS Lambda and other services, but its use cases are entirely different.
-AWS Lambda is a serverless computing engine service. In computing, lambdas are
+AWS Lambda is a server-less computing engine service. In computing, lambdas are
 functions that can be passed around like variables, and can be created at
-runtime. AWS Lambda allows the developer to write functions that can be
+runtime.
+
+AWS Lambda allows the developer to write functions that can be
 instantiated, and automatically previsioned in the cloud, whenever an event or
 other service requests one. For example, AWS Lambdas could be used to decode
 binary MQTT messages into JSON, or another human readable format. The web
@@ -230,7 +237,8 @@ services to accept and send MQTT messages, manage devices, and route MQTT
 messages to other services. This is the layer that the LoRaWAN gateway packet
 forwarder will directly talk to.
 
-% TODO: finish writing about figure
+As for the web front-end, the React Javascript framework will be utilized with Typescript to quickly and more easily catch errors before deployment. React is a component-based Javascript framework originally developed by Facebook. It provides a virtual DOM (document object model), so that only specific parts of a web page are updated when the data behind them do. This is unlike how some traditional Javascript-only, DOM-driven websites were developed previously. Without a virtual DOM, it's impossible to safely know how changing data might affect the whole page, so the whole DOM was updated every time the state changed. React has a plentiful ecosystem of plugins, additional libraries, and tons of additonal documentation and help online from the huge community it has garnered.
+
 
 \begin{figure}
   \centering
@@ -238,3 +246,25 @@ forwarder will directly talk to.
   \caption{Backend Server and Web Application Stack}
   \label{server-stack}
 \end{figure}
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Amazon Web Services Pricing Estimate}
+\begin{tabular}{|r|c|c|}
+\hline
+Service & Use & Price (\$)\\
+\hline\hline
+
+AWS LoRaWAN IoT Core & LoRa NS & \\\hline
+AWS IoT Device Management & & \\\hline
+AWS Lambda & & \\\hline
+AWS IoT Events & & \\\hline
+Amazon DynamoDB & & \\\hline
+Amazon SNS & & \\\hline
+Amazon Cognito & & \\\hline
+AWS Amplify & & \\\hline
+AWS API Gateway & & \\\hline
+
+\end{tabular}
+\label{lora-module-io}
+\end{table}

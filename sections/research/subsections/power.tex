@@ -160,7 +160,7 @@ Cost per Life Cycle (USD/kWh)    & 0.17     & 0.19 \\\hline
 \label{tab:battery-cost-comparison}
 \end{table}
 
-Throughout this section, we have researched and explored the different characteristics that impact how a specific type of battery functions. Here we will provide a provide a brief summary of the comparison of the battery characteristics between lithium ion batteries and lead acid batteries. The overall discharge curve of lithium batteries is much flatter than lead acid, indicating that they give a constant voltage as they discharge. In terms of materials, lithium ion batteries have a much higher energy density than lead acid batteries meaning that the batteries will be smaller, weigh less, and have a higher capacity.  In terms of temperature charge, lead acid batteries have a higher temperature range and vice versa for discharge and lithium ion batteries. The charging advisory for lithium ion batteries is higher and not supposed to occur below freezing, which can be an issue in colder climates. We can see the depth of discharge has a much steeper curve for lead acid batteries. This tells us that lithium ion batteries can go through more charge cycles before becoming reaching the 80\% capacity threshold. The only large difference in the charge curve between lead acid batteries and lithium ion batteries is that lithium ion batteries have a much shorter charge time. Finally, the comparison between initial cost per capacity and cost per life cycle between both battery types can be observed in Table \ref{tab:battery-cost-comparison}. The operational cost per cycle is slightly higher and the upfront cost is much higher for lithium ion batteries. Due to these factors we have decided to use a lithium ion battery in our design.
+Throughout this section, we have researched and explored the different characteristics that impact how a specific type of battery functions. Here we will provide a provide a brief summary of the comparison of the battery characteristics between lithium ion batteries and lead acid batteries. The overall discharge curve of lithium batteries is much flatter than lead acid, indicating that they give a constant voltage as they discharge. In terms of materials, lithium ion batteries have a much higher energy density than lead acid batteries meaning that the batteries will be smaller, weigh less, and have a higher capacity. In terms of temperature charge, lead acid batteries have a higher temperature range and vice versa for discharge and lithium ion batteries. The charging advisory for lithium ion batteries is higher and not supposed to occur below freezing, which can be an issue in colder climates. We can see the depth of discharge has a much steeper curve for lead acid batteries. This tells us that lithium ion batteries can go through more charge cycles before becoming reaching the 80\% capacity threshold. The only large difference in the charge curve between lead acid batteries and lithium ion batteries is that lithium ion batteries have a much shorter charge time. Finally, the comparison between initial cost per capacity and cost per life cycle between both battery types can be observed in Table \ref{tab:battery-cost-comparison}. The operational cost per cycle is slightly higher and the upfront cost is much higher for lithium ion batteries. Due to these factors we have decided to use a lithium ion battery in our design.
 
 \subsubsection{Summary}
 Throughout this section we have noticed many large and small differences between our possible selections. These have been complied and are presented as such in table (c). You can plainly see when compared lithium ion out performs lead acid in terms of quality however in terms of cost lead acid clearly leads. As a result our project must choose if lithium acids' quality exceeds the increase in price tag and it has been decided that it has. As a result of sing a lithium ion battery our project will be better equipped in colder climates, last longer, and give a more constant output during use. While the increase in cost in notable we believe this decision will turn out to be an asset when it comes to concerns of long term power supply for our nodes.
@@ -187,8 +187,14 @@ Cost&The cost of lead acid and lithium are clear and square from the table. The 
 \end{table}
 
 \paragraph{Decision}
-The chosen battery is the PRT-13856. This is a 3 cell battery with a voltage of 3.7V and 6AH. This means we can expect 22.2WH of capacity allowing our device to run for months without need of ever recharging. This is due to the fact that in total the daily intake of power for the system has been calculated to be 0.045WH per day. This battery will be a major asset when it comes to concerns of keeping our system supplied with power in more extreme conditions over longer periods of time. A link to the data sheet is as follows:
+The chosen battery is the PRT-13856 an image of such can be found in \ref{fig:PRT-13856}. This is a 3 cell battery with a voltage of 3.7V and 6AH. This means we can expect 22.2WH of capacity allowing our device to run for months without need of ever recharging. This is due to the fact that in total the daily intake of power for the system has been calculated to be 0.045WH per day. This battery will be a major asset when it comes to concerns of keeping our system supplied with power in more extreme conditions over longer periods of time. A link to the data sheet is as follows:
 https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-13856/6605200
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/PRT-13856.png}
+    \caption{Our selection of a lithium ion battery}
+    \label{fig:PRT-13856} 
+\end{figure}
 
 \subsection{Solar Panel}
 
@@ -199,15 +205,21 @@ https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-13856/660520
     \label{solar-panel-overview} 
 \end{figure}
 
-In this section, we will discuss the different types of solar panels that are being considered for use in our design. Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
-
-Additionally we should discuss the method at which we measure the efficiency of solar panels. 
-Figure \ref{fig:poly-sp} shows the mathmatical equation used for measuring solar panel efficiency. 
+In this section, we will discuss the different types of solar panels that are being considered for use in our design. Discovered in the early 19th century solar panels utilize the photovoltaic effect. This phenomenon was observed when certain materials were produced and electric current when exposed to light. The way this phenomenon is utilized by using two semiconducting materials. One layer must have depleted electrons and when exposed to sunlight some photons are absorbed by the semiconductor which excites the electrons causing them to jump from one semiconductor layer to another. This jump produces a small electric current which when happens in mass makes a usable power source. The most common material to use in solar panels is silicon which is cut and polished into wafers.Figure \ref{fig:solar cell} shows the different steps taken into account to manufacture these wafers into the solar cells that are so recognizable today. Some of these wafers are doped to make an electrical imbalance further helping the process. Finally, electrically conductive strips are attached to the cells to absorb the generated current. 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.4]{figures/polycrystaline solar.png}
+    \includegraphics[scale=0.4]{figures/solar cell manu.png}
+    \caption{Solar panel wafer manufacturing levels}
+    \label{fig:solar cell} 
+\end{figure}
+
+Additionally we should discuss the method at which we measure the efficiency of solar panels. 
+Figure \ref{fig:sol-efficiency} shows the mathematical equation used for measuring solar panel efficiency. In this equation you can see a break down of some of the characteristics of some of the solar panels. For instance the incident radiation flux is the proportion at which power can be radiated through an area. For this think about how monocrystaline allows for more power to flow through because of the single cell silicon structure the wafers consist of. Second one should look at the area of the collector. This describes the incident face of the solar panel, that being the surface area that collects power from the sunlight. This on our design is limited due to the size of the node in question but should the other 2 factors decrease proportionally thee will be no effect on efficiency. Lastly and most importantly we have the maximum power output in watts. This is the amount of power one can expect the solar panel to generate. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/solar panel efficiency.png}
     \caption{Solar panel Efficiency Equation}
-    \label{fig:poly-sp} 
+    \label{fig:sol-efficiency} 
 \end{figure}
 \subsubsection{Monocrystalline Solar Panels}
 
@@ -279,4 +291,11 @@ V$_{\text{p}}$/V$_{\text{oc}}$ (V) & $6.12/7.13$ & $6.7/7.7$ \\\hline
 \end{table}
 
 \subsection{USB Power}
-In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.
+USB charging has become a wide spread standard for powering and charging all different kinds of systems today. Which is why it represents a great asset in our design. With how common the hardware for this method is, it would be an oversight to not incorporate it. There are a total of 6 USB specifications, USB 1.0, 2.0, 3.0, 3.1, 3.2, and USB4. To charge and power the system, USB-C will most likely be used, which incorporates USB4 technology. In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. 
+
+This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.Figure \ref{fig:USB diagram} shows the most common type of USB charger found in the home today the USB-B micro charger which will be implemented as one of our sources of power.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/USB diagram.png}
+    \label{fig:USB diagram} 
+\end{figure}
