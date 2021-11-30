@@ -34,7 +34,7 @@ integrate both a microcontroller and a +22 dBm LoRa radio into one silicon wafer
 The Seeed LoRa-E5 simplifies development with the STM32WLE5JC by embedding the
 clocks and main RF front-end circuitry into a single package, obtaining up to
 +20.8 dBm transmit (TX) output and -136 dBm receive sensitivity, and takes care
-of startup and shutdown power sequencing. All in a 12mm by 12mm package. This
+of startup and shutdown power sequencing. All in a 12 mm by 12 mm package. This
 microcontroller provides the best power consumption of 360 nA while in standby,
 58$\mu$A while in low power sleep current (LPSleep), and 125$\mu$A while in low
 power run current (LPRun, $<2$ MHz) with a max LoRa transmit current of 110 mA at
@@ -103,9 +103,14 @@ supports ultra low-power sleep states than can achieve down to 1.2$\mu$A of draw
 current. However, RAK states that that the RAK 4600 module can only get down to
 11.5$\mu$A at 2.0V input and 12.5$\mu$A at 3.3V.
 
-The downsides of the RAK 4600 mostly come down to 1) its sleep power
-consumption, 2) its complete lack of I/O, especially analog I/O, and 3) its lack
-of a LoRaWAN software stack. The RAK module does not allocate any pins for
+The downsides of the RAK 4600 mostly come down to three things:
+\begin{enumerate}
+    \item Its sleep power consumption
+    \item Its complete lack of I/O, especially analog I/O.
+    \item Its lack of a LoRaWAN software stack.
+\end{enumerate}
+
+The RAK module does not allocate any pins for
 analog I/O even though the Nordic MCU has a plethora of digital and analog
 peripherals connected to its pins. The RAK module surprisingly mostly has no
 connect (NC) pins. Not only that, but it only has one set of UART pins and one
@@ -128,7 +133,9 @@ focuses on power efficiency and security. The Cypress PSoC implements the ARM
 Platform Security Architecture (PSA) which provides three levels of
 hardware-based resource isolation. Since it has two cores, the user code can
 execute separately from the LoRaWAN stack so that the user code can never
-interfere with the LoRaWAN communication link. On top of that, the LoRaWAN stack
+interfere with the LoRaWAN communication link.
+
+On top of that, the LoRaWAN stack
 implements a chain of trust, which essentially is a hash chain formed by hashing
 the decrypted code segments at various parts of the stack, and comparing the
 hash with the public key. However, the software stack is not publicly available,

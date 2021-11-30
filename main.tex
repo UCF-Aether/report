@@ -51,6 +51,7 @@
 \newcommand*{\Vcc}{V$_{\text{CC}}$\xspace}
 \newcommand*{\Vss}{V$_{\text{SS}}$\xspace}
 \newcommand*{\Iss}{I$_{\text{SS}}$\xspace}
+\newcommand*{\kOhm}{k$\Omega$\xspace}
 
 % Fix < compiling to upside down !
 % https://tex.stackexchange.com/questions/272698/latex-shows-upside-down
@@ -70,14 +71,10 @@
     \cleardoublepage
   \pagenumbering{arabic}}
 
-\newcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
-   }
-\makeatother
+% \newcommand\backmatter{%
+%   \cleardoublepage
+%   \pagenumbering{\text{A}-\arabic{page}}}
+
 
 % Line formattinga and paragraph spacing
 %\linespread{.83}
@@ -132,6 +129,10 @@ Parke Benjamin & Randy Alvarez \\
 \importsection{stretch}
 
 \newpage
+
+\backmatter
+% \appendix
+% \section{References}
 \printbibliography
 
 \end{document}

@@ -14,7 +14,7 @@ Each task will be independent, however, they will essentially all have the same 
 \end{figure}
 
 \subsubsection{Sending Collected Data Over LoRaWAN}
-Our software will require a task to manage how data collected from the sensors is sent to the server over LoRaWAN. One of the structures we decided to use to accomplish this is a queue. This queue will help optimize how and when data is sent from the sensor node. This will ensure that more data is sent together to optimize power consumption.
+Our software will require a task to manage how data collected from the sensors is sent to the server over LoRaWAN. One of the structures we decided to use to accomplish this is a queue. This queue will help optimize how and when data is sent from the sensor node. This will ensure that more data is sent together to optimize power consumption. In addition by adding this queue, it helps with the overall architecture of the design by further abstracting the sending of the data away from the collection of the data.
 
 Our proposed queue will function by waiting for data to arrive from the sensors. Once one of the tasks controlling taking measurements from the sensors requests that data be added to the queue, the software will check if the queue is currently full. If the queue is full, all of the data currently in the queue will be sent and then the data being requested to be added to the queue will then be added. Otherwise, if the queue is empty, the data will be added immediately. In addition, we will have a timer running that will periodically empty the queue. This will ensure that the queue does not get stuck in a state where it never sends previously collected data because it is not receiving new data. A flowchart demonstrating how our proposed queue will function can be found in Figure \ref{fig:queue-diagram}.
 
@@ -25,5 +25,5 @@ Our proposed queue will function by waiting for data to arrive from the sensors.
     \label{fig:queue-diagram} 
 \end{figure}
 
-\subsubsection{Managing Power System}
-Our software will require a task that manages how power is used in the system.
+\subsubsection{Managing System Power}
+Our software will require a task that manages how power is used in the system. This will alow the microcontroller to do things, such as dropping to different levels of low-power modes depending on how much power is available. To do this, the microcontroller will receive input from the charging controller IC that contains various information about the current state of the battery. Based on the charging controller we have selected, these states are low battery output/currently charging, fully charged, and power on.
