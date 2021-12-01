@@ -28,17 +28,21 @@
 \usepackage{siunitx}
 \usepackage{mathtools}
 \usepackage[table]{xcolor}
-
+\usepackage{listings}
+\usepackage{inconsolata}
 \usepackage[
   backend=biber,
   style=ieee,
   sorting=ynt
 ]{biblatex}
+
+% Bib config
 \addbibresource{bib/datasheets.bib}
 \addbibresource{bib/main.bib}
 \addbibresource{bib/specifications.bib}
 \graphicspath{{./figures/}}
 
+% Commands
 \newcommand*{\yes}{\ding{51}}
 \newcommand*{\no}{\ding{53}}
 \newcommand*{\ozone}{O$_3$\xspace}
@@ -95,6 +99,21 @@
 \newcommand*{\importsection}[1]{\import{sections/#1/}{#1}}
 \newcommand*{\importsubsection}[1]{\subimport{subsections/}{#1}}
 
+% https://tex.stackexchange.com/questions/117531/styling-a-lstlisting-caption-using-caption-package
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=top, frame=bottom,
+  tabsize=2,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false
+}
+
+\DeclareCaptionFormat{listing}{\rule{\dimexpr\textwidth\relax}{0.4pt}\par\vskip1pt#1#2#3}
+\captionsetup[lstlisting]{format=listing,singlelinecheck=false, margin=0pt,labelsep=space,labelfont=bf}
+
+
 % Make Title Commands
 \title{\Huge{\textbf{Aether}} \\ \large{A Pollution Sensor Network} \\ \vspace{0.5cm} \normalsize{Group 41}}
 \date{\today}
@@ -121,6 +140,8 @@ Parke Benjamin & Randy Alvarez \\
 \listoftables
 \newpage
 \listoffigures
+\newpage
+\lstlistoflistings
 
 \mainmatter
 \newpage
