@@ -51,24 +51,6 @@ coverage centered around a LoRa gateway.
 
 \subsection{Requirements Specifications}
 In this section, we will describe in detail all of the requirements for our design. However, before going through the entire list, we will first explore three critical requirements. These three requirements will be the ones that we will demonstrate that our finished project satisfies once it has been built. These three requirements can be found in Table \ref{tab:demon-requirements}.
-\begin{table}[H]
-\centering
-\caption{Demonstrable requirements}
-\begin{tabularx}{\linewidth}{|c|X|c|c|}
-\hline
-No. & Requirement \\
-\hline\hline
-D.0 & Will be able to dynamically power the node from either the battery, solar
-panel, or USB \\\hline
-D.1 & The node will take sensor measurements and transmit them over LoRaWAN to a
-server where they be able to be viewed in a graphical and textual format
-\\\hline
-D.2 & The server will send periodic air quality reports and notifications to the
-user via Twitter, SMS, and/or email \\\hline
-
-\end{tabularx}
-\label{tab:demon-requirements}
-\end{table}
 
 One the first requirements considered for the gateway was total cost. The goal is to keep the cost of the gateway portion of the design to under \$200. Next, a demonstrable requirement specification for this design is its dimensions. Aether’s gateway shall not exceed dimensions greater than 6 x 6 x 6 inches. Given the size and versatility of the sensors that will be used, this should be easily accomplished. Another demonstrable requirement specification the team will focus on is ensuring the gateway does not exceed 5 pounds. This should not be a problem given the fact that most of the components used in the design are extremely compact and lightweight. In regards to communication, each gateway must be capable of supporting a minimum of 8 channels. In addition to this, a gateway must be able to communicate with a node that is located anywhere from 0 to 10 km away from it. These requirements are shown in Table \ref{tab:list-of-requirements}.
 
@@ -82,6 +64,13 @@ For the node requirement specifications, the first thing considered was total co
 \hline
 No. & Requirement \\
 \hline\hline
+\rowhl
+D.0 & Will be able to dynamically power the node from either the battery, solar panel, or USB \\\hline
+\rowhl
+D.1 & The node will take sensor measurements and transmit them over LoRaWAN to a server where they be able to be viewed in a graphical and textual format \\\hline
+\rowhl
+D.2 & The server will send periodic air quality reports and notifications to the
+user via Twitter, SMS, and/or email \\\hline
 G.0 & The gateway should cost less than \$200 \\\hline
 G.1 & The gateway should be no larger than 6 x 6 x 6 inches \\\hline
 G.2 & The gateway weight should be no more than than 5 pounds \\\hline
