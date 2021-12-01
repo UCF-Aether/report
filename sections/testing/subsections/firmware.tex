@@ -1,4 +1,75 @@
 \subsection{The Firmware Test Plan}
-The firmware testing will utilize our existing CMake build system and Google's
-Test C++ or the Unity unit testing library. Tests will be split into two types:
+The firmware testing will utilize our existing CMake build system the Unity unit
+testing library. Tests will be split into two types: target-agnostic and
+target-specific. Target agnostic tests are tests that can run on any
+architecture that can compile C. They are tests that don't reach down
+into the microcontrollers HAL, low-level drivers, or hardware specific
+peripherals or registers. Target-specific tests are tests that use hardware
+specific features, registers, or peripherals. These tests might check the status
+of the LoRa RF module, correct operation of \iic, or the correct operation of
+the sensors. Target-agnostic tests will be configured to run in a GitHub
+continuous integration pipeline to help automate and ease development of new
+features. Target-specific tests will have to be run manually. Since we are using
+FreeRTOS, we will need to create tests that can check for deadlocks, thread
+starvation, and other issues commonly had in concurrent programming. The
+firmware will also need to be error-tolerant, and correctly recover from as many
+errors as possible. Issues will be tracked using ClickUp or GitHub, and assigned
+to someone to solve.
 
+Unit tests will only be written for key subsystems. Having too many unit tests
+creates a burden for the programmer, but just enough keeps the code base mostly
+free of certain types of errors. The general flow for developing and testing the
+firmware will be the following: first write the code and consider the downward
+effects of the code having issues and determine if it's a critical system that
+needs to be guarded by unit tests. After writing the unit tests, on each
+iteration of the firmware, the code will be automatically tested when pushed to
+GitHub using the target-agnostic tests using GitHub Actions. Before creating the
+next major version of the firmware, the target-specific tests will be run to
+ensure its functionality. If all tests are passing, the code will be merged into
+the main branch, and deployed either manually or automatically through LoRa OTA
+updates. Then process then repeats until the firmware is complete or
+near-complete.
+
+\subsubsection{Unity}
+Unity is a unit testing framework written for C with embedded systems in mind.
+It's able to run on 8 or 64 bit microcontrollers due to its simple design and
+small footprint. It has easy CMake integration to allow for automated building
+and testing. Unity has less than 3000 lines of code, including white space.
+Unity provides a set of assertions to test various aspects of the firmware. They
+can be simple assertions, such as:
+
+\begin{lstlisting}[language=C, caption=Unity Basic Assertion Example
+\cite{unity-homepage}]
+int a = 1;
+TEST_ASSERT( a == 1 ); //this one will pass
+TEST_ASSERT( a == 2 ); //this one will fail
+\end{lstlisting}
+
+Unity also provides hundreds of specialized assertion definitions, such as
+printing a message on failure, testing if an integer is within a certain range,
+or testing each int or float in an array.
+
+\begin{lstlisting}[language=c, caption=More advanced Unity Assertions
+\cite{unity-github}]
+TEST_ASSERT_EQUAL_INT(2, a);
+TEST_ASSERT_EQUAL_HEX8(5, a);
+TEST_ASSERT_EQUAL_UINT16(0x8000, a);
+TEST_ASSERT_EACH_EQUAL_INT(expected, actual, num_elements);
+TEST_ASSERT_MESSAGE( a == 2 , "a isn't 2, end of the world!");
+\end{lstlisting}
+
+After generating the make files with CMake, compiling the tests, and either
+running on the local machine for target-agnostic tests or on the development
+board for target-specific tests, Unity will print a report of the test results.
+The report contains the number of failing and passing tests, along with where
+exactly the tests failed. All example code has been gathered from either Unity's
+homepage \cite{unity-homepage} or the source code on GitHub \cite{unity-github}.
+Below is some sample output:
+
+\begin{lstlisting}[caption=Example Unity Test Report Output \cite{unity-homepage}]
+testUnit1.c:21:test_AverageThreeBytes_should_AverageMidRangeValues:PASS
+testUnit1.c:22:test_AverageThreeBytes_should_AverageHighValues:PASS
+-----------------------
+2 Tests 0 Failures 0 Ignored
+OK
+\end{lstlisting}
