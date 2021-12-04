@@ -281,7 +281,7 @@ The decision of which solar panel to use ultimately only came down to very few f
 \caption{Comparison between two candidate solar panels}
 \begin{tabular}{|l|l|l|}
 \hline
-Part Name & Voltaic Systems P105 & Voltaic Systems 3.5W 6V \\
+Part Name & \colhl{Voltaic Systems P105} & Voltaic Systems 3.5W 6V \\
 \hline\hline
 Type & Monocrystalline & Monocrystalline \\\hline
 Dimensions & 8.740" L x 5.394" W x 0.157" H & 8.3"L x 4.4"W x 0.2"H \\\hline
@@ -294,11 +294,14 @@ V$_{\text{p}}$/V$_{\text{oc}}$ (V) & $6.12/7.13$ & $6.7/7.7$ \\\hline
 \end{table}
 
 \subsection{USB Power}
-USB charging has become a wide spread standard for powering and charging all different kinds of systems today. Which is why it represents a great asset in our design. With how common the hardware for this method is, it would be an oversight to not incorporate it. There are a total of 6 USB specifications, USB 1.0, 2.0, 3.0, 3.1, 3.2, and USB4. To charge and power the system, USB-C will most likely be used, which incorporates USB4 technology. In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure X. 
+USB charging has become a wide spread standard for powering and charging all different kinds of systems today. Which is why it represents a great asset in our design. With how common the hardware for this method is, it would be an oversight to not incorporate it. There are a total of 6 USB specifications, USB 1.0, 2.0, 3.0, 3.1, 3.2, and USB4. To charge and power the system, USB-C will be used in the design, which incorporates USB4 technology. In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure \ref{fig:USB-diagram}. 
 
-This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection.Figure \ref{fig:USB diagram} shows the most common type of USB charger found in the home today the USB-B micro charger which will be implemented as one of our sources of power.
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/USB diagram.png}
-    \label{fig:USB diagram} 
+    \caption{USB power}
+    \label{fig:USB-diagram} 
 \end{figure}
+
+This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection. Figure \ref{fig:USB-diagram} shows the most common type of USB charger found in the home today the USB-B micro charger which will be implemented as one of our sources of power. The USB-C interface will also be used as a communication link to the Lora-E5 micro controller. Since the micro controller cannot communicate directly via USB, a USB to UART communication IC will be needed so that USB can be used as a means of communicating with the Lora-E5. 
+
