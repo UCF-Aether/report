@@ -38,7 +38,7 @@ The first difference that leaned the decision towards our chosen charge controll
 \begin{table}
 \centering\footnotesize
 \caption{Comparison between two candidate solar panel charge controller}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|>{\columncolor[HTML]{\tblhl}}c|c|}
 \hline
 Part Name & MCP73871 & BQ2416xx \\
 \hline\hline
@@ -116,6 +116,7 @@ Battery Type & Charge Temperature & Discharge Temperature & Charge Advisory \\
 \hline\hline
 
 Lead Acid     & -20 C to 50 C   & -20 C to 50 C & Charge at 0.3 C or less below freezing Lower V-threshold by 3 mV/C when hot  \\\hline
+\rowhl
 Li-ion        & 0 C to 45 C     & -20 C to 60 C & No charge recommended below freezing. Good charge/discharge performance at higher temperature but shorter life.  \\\hline
 
 \end{tabularx}
@@ -265,6 +266,7 @@ The selection of solar panels comes down to less factors than the battery. Here 
 \hline
 Solar Panel Type & Efficiency (\%) & Price Per Watt (USD/W) & Projected Life Span (years) \\ 
 \hline\hline
+\rowhl
 Monocrystalline & $17-20$ & $1.00-1.50$ & $25-35$ \\\hline
 Polycrystalline & $13-16$ & $0.70-1.00$ & $23-27$ \\\hline
 Thin Film & $4-12$ & $1.00-1.50$ & $14-17$ \\\hline
@@ -279,9 +281,9 @@ The decision of which solar panel to use ultimately only came down to very few f
 \begin{table}
 \centering
 \caption{Comparison between two candidate solar panels}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{| l | >{\columncolor[HTML]{\tblhl}}l | l |}
 \hline
-Part Name & \colhl{Voltaic Systems P105} & Voltaic Systems 3.5W 6V \\
+Part Name & Voltaic Systems P105 & Voltaic Systems 3.5W 6V \\
 \hline\hline
 Type & Monocrystalline & Monocrystalline \\\hline
 Dimensions & 8.740" L x 5.394" W x 0.157" H & 8.3"L x 4.4"W x 0.2"H \\\hline

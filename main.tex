@@ -1,6 +1,9 @@
 \documentclass[titlepage, 12pt, letterpaper]{article}
 
 % Packages
+% Fix < compiling to upside down !
+% https://tex.stackexchange.com/questions/272698/latex-shows-upside-down
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \usepackage{import}
@@ -63,13 +66,9 @@
 \newcommand*{\yellow}{f6c177}
 \newcommand*{\tblhl}{\blue}
 \newcommand*{\rowhl}{\rowcolor[HTML]{\tblhl}}
-\newcommand*{\colhl}{\columncolor[HTML]{\tblhl}}
 \newcommand*{\code}{\texttt}
 \newcommand*{\codebl}{\lstlisting}
 
-% Fix < compiling to upside down !
-% https://tex.stackexchange.com/questions/272698/latex-shows-upside-down
-\usepackage[T1]{fontenc}
 
 % \setlength{\parskip}{1em}
 
