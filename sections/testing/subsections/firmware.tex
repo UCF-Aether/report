@@ -28,7 +28,17 @@ next major version of the firmware, the target-specific tests will be run to
 ensure its functionality. If all tests are passing, the code will be merged into
 the main branch, and deployed either manually or automatically through LoRa OTA
 updates. Then process then repeats until the firmware is complete or
-near-complete.
+near-complete. Some key systems that would be good to write unit tests for are:
+
+\begin{itemize}
+  \item Drivers for each of the sensors
+  \item The sub-GHz module and LoRaWAN drivers, including configuration
+  \item Power management
+  \item The command line interface (over serial - UART)
+  \item Power management
+  \item Each command the user is able to run over the CLI or remotely
+  \item (Stretch goal) Over the air updates
+\end{itemize}
 
 \subsubsection{Unity}
 Unity is a unit testing framework written for C with embedded systems in mind.
