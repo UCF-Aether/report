@@ -29,6 +29,7 @@
 \usepackage{mathtools}
 \usepackage[table]{xcolor}
 \usepackage{listings}
+\usepackage{rotating}
 \usepackage{inconsolata}
 \usepackage[
   backend=biber,
@@ -65,6 +66,7 @@
 \newcommand*{\yellow}{f6c177}
 \newcommand*{\tblhl}{\blue}
 \newcommand*{\rowhl}{\rowcolor[HTML]{\tblhl}}
+\newcommand*{\colhl}{\columncolor[HTML]{\tblhl}}
 
 % Fix < compiling to upside down !
 % https://tex.stackexchange.com/questions/272698/latex-shows-upside-down
@@ -160,7 +162,7 @@ Parke Benjamin & Randy Alvarez \\
 
 \newpage
 
-\backmatter
+
 % \appendix
 % \section{References}
 \printbibliography
