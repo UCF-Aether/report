@@ -35,23 +35,22 @@ around like variables, and can be created at runtime.
 
 AWS Lambda allows the developer to write functions that can be instantiated, and automatically
 previsioned in the cloud, whenever an event or other service requests one. For example, AWS Lambdas
-could be used to decode binary MQTT messages into JSON, or another human readable format. The web
-server, AWS Amplify, could also request Lambdas to be execute, not just the Iot core. The last layer
+could be used to decode binary MQTT messages into JSON, or another human-readable format. The web
+server, AWS Amplify, could also request Lambdas to be execute, not just the IoT core. The last layer
 in the backend stack is the "LoRaWAN Network Server, MQTT Broker, IoT Services" layer. Here, the
 LoRaWAN Network Server is run, along with services to accept and send MQTT messages, manage devices,
 and route MQTT messages to other services. This is the layer that the LoRaWAN gateway packet
 forwarder will directly talk to.
 
-As for the web front-end, the React Javascript framework will be utilized with Typescript to quickly
-and more easily catch errors before deployment. React is a component-based Javascript framework
+As for the web front-end, the React JavaScript framework will be utilized with Typescript to quickly
+and more easily catch errors before deployment. React is a component-based JavaScript framework
 originally developed by Facebook. It provides a virtual DOM (document object model), so that only
 specific parts of a web page are updated when the data behind them do. This is unlike how some
-traditional Javascript-only, DOM-driven websites were developed previously. Without a virtual DOM,
+traditional JavaScript-only, DOM-driven websites were developed previously. Without a virtual DOM,
 it's impossible to safely know how changing data might affect the whole page, so the whole DOM was
 updated every time the state changed. React has a plentiful ecosystem of plugins, additional
-libraries, and tons of additonal documentation and help online from the huge community it has
+libraries, and tons of additional documentation and help online from the huge community it has
 garnered.
-
 
 \begin{figure}
   \centering
@@ -79,5 +78,5 @@ AWS Amplify & & \\\hline
 AWS API Gateway & & \\\hline
 
 \end{tabular}
-\label{lora-module-io}
+\label{tbl:aws-pricing}
 \end{table}
