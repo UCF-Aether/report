@@ -32,4 +32,13 @@ To finish setting up our gateway with The Things Network, we must navigate to Th
 \paragraph{The Helium Network}
 
 \paragraph{Connecting Our AWS Server Instance}
+Connecing our gateway to an AWS server instance will be somewhat similar to how we set it up to connect to The Things Network. It will require installing a custom operating system on the Raspberry Pi and performing some configuration on both the Pi and on AWS IoT Core, which is what we will be using to manage the gateway.
 
+To begin configuring the Raspberry Pi, we are going to use Basic Station\footnote{The source code for Basic Station can be found at \texttt{https://github.com/lorabasics/basicstation}}, which is an open-source LoRaWAN gateway implementation. This will be installed on the Raspberry Pi. In order to use Basic Station with the RAK 2245, we have to make a few changes to the operating system. We must remove the following libraries.
+
+\begin{tabular}{l}
+     \texttt{\$ rm ./build-rpi-std/lib/liblgw.a} \\
+     \texttt{\$ rm ./deps/lgw/platform-rpi/libloragw/libloragw.a} \\
+\end{tabular}
+
+We also need to modify the \texttt{SPI\_SPEED} variable from within the \texttt{loragw_spi.native.c} file. We are then ready to compile Basic Station
