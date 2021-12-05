@@ -34,11 +34,28 @@ To finish setting up our gateway with The Things Network, we must navigate to Th
 \paragraph{Connecting Our AWS Server Instance}
 Connecing our gateway to an AWS server instance will be somewhat similar to how we set it up to connect to The Things Network. It will require installing a custom operating system on the Raspberry Pi and performing some configuration on both the Pi and on AWS IoT Core, which is what we will be using to manage the gateway.
 
-To begin configuring the Raspberry Pi, we are going to use Basic Station\footnote{The source code for Basic Station can be found at \texttt{https://github.com/lorabasics/basicstation}}, which is an open-source LoRaWAN gateway implementation. This will be installed on the Raspberry Pi. In order to use Basic Station with the RAK 2245, we have to make a few changes to the operating system. We must remove the following libraries.
+To begin configuring the Raspberry Pi, we are going to use Basic Station\footnote{The source code for Basic Station can be found at \texttt{https://github.com/lorabasics/basicstation}}, which is an open-source LoRaWAN gateway implementation. This will be installed on the Raspberry Pi. In order to use Basic Station with the RAK 2245, we have to make a few changes to the operating system. We must remove the following libraries:
 
 \begin{tabular}{l}
      \texttt{\$ rm ./build-rpi-std/lib/liblgw.a} \\
      \texttt{\$ rm ./deps/lgw/platform-rpi/libloragw/libloragw.a} \\
 \end{tabular}
 
-We also need to modify the \texttt{SPI\_SPEED} variable from within the \texttt{loragw_spi.native.c} file. We are then ready to compile Basic Station by running 
+We also need to modify the \texttt{SPI\_SPEED} variable from within the \\ \texttt{loragw\_spi.native.c} file. We are then ready to compile Basic Station by running the following command:
+
+\begin{tabular}{l}
+     \texttt{\$ make platform=rpi variant=std} \\
+\end{tabular}
+
+Once compiled, we have to create an \texttt{init.sh} script as well as directory to store configuration and credentials (keys, IDs, etc.) for AWS IoT Core. The code for the \texttt{init.sh} script is provided to us by AWS and is simply a matter of copying and pasting the script into the home directory of the Raspberry Pi. Creating the directory is just as simple as running \texttt{mkdir}. Once this is done, we will then run the \texttt{init.sh} script. We can then start Basic Station with the test server and credentials using the following command:
+
+\begin{tabular}{l}
+     \texttt{\$ cd \$HOME/basicstation/examples/live-s2.sm.tc} \\
+     \texttt{\$ RADIODEV=/dev/spidev0.0 ../../build-rpi-std/bin/station} \\
+\end{tabular}
+
+We will use the output of these commands to determine our gateway's \texttt{EUI}. To begin the process of connecting our gateway to AWS IoT Core, we will navigate to the AWS IoT Core Management console. From there, we will click "Add a gateway." This is where will provide IoT Core with our gateway's \texttt{EUI}. Then, IoT Core will prompt us to generate gateways certificates. This will ensure that our gateway can connect to our server securely and verify it's identity. We will have downloaded the following types of files:
+
+\begin{itemize}
+    \item \texttt{nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn.cert.pem}
+\end{itemize}
