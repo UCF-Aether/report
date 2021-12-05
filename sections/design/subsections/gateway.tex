@@ -54,8 +54,24 @@ Once compiled, we have to create an \texttt{init.sh} script as well as directory
      \texttt{\$ RADIODEV=/dev/spidev0.0 ../../build-rpi-std/bin/station} \\
 \end{tabular}
 
-We will use the output of these commands to determine our gateway's \texttt{EUI}. To begin the process of connecting our gateway to AWS IoT Core, we will navigate to the AWS IoT Core Management console. From there, we will click "Add a gateway." This is where will provide IoT Core with our gateway's \texttt{EUI}. Then, IoT Core will prompt us to generate gateways certificates. This will ensure that our gateway can connect to our server securely and verify it's identity. We will have downloaded the following types of files:
+We will use the output of these commands to determine our gateway's \texttt{EUI}. To begin the process of connecting our gateway to AWS IoT Core, we will navigate to the AWS IoT Core Management console. From there, we will click "Add a gateway." This is where will provide IoT Core with our gateway's \texttt{EUI}. Then, IoT Core will prompt us to generate gateways certificates. This will ensure that our gateway can connect to our server securely and verify it's identity. We will have downloaded the following files, which should then be copied to our Raspberry Pi and placed in the configuration directory we created earlier:
 
 \begin{itemize}
-    \item \texttt{nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn.cert.pem}
+    \item \code{nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn.cert.pem} - This is the gateway device certificate file
+    \item \code{nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn.private.key} - This is the gateway device private key file
+    \item \code{lns.trust} - This is the trust certificate for the LoRaWAN Network Server (LNS) endpoint
+    \item \code{cups.trust} - This is the trust certificate for the CUPS endpoint
 \end{itemize}
+
+We will also need to rename the \code{.cert.pem} and \code{.private.key} files to \code{cups.crt} and \code{cups.key} respectively. Once all of this is completed, we should end up with the following files within our configuration directory:
+
+\begin{itemize}
+    \item \code{cups.trust}
+    \item \code{cups.uri}
+    \item \code{cups.crt}
+    \item \code{cups.key}
+    \item \code{station.conf}
+    \item \code{version.txt}
+\end{itemize}
+
+We can then start up the Basic Station software using the command we ran earlier. At this point, the Basic Station software should begin to establish a connection AWS IoT Core for LoRaWAN. Additionally, if we have our end-device connected to AWS IoT Core, we should be able to see log entries every time the device is sending packets through the gateway.

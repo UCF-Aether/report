@@ -12,7 +12,9 @@ allow the user to login, and manage their own nodes. They should also be able to
 them, view analytics, such as the time last seen, its approximate location, and the individual
 packets. The user should also be able to configure notification settings. The notification types
 will be email, SMS, and Twitter, which will all be provided by Amazon's Simple Notification Service
-(SNS), as shown in Figure \ref{server-stack}. The website will be hosted through the AWS Amplify
+(SNS), as shown in Figure \ref{server-stack}. 
+
+The website will be hosted through the AWS Amplify
 service, and the API endpoints to interface with the backend to retrieve sensor data, device
 configuration, and other important pieces of information and configuration will be implemented
 through the AWS API Gateway service. These two services make up the "Web Server and Backend
