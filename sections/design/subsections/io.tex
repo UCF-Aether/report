@@ -1,0 +1,11 @@
+\subsection{System I/O}
+The Aether sensing node doesn't have that much I/O besides 1) USB and 2)
+programming header pins. In this section we will detail the I/O hardware and PCB
+design considerations.
+
+\subsubsection{USB-UART Bridge}
+Another design section of Aether's power system is the IC used to translate USB communication data to UART interface. This is essential because host communication and software implementation will be done through USB input. However, Lora-E5 will only take UART, therefore a conversion IC is needed. This design uses Silicon Lab's USBXpress™ Family CP2102N chip. The Data(D-) and Data(D+) pins on the bridge are connected to the same pins on the USB and are separated by the protection circuit previously discussed. The TX and RX pins are connected to the USB serial RX and TX pins on the micro-controller. LED diodes are set in place to indicate a proper communication link has been established. The features of the CP210N chip eleimantes the need of firmware and driver development and provides a simple and quick method for USB connectivity.
+
+The next two pins connected on the microcontroller deal with the USB communication interface. As discussed before, this microcontroller is not equipped with the ability to communicate directly through USB. Once the USB-to-UART conversion circuit was designed the TX and RX outputs on the USB-to-UART bridge were connected to 2 GPIO pins on the microcontroller. Pin 10 (PB6) is responsible for taking USB TX data and Pin Pin 9 (PB7) takes in USB RX output. The TX/RX pins are responsible for transmitting and receiving USB data. Pin 12 (PC1) on the microcontroller is a GPIO pin dedicated to the SHDN pin for the boost converter that takes the Li-Io battery as an input and outputs a consistent 5V for the PM sensor. The microcontroller will be responsible for initiating a low-power mode state for the nodal system which shuts down the PM sensor remotely as on of the means to conserve power. Lastly, pin PB3 is an MCU GPIO configured as an EXTI (external interrupt) source. This pin is responsible for detecting when the USB source is connected and instructs the microcontroller to wake up. 
+
+\subsubsection{The SWD Programming Header}

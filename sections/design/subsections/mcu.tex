@@ -1,0 +1,16 @@
+\subsection{LoRa-E5 MCU}
+The ultra-low power LoRa-E5 (STM32WLE5JC) will be the microcontroller responsible for providing long-range wireless communication from the nodes to the gateway. It's a Ultra-Thin Profile Fine Pitch Ball Grid Array (UFBGA) with 73 ball arrays and a 28 pin layout. The chip is powered through VCC Pin 1 which takes 3.3V from the main power rail. Pins PB15 and PA15 are the microcontroller's serial clock and serial data I2C pins which are used to communicate with the sensors in the system. The respective pins on each sensor will be connected to PB15 and PA15 so sensor data can be read at defined intervals. Pin 15 is the RFIO pin which will be connected to the antenna. Additionally, 3 GPIO pins were used to read the 3 status states of the battery charge controller. Pin 21 (PA9) is connected to the MCP73871 PG pin which indicates the system is receiving power. GPIO pin 13 (PC0) on the microcontroller is connected to pin 8 (STAT1/LBO) on the MCP73871 which indicates to the microcontroller when the battery output is low or the system is charging. The third GPIO used is pin 20 (PB10) on the microcontroller which is connected to pin 7 (STAT2) on the MCP73871 which indicates to the microcontroller when the battery has been fully  charged. The nodes will have LEDs to indicate battery status to the users in addition to having the ability to remotely monitor battery status through the LoRa microcontroller. 
+
+\subsubsection{The Embedded Flash Memory and DMA}
+
+\subsubsection{Hardware Semaphores}
+
+\subsubsection{Clock Sources}
+
+\subsubsection{I/O Peripherals}
+\paragraph{GPIO}
+\paragraph{The LoRa Sub-GHz Radio}
+\paragraph{I2C}
+\paragraph{UART}
+
+\subsubsection{The ADC}
