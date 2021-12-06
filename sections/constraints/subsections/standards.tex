@@ -31,7 +31,7 @@ The signals that each device uses in a SPI setup is slightly different depending
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/spi-three-slaves.png}
-    \caption{An example of the independent slave configuration of SPI. Used with permission from Colin Burnett, under the CC BY-SA 3.0 license.}
+    \caption{An example of the independent slave configuration of SPI. Used with permission from Colin Burnett, under the CC BY-SA 3.0 license. \cite{spi-image}}
     \label{spi-three-slaves}
 \end{figure}
 
@@ -48,12 +48,23 @@ Universal Asynchronous Receiver Transmitter (UART) is one of the most popular an
 
 The UART protocol defines that data is sent in a packet structure (Figure \ref{fig:uart-data-packet}). A UART packet includes a start bit, the data frame, a parity bit, and one to two stop bits. In the idle state, the TX line remains high. Communication begins when the TX line transitions from high to low for one clock cycle. After the start bit, the data frame, which contains the actual data being sent, is transmitted. This is performed by setting the TX wire to high when a 1 is transmitted and to low when a 0 is transmitted. This wire is sampled by the receiving UART device at the predetermined baudrate. Due to the fact that the parity bit is optional, the data frame may be eight or nine bits long. After the last data bit is transmitted, the parity bit is transmitted. This bit used to tell if any data has been altered during the transmission process. The parity bit is calculated by summing the 1's and 0's of the data frame and then, depending on whether or not the sum is even or odd, the parity bit is set to 0 or 1 respectively. Finally, the stop bit is transmitted to indicate the end of the packet. This is done when the TX line transitions from low to high for one or two clock cycles.
 
-\begin{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=6in]{figures/uart-data-packet.png}
+%     \caption{The structure of the UART data packet.}
+%     \label{fig:uart-data-packet}
+% \end{figure}
+
+\begin{table}[]
     \centering
-    \includegraphics[width=6in]{figures/uart-data-packet.png}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Start Bit & Data Frame & Parity Bits & Stop Bits \\
+    (1 bit) & (5 to 9 Data Bits) & (0 to 1 bit) & (1 to 2 bits) \\\hline
+    \end{tabular}
     \caption{The structure of the UART data packet.}
     \label{fig:uart-data-packet}
-\end{figure}
+\end{table}
 
 \subsubsection{USB}
 Universal Serial Bus (USB) is an industry standard the creates specifications for physical connectors and communication protocols for those connectors. The goal of the USB standard is to simplify and improve the interface between personal computers and peripheral devices. The different communication protocols that uSB specifies include USB 1.0, USB 1.1, USB 2.0, USB 3.0, USB 3.1, USB 3.2, and USB4. This list of communication protocols dates back to the inception of USB in 1996. Today, only USB 3.0 and up are common on new devices. The different connectors include Type A, B, and C. The Type C connector is the most modern connector and supports the newest communication protocols, reaching a maximum data rate of 40 Gbps. However, many new devices still support the Type A connector. 
@@ -84,8 +95,8 @@ LoRaWAN is often referred to as using a "star of stars" network technology. What
 
 \begin{figure}
     \centering
-    \includegraphics[width=6in]{figures/lorawan-stack.png}
-    \caption{The LoRaWAN network topology.}
+    \includegraphics[width=6in]{figures/lorawan-network-stack.png}
+    \caption{The LoRaWAN network topology. Used with permission under the Creative Commons Attribution 4.0 International license. \cite{lorawan-network-stack}}
     \label{lorawan-network-stack}
 \end{figure}
 
