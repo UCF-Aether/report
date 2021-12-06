@@ -179,6 +179,27 @@ specific and non-IoT services to provide a cohesive experience for the developer
 expect.
 
 % Add final price table for AWS
+\begin{table}[H]
+\centering\scriptsize
+\caption{Amazon Web Services Pricing Estimate}
+\begin{tabular}{|r|c|c|}
+\hline
+Service & Use & Price (\$)\\
+\hline\hline
+
+AWS LoRaWAN IoT Core & LoRa NS & \\\hline
+AWS IoT Device Management & & \\\hline
+AWS Lambda & & \\\hline
+AWS IoT Events & & \\\hline
+Amazon DynamoDB & & \\\hline
+Amazon SNS & & \\\hline
+Amazon Cognito & & \\\hline
+AWS Amplify & & \\\hline
+AWS API Gateway & & \\\hline
+
+\end{tabular}
+\label{tbl:aws-pricing}
+\end{table}
 
 \subsubsection{Server or Serverless}
 An another consideration that affected design decision making and cloud service providers is the
@@ -200,5 +221,5 @@ separate serverless function instances (Lambda for AWS and Function for Azure). 
 other Lambdas (or Functions) are running independently and new instances can be created
 automatically to possibly recover from the error.
 
-% Add paragraph describing why we went with AWS
+% TODO: Add paragraph describing why we went with AWS
 

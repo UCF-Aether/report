@@ -56,4 +56,44 @@ toolbar, to make state management and interactivity easier and more responsive. 
 are used together in a hierarchical structure, and data is only passed down the hierarchical tree.
 Components can be instantiated multiple times allowing for more code re-usability and code
 sharability. There is a enormous collection of open source React components available online on
-GitHub and NPM (NodeJS Package Manager).
+GitHub and NPM (NodeJS Package Manager). Since most React apps are single page applications, meaning
+there is only one main server call to get the static assets (i.e. photos, HTML, CSS, JS), and the
+rest of the user interface control flow is handled by the client. This is called client routing.
+React Router is a library for easily creating dynamic routes for a React app. Different routes are
+displayed in the URL (the page isn't reloaded), and dictate which components are shown. For
+instance, if a user visits our site,
+
+\code{https://aether.io}
+
+And, had clicked on a sensor node on the map, it would display an info window
+overlaid on the map displaying various information about the node. That route might look something
+like this:
+
+\code{https://aether.io/node/103653}
+
+Where \code{103653} could be the identifier for that particular node. For example, the subdomain,
+\code{node}, could have routes for adding a new node, managing a node, or delete a node.
+
+Lastly, for any time we would need to display charts for sensor data, we will be using a library
+called Recharts since it was made for React, and is currently known as the most reliable and is
+widely used.
+
+
+\subsubsection{User Authorization}
+User authorization will be carried out with AWS Cognito, which handles user authorization, user
+creation, session management, and social logins, such as Facebook or Apple. However, it will be
+a stretch goal to have social login. The login and signup UI is handled by Amazon and is served by
+their servers, but can be customized to match our theming and styling.
+
+\subsubsection{User Interaction}
+The homepage will be a landing page that will have a buttons to go view the map, login, signup, and
+information about the project, including documentation and the development team. Users won't need to
+signup to use the map, but it will be required if they want to register their device. The map page,
+as shown in the prototype in \ref{website-prototype-map}, will ask the user if they want to provide
+their geolocation, or they can otherwise search for their location to view sensor data. The exact
+locations of the devices won't be displayed unless the user is the owner. On the device management
+page, users will be able to see a table of their devices that shows the status of each device, along
+with any statistics. Users can click on the row in the table that corresponds to a particular
+device to view its logs, geolocation, and send commands to it. From the map page, there will be
+a button, shown as "View Data Table" in figures \ref{website-prototype-map}, that will show another
+page that shows historical data in tables and graphs for each device and/or zip code.
