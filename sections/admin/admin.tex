@@ -45,103 +45,114 @@ Here we display the budget for each of the major components of our project inclu
 \end{table}
 
 \subsection{Milestones}
-In Table \ref{tab:fall-milestones} and Table \ref{tab:spring-milestones} we describe our current milestones
-for the fall and spring semesters respectively. The full descriptions for the fall milestones can be
-found in Table \ref{tab:fall-milestone-descriptions} and the full descriptions for the spring milestones
-can be found in Table \ref{tab:spring-milestone-descriptions}. The goal of creating these milestones is
-to ensure that we stay on track as the semester progresses and that we do not fall behind. As is
-often the case, we will likely need to add new milestones as new challenges arise.
+In Table \ref{tab:fall-milestones} and Table \ref{tab:spring-milestones} we describe our current
+milestones for the fall and spring semesters respectively. The full descriptions for the Fall
+milestones can be found in Table \ref{tab:fall-milestone-descriptions} and the full descriptions for
+the spring milestones can be found in Table \ref{tab:spring-milestone-descriptions}. The goal of
+creating these milestones is to ensure that we stay on track as the semester progresses and that we
+do not Fall behind. As is often the case, we will likely need to add new milestones as new
+challenges arise. It is important that we do as much research and design that we can in the first
+semester, and try to catch anything that might cause significant delays going forward in senior
+design 2. A big part of any project is figuring out the right requirements, and making sure you
+understand the problem fully as with anything new, it's going to take more time than originally
+thought to complete said item. By the end of the Fall semester, we want to have a design that is or
+is close to being fabricated some time before the start of the Spring semester. Also, it will be
+important that the backend AWS services be configured and tested with an initial prototype before
+the first PCB is sent to the fab so that it'll be ready and any bugs caught between sending the
+design to the fab and receiving it. We are planning on requiring a month and a half to have the
+second revision done , due to Chinese holidays and to have enough time to thoroughly test the first
+revision, 
 
-\subsubsection{Fall Semester}
-\begin{table}[H]
-    \footnotesize  
-    \caption{Fall Milestones}
+\subsubsection{Fall Semester} 
 
-    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | c | X |}
-      \hline
-      No. & Milestone & Date & Achieved & Deliverables 
-      \\\hline\hline
+\begin{table}[H] 
+  \footnotesize  
+  \caption{Fall Milestones}
+  \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | c | X |}
+    \hline
+    No. & Milestone & Date & Achieved & Deliverables 
+    \\\hline\hline
 
-      F.0 
-      & Sensing mechanism finalized 
-      & Sep. 2nd, 2021 
-      & Sep. 14th, 2021
-      & Sensor requirements document 
-      \\\hline
+    F.0 
+    & Sensing mechanism finalized 
+    & Sep. 2nd, 2021 
+    & Sep. 14th, 2021
+    & Sensor requirements document 
+    \\\hline
 
-      F.1 
-      & MCU and LoRa module finalized
-      & Oct. 1st, 2021 
-      & Oct. 1st, 2021 
-      & Order confirmation and, if available, shipment information. 
-      \\\hline
+    F.1 
+    & MCU and LoRa module finalized
+    & Oct. 1st, 2021 
+    & Oct. 1st, 2021 
+    & Order confirmation and, if available, shipment information. 
+    \\\hline
 
-      F.2 
-      & Sensors finalized 
-      & Oct. 8th, 2021 
-      & Oct. 27, 2021
-      & Order confirmation and, if available, shipment information. 
-      \\\hline
+    F.2 
+    & Sensors finalized 
+    & Oct. 8th, 2021 
+    & Oct. 27, 2021
+    & Order confirmation and, if available, shipment information. 
+    \\\hline
 
-      F.3 
-      & Prototype v1.0 PCB 
-      & Jan. 4th, 2022 
-      & -
-      & Gerber files, part and PCB order confirmations
-      \\\hline
+    F.3 
+    & Prototype v1.0 PCB 
+    & Jan. 4th, 2022 
+    & -
+    & Gerber files, part and PCB order confirmations
+    \\\hline
 
-      F.4 
-      & Software alpha 1.0 
-      & Jan. 4th, 2022 
-      & -
-      & Node and base-station release binaries, React app, AWS backend code zip package 
-      \\\hline
+    F.4 
+    & Software alpha 1.0 
+    & Jan. 4th, 2022 
+    & -
+    & Node and base-station release binaries, React app, AWS backend code zip package 
+    \\\hline
 
-    \end{tabularx}
-    \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
-    \label{tab:fall-milestones}
+  \end{tabularx}
+  \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
+  \label{tab:fall-milestones}
     % \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
 \end{table}
 
 \begin{table}[H]
-    \centering
-    \footnotesize
-    \caption{Fall Milestone Descriptions}
+  \centering
+  \footnotesize
+  \caption{Fall Milestone Descriptions}
 
-    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
-      \hline
-      No. & Milestone & Description 
-      \\\hline\hline
+  \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
+    \hline
+    No. & Milestone & Description 
+    \\\hline\hline
 
-      F.0 
-      & Sensing mechanism finalized 
-      & Research on how to properly measure the air quality has completed
-      \\\hline
+    F.0 
+    & Sensing mechanism finalized 
+    & Research on how to properly measure the air quality has completed
+    \\\hline
 
-      F.1 
-      & MCU and LoRa module finalized
-      & The computing and radio IC(s) have been researched and one (or many) have been chosen
-      \\\hline
+    F.1 
+    & MCU and LoRa module finalized
+    & The computing and radio IC(s) have been researched and one (or many) have been chosen
+    \\\hline
 
-      F.2 
-      & Sensors finalized 
-      & The sensors needed to implement the sensing mechanism in F.0 have been researched and picked
-      \\\hline
+    F.2 
+    & Sensors finalized 
+    & The sensors needed to implement the sensing mechanism in F.0 have been researched and picked
+    \\\hline
 
-      F.3 
-      & Prototype v1.0 PCB 
-      & The first fully-featured prototype PCB is complete and ready to be sent to the fab
-      \\\hline
+    F.3 
+    & Prototype v1.0 PCB 
+    & The first fully-featured prototype PCB is complete and ready to be sent to the fab
+    \\\hline
 
-      F.4 
-      & Software alpha 1.0 
-      & A version of firmware that is fully capable of reading sensor data and transmitting them
-      over LoRaWAN to the AWS LoRaWAN network server. The AWS backend should be capable of collating
-      the data and at least be able to tabulate the data. Displaying a map overlay would be a plus.
-      \\\hline
+    F.4 
+    & Software alpha 1.0 
+    & A version of firmware that is fully capable of reading sensor data and transmitting them
+    over LoRaWAN to the AWS LoRaWAN network server. The AWS backend should be capable of collating
+    the data and at least be able to tabulate the data. Displaying a map overlay would be a plus.
+    \\\hline
 
-    \end{tabularx}
-    \label{tab:fall-milestone-descriptions}
+  \end{tabularx}
+  \label{tab:fall-milestone-descriptions}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,126 +170,138 @@ often the case, we will likely need to add new milestones as new challenges aris
 %   PCB 1.5 (final)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+As said above, around a month and a half will be used to account for delays, shipping speed, and to
+give ample time to revise the schematic. After the second revision, the design should be as ready as
+possible for a production quality fab. For the final design, only a three to four weeks will be
+given for fab time, shipping, assembly, and testing. It will also be imperative that the firmware be
+capable of sending sensor data in early January, but a fully featured minimal viable product won't
+be required until later on in early February. The backend services and webapp will have minimal user
+interaction, but it will be important that the infrastructure created be able to scale for the rest
+of the scope of the project. The 3D printed enclosure will have an initial design in early January
+in tandem with the PCB design, as the placement of the sensors is important to getting accurate
+readings. The final revision of the model will be due at the same time as the rest of the component,
+on April 11th.
+
 \subsubsection{Spring Semester}
 \begin{table}[H]
-    \footnotesize  
-    \caption{Spring Milestones}
+  \footnotesize  
+  \caption{Spring Milestones}
 
-    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | X |}
-      \hline
-      No. & Milestone & Date & Deliverables 
-      \\\hline\hline
+  \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | X |}
+    \hline
+    No. & Milestone & Date & Deliverables 
+    \\\hline\hline
 
-      S.0 
-      & Model and 3D print prototype enclosure
-      & Jan. 30, 2022
-      & 3D model
-      \\\hline
+    S.0 
+    & Model and 3D print prototype enclosure
+    & Jan. 30, 2022
+    & 3D model
+    \\\hline
 
-      S.2 
-      & MVP Firmware
-      & Feb. 13th, 2022 
-      & Gerber files, part and PCB order confirmations
-      \\\hline
+    S.2 
+    & MVP Firmware
+    & Feb. 13th, 2022 
+    & Gerber files, part and PCB order confirmations
+    \\\hline
 
-      S.1 
-      & MVP Webapp and supporting backend infrastructure
-      & Feb. 13th, 2022 
-      & React app, AWS backend zip package
-      \\\hline
+    S.1 
+    & MVP Webapp and supporting backend infrastructure
+    & Feb. 13th, 2022 
+    & React app, AWS backend zip package
+    \\\hline
 
-      S.3 
-      & PCB Revision 1.1
-      & Feb. 13th, 2022 
-      & Gerber files, part and PCB order confirmations
-      \\\hline
+    S.3 
+    & PCB Revision 1.1
+    & Feb. 13th, 2022 
+    & Gerber files, part and PCB order confirmations
+    \\\hline
 
-      S.4 
-      & Software alpha 1.1 
-      & Mar. 6th, 2022 
-      & Node and base-station release binaries, React app, AWS backend code zip package 
-      \\\hline
+    S.4 
+    & Software alpha 1.1 
+    & Mar. 6th, 2022 
+    & Node and base-station release binaries, React app, AWS backend code zip package 
+    \\\hline
 
-      S.5
-      & Finalized PCB
-      & Mar. 13th, 2022 
-      & Gerber files, part and PCB order confirmations
-      \\\hline
+    S.5
+    & Finalized PCB
+    & Mar. 13th, 2022 
+    & Gerber files, part and PCB order confirmations
+    \\\hline
 
-      S.6 
-      & Stretch goal completion
-      & Apr. 1st, 2022
-      & Node and base-station release binaries, React app, AWS backend code zip package 
-      \\\hline
+    S.6 
+    & Stretch goal completion
+    & Apr. 1st, 2022
+    & Node and base-station release binaries, React app, AWS backend code zip package 
+    \\\hline
 
-      S.7 
-      & Finalized design
-      & Apr. 11st, 2022
-      & Code binaries, 3D model, Gerber files
-      \\\hline
+    S.7 
+    & Finalized design
+    & Apr. 11st, 2022
+    & Code binaries, 3D model, Gerber files
+    \\\hline
 
-    \end{tabularx}
-    \label{tab:spring-milestones}
+  \end{tabularx}
+  \label{tab:spring-milestones}
 \end{table}
 
 \begin{table}[H]
-    \centering
-    \footnotesize
-    \caption{Spring Milestone Descriptions}
+  \centering
+  \footnotesize
+  \caption{Spring Milestone Descriptions}
 
-    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
-      \hline
-      No. & Milestone & Description 
-      \\\hline\hline
+  \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
+    \hline
+    No. & Milestone & Description 
+    \\\hline\hline
 
-      S.0 
-      & Model and 3D print prototype enclosure
-      & A 3D model has been designed to house the PCB, and has been printed
-      \\\hline
+    S.0 
+    & Model and 3D print prototype enclosure
+    & A 3D model has been designed to house the PCB, and has been printed
+    \\\hline
 
-      S.2 
-      & MVP Firmware
-      & The firmware will be able to take sensor measurements from all sensors and upload them to
-      the AWS backend over LoRaWAN
-      \\\hline
+    S.2 
+    & MVP Firmware
+    & The firmware will be able to take sensor measurements from all sensors and upload them to
+    the AWS backend over LoRaWAN
+    \\\hline
 
-      S.1 
-      & MVP Webapp and supporting backend infrastructure
-      & The webapp will be able to allow users to view the map with sensor data overlays. Users can
-      sign up to register their devices with the AWS LNS
-      \\\hline
+    S.1 
+    & MVP Webapp and supporting backend infrastructure
+    & The webapp will be able to allow users to view the map with sensor data overlays. Users can
+    sign up to register their devices with the AWS LNS
+    \\\hline
 
-      S.3 
-      & PCB Revision 1.1
-      & Fixes to the PCB design, and new prototype design has been ordered
-      \\\hline
+    S.3 
+    & PCB Revision 1.1
+    & Fixes to the PCB design, and new prototype design has been ordered
+    \\\hline
 
-      S.4 
-      & Software alpha 1.1 
-      & Any bug fixes and stabilization, and a CLI and/or TUI Linux program has been created to
-      interact with the device over USB
-      \\\hline
+    S.4 
+    & Software alpha 1.1 
+    & Any bug fixes and stabilization, and a CLI and/or TUI Linux program has been created to
+    interact with the device over USB
+    \\\hline
 
-      S.5
-      & Finalized PCB
-      & Any remaining fixes and final touches to the PCB, and ordered with high quality materials
-      and production fab
-      \\\hline
+    S.5
+    & Finalized PCB
+    & Any remaining fixes and final touches to the PCB, and ordered with high quality materials
+    and production fab
+    \\\hline
 
-      S.6 
-      & Stretch goal completion
-      & Complete as many stretch goals as possible. Ideally, integration with The Things Network and
-      Helium would be nice, along with additional webapp features, such as: controlling devices
-      remotely, viewing device logs, and view time-series graphs and map overlays of sensor data
-      \\\hline
+    S.6 
+    & Stretch goal completion
+    & Complete as many stretch goals as possible. Ideally, integration with The Things Network and
+    Helium would be nice, along with additional webapp features, such as: controlling devices
+    remotely, viewing device logs, and view time-series graphs and map overlays of sensor data
+    \\\hline
 
-      S.7 
-      & Finalized design
-      & Any final bug fixes to firmware and software, along with a finalized enclosure design with
-      pivot-able solar panel fixture. All requirement specifications should have been met, along
-      with as many stretch goals as possible, such as wired (USB) data uploads
-      \\\hline
+    S.7 
+    & Finalized design
+    & Any final bug fixes to firmware and software, along with a finalized enclosure design with
+    pivot-able solar panel fixture. All requirement specifications should have been met, along
+    with as many stretch goals as possible, such as wired (USB) data uploads
+    \\\hline
 
-    \end{tabularx}
-    \label{tab:spring-milestone-descriptions}
+  \end{tabularx}
+  \label{tab:spring-milestone-descriptions}
 \end{table}
