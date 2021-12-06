@@ -1,5 +1,5 @@
 \subsection{Gateway}
-This section we will be detailing our plans for incorporating a LoRaWAN gateway into our design. We will not be designing the hardware in the same way that we are designing the hardware for the sensor node i.e. designing the PCB, etc., but we will need to build a functioning LoRaWAN gateway in order for sensor node to be useful. This section will focus on what we will need to do to set up the physical gateway components, which are a Raspberry Pi 4 and a RAK 2245 Pi Hat. We will also discuss how the software will need to be set up on the gateway in order to be able to connect it to our AWS instance, The Things Network, and The Helium Network.
+This section we will be detailing our plans for incorporating a LoRaWAN gateway into our design. We will not be designing the hardware in the same way that we are designing the hardware for the sensor node i.e. designing the PCB, etc., but we will need to build a functioning LoRaWAN gateway in order for sensor node to be useful. This section will focus on what we will need to do to set up the physical gateway components, which are a Raspberry Pi 4 and a RAK 2245 Pi Hat. We will also discuss how the software will need to be set up on the gateway in order to be able to connect it to our AWS instance using AWS IoT Core and The Things Network.
 
 \subsubsection{Gateway Hardware}
 The hardware assembly for the gateway is incredibly simple. All that needs to be done is to attach the RAK 2245's connector to the Raspberry Pi's 40-pin GPIO header. After this, it is simply a matter of connecting the Ethernet output to an internet router and plugging in the micro-USB cable for power. Additionally, the GPS antenna and the LoRa antenna that come with the RAK 2245 must be attached to it in order for the gateway to function. The only other component that is required is an SD card loaded with a Linux image developed by RAKWireless designed for the gateway. Our setup gateway can be seen is Figure \ref{fig:gateway-rak}.
@@ -12,7 +12,7 @@ The hardware assembly for the gateway is incredibly simple. All that needs to be
 \end{figure}
 
 \subsubsection{Gateway Software}
-Configuring the gateway to function with the various LoRaWAN networks we desire is also fairly straightforward. Once we burn the previously mentioned OS image to an SD card and insert it into the Raspberry Pi, the device will create a new WiFi access point. On a separate computer, we will be able to connect to this WiFi access point and then can gain access to the gateway via an SSH connection. Within this SSH connection is where we will be able to configure that gateway to connect to any of the LoRaWAN networks we choose. In the next few sections we will detail how we will connect our gateway to The Things Network, The Helium Network, and directly to our AWS server instance.
+Configuring the gateway to function with the various LoRaWAN networks we desire is also fairly straightforward. Once we burn the previously mentioned OS image to an SD card and insert it into the Raspberry Pi, the device will create a new WiFi access point. On a separate computer, we will be able to connect to this WiFi access point and then can gain access to the gateway via an SSH connection. Within this SSH connection is where we will be able to configure that gateway to connect to any of the LoRaWAN networks we choose. In the next few sections we will detail how we will connect our gateway to The Things Network and directly to our AWS server instance.
 
 \paragraph{Connecting to The Things Network}
 Connecting to The Things Network is simply a matter of configuring the LoRaWAN gateway and using The Things Network's online configuration tool to add your gateway to the network.
@@ -29,7 +29,7 @@ This will bring up a menu GUI. In this menu, you select option 2, "\texttt{Setup
 
 To finish setting up our gateway with The Things Network, we must navigate to The Things Network's website\footnote{The website for The Things Network is \texttt{www.thethingsnetwork.org}} and create an account. Once logged in, navigate to the Console, select your region, and then click "Add gateway." Once there, fill out the appropriate information for the gateway including the \texttt{Gateway ID} and appropriate frequency plan. After completing this, any LoRaWAN end-device that is correctly configured to connect to The Things Network should be able to see your newly setup gateway and use it to connect to the internet.
 
-\paragraph{The Helium Network}
+% \paragraph{The Helium Network}
 
 \paragraph{Connecting Our AWS Server Instance}
 Connecing our gateway to an AWS server instance will be somewhat similar to how we set it up to connect to The Things Network. It will require installing a custom operating system on the Raspberry Pi and performing some configuration on both the Pi and on AWS IoT Core, which is what we will be using to manage the gateway.
