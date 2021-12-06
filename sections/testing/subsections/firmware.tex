@@ -46,27 +46,11 @@ It's able to run on 8 or 64-bit microcontrollers due to its simple design and
 small footprint. It has easy CMake integration to allow for automated building
 and testing. Unity has less than 3000 lines of code, including white space.
 Unity provides a set of assertions to test various aspects of the firmware. They
-can be simple assertions, such as:
-
-\begin{lstlisting}[language=C, caption=Unity Basic Assertion Example
-\cite{unity-homepage}]
-int a = 1;
-TEST_ASSERT( a == 1 ); //this one will pass
-TEST_ASSERT( a == 2 ); //this one will fail
-\end{lstlisting}
+can be simple assertions, such as the ones shown in listing \ref{lst:unity-test-assert}.
 
 Unity also provides hundreds of specialized assertion definitions, such as
 printing a message on failure, testing if an integer is within a certain range,
-or testing each int or float in an array.
-
-\begin{lstlisting}[language=c, caption=More advanced Unity Assertions
-\cite{unity-github}]
-TEST_ASSERT_EQUAL_INT(2, a);
-TEST_ASSERT_EQUAL_HEX8(5, a);
-TEST_ASSERT_EQUAL_UINT16(0x8000, a);
-TEST_ASSERT_EACH_EQUAL_INT(expected, actual, num_elements);
-TEST_ASSERT_MESSAGE( a == 2 , "a isn't 2, end of the world!");
-\end{lstlisting}
+or testing each int or float in an array, as shown in listing \ref{lst:unity-more-test-assert}.
 
 After generating the make files with CMake, compiling the tests, and either
 running on the local machine for target-agnostic tests or on the development
@@ -74,12 +58,5 @@ board for target-specific tests, Unity will print a report of the test results.
 The report contains the number of failing and passing tests, along with where
 exactly the tests failed. All example code has been gathered from either Unity's
 homepage \cite{unity-homepage} or the source code on GitHub \cite{unity-github}.
-Below is some sample output:
+An example of the generated report is shown in listing \ref{lst:unity-report}.
 
-\begin{lstlisting}[caption=Example Unity Test Report Output \cite{unity-homepage}]
-testUnit1.c:21:test_AverageThreeBytes_should_AverageMidRangeValues:PASS
-testUnit1.c:22:test_AverageThreeBytes_should_AverageHighValues:PASS
------------------------
-2 Tests 0 Failures 0 Ignored
-OK
-\end{lstlisting}

@@ -14,3 +14,57 @@
 
 \item Figure \ref{fig:lora-range-bandwidth}: Used w
 \end{itemize}
+
+\newpage
+\section{Listings}
+\renewcommand{\lstlistlistingname}{}
+\lstlistoflistings
+\hfill
+
+\begin{lstlisting}[label={lst:unity-report}, caption=Example Unity Test Report Output \cite{unity-homepage}]
+testUnit1.c:21:test_AverageThreeBytes_should_AverageMidRangeValues:PASS
+testUnit1.c:22:test_AverageThreeBytes_should_AverageHighValues:PASS
+-----------------------
+2 Tests 0 Failures 0 Ignored
+OK
+\end{lstlisting}
+
+\begin{lstlisting}[language=C, label={lst:unity-test-assert}, caption=Unity Basic Assertion Example
+\cite{unity-homepage}]
+int a = 1;
+TEST_ASSERT( a == 1 ); //this one will pass
+TEST_ASSERT( a == 2 ); //this one will fail
+\end{lstlisting}
+
+\begin{lstlisting}[language=c, label={lst:unity-more-test-assert}, caption=More advanced Unity Assertions
+\cite{unity-github}]
+TEST_ASSERT_EQUAL_INT(2, a);
+TEST_ASSERT_EQUAL_HEX8(5, a);
+TEST_ASSERT_EQUAL_UINT16(0x8000, a);
+TEST_ASSERT_EACH_EQUAL_INT(expected, actual, num_elements);
+TEST_ASSERT_MESSAGE( a == 2 , "a isn't 2, end of the world!");
+\end{lstlisting}
+
+\begin{lstlisting}[style=ES6, label=lst:jest-example, caption={Jest Unit Testing Example}]
+function calc() {
+  return 50;
+}
+
+test('calc() test', () => {
+  expect(50).toEqual(50);
+})
+\end{lstlisting}
+
+\begin{lstlisting}[language=csh, label=lst:jest-output, caption={Jest Unit
+Testing Example Output}]
+> jest
+ RUNS  ./calc.test.js
+ PASS  ./calc.test.js
+  ✓ calc() test (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.445 s, estimated 1 s
+Ran all test suites.
+\end{lstlisting}

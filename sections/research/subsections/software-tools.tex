@@ -22,6 +22,30 @@ KiCad is a free and open source software suit for electronic design automation (
 \paragraph{STM32CubeIDE}
 STM32CubeIDE is the integrated development environment (IDE) created by ST for use with the STM32 family of microcontrollers. We are using one of these such microcontrollers and therefore we are using this software in our development process. The STM32CubeIDE contains a variety of features that simplify the process of writing software for our STM32 microcontroller. The IDE includes a pre-complied ARM C/C++ compiler and debugger. The IDE also includes a library of boilerplate code and templates to quickly get up and running generic functionality for the microcontroller. There is also a graphical debugger. The STM32CubeIDE also contains STM32CubeMonitor, which is a tool that allows us to monitor and diagnose an STM32 application at runtime. Another critical feature of STM32CubeIDE is the STM32CubeProgrammer, the included programming tool which allows us to program the microcontroller over its SWD interface. Due to the fact that STM3DCube IDE was designed for use with our chosen microcontroller, it is clear why we are using this software.
 
+\paragraph{Neovim \& Vim}
+Neovim and Vim are terminal-based text editors, and they are used in conjunction with CMake and the
+other command line tools in place of the STM32CubeIDE for team members that are comfortable with
+doing so, but the STM32CubeIDE will still be used to help generate template code for the MCU's
+drivers.
+
+\paragraph{CMake}
+CMake is a meta-build tool that's designed to be able to generate Makefiles independent of the
+platform being made on. It can also generate custom installers, and deal with specialized compile
+targets, such as the chip we're using, the LoRa-E5 which uses the STM32WLE5JC. CMake is used in
+conjunction with STM's Cube software package and software tools for a better developer experience.
+STM32CubeIDE is based off of Eclipse, and it is slow and buggy. All the tools from generating
+binaries, programming the device, and debugging the device can be used with command-line tools
+together with open source software. An open source CMake module is being used, called stm32-cmake
+\footnote{Found at: https://github.com/ObKo/stm32-cmake}, to link the STM32WL's drivers, HAL,
+FreeRTOS, and generate device specific linker scripts.
+
+\paragraph{STLink}
+We will be using an open source version of STM's programmer, called "stlink"
+\footnote{Found at: https://github.com/stlink-org/stlink} and debugger GUI software that is usable
+from the command-line, and integrates well with CMake, writing automation scripts, and, of course,
+Vim. stlink provides debugging and programming capabilities. It also is able to trace code
+execution, and provide detail information about the debugger and MCU state.
+
 \paragraph{Git}
 Git is a free and open source, distributed version control software. It used by major free and open source software projects and by software companies alike. Git allows us to work on projects asynchronously. Git operates on a series of changes, known as "commits", that make up the entirety of a project, which is contained in a repository (commonly referred to as a repo). A commit is simply a change to a single file or multiple files. Each commit is hashed, which gives it a unique value. New commits that a user makes locally can "pushed" to a remote repository so others can view them. Conversely, new commits from other users can be "pulled" back to a local user's machine. A major appeal of Git is being able to go back in time to an earlier commit, if the need arises. 
 
@@ -42,4 +66,5 @@ Another key feature of LaTeX that factored into our decision to use it was the e
 Overleaf is an online LaTeX integrated development environment (IDE). Overleaf also has a comprehensive library of user-friendly LaTeX documentation. While LaTeX can be installed locally on all operating systems, we decided to use Overleaf to make it easier for some members of our team. Some members of the team had not used LaTeX previously and were not as comfortable with Git, so to make it easier for them we decided on also incorporating Overleaf into our documentation workflow. This allowed them to not have to worry about the sometimes challenging nature of working with the numerous LaTeX packages or getting the correct version of LaTeX installed on their computers and instead allowed them to immediately get into writing our project documentation using LaTeX.
 
 We also were able to integrate our Overleaf project with our Git repository, allowing the members of our group who preferred using their own local LaTeX environment to pull any new changes from the Overleaf document. This made for seamless collaboration between those on our team using Overleaf and those using a local environment.
+
 

@@ -34,52 +34,22 @@ would be:
 \end{itemize}
 
 \subsubsection{Jest}
-Each test in Jest is created with the \code{test(name, fn, timeout?)}. Inside
-the \code{test()} function, the test is written. To check and verify values,
-the \code{expect(value)} is used. The \code{expect()} function returns an
-\code{Expectation} object, with provides an interface to \emph{match} the
-\code{value} with various conditionals, called ``matchers''. For example, you
-could have a function that computes a result, and the function is operating
-correctly if the resultant value is between 0 and 100. Like, Unity, there is
-a huge set of matchers available to use. The \code{.toEqual(value)}
-matcher would be used, like in listing \ref{lst:jest-example}.
+Each test in Jest is created with the \code{test(name, fn, timeout?)}. Inside the \code{test()}
+function, the test is written. To check and verify values, the \code{expect(value)} is used. The
+\code{expect()} function returns an \code{Expectation} object, with provides an interface to
+\emph{match} the \code{value} with various conditionals, called ``matchers''. For example, you could
+have a function that computes a result, and the function is operating correctly if the resultant
+value is between 0 and 100. Like, Unity, there is a huge set of matchers available to use. The
+\code{.toEqual(value)} matcher would be used, like in listing \ref{lst:jest-example}. Jest provides
+the following report after running all of the tests, as shown in listing \ref{lst:jest-output}
 
-\begin{lstlisting}[style=ES6, label=lst:jest-example, caption={Jest Unit Testing Example}]
-function calc() {
-  return 50;
-}
-
-test('calc() test', () => {
-  expect(50).toEqual(50);
-})
-\end{lstlisting}
-
-Jest provides the following report after running all of the tests, as shown in
-listing \ref{lst:jest-output}
-
-\begin{lstlisting}[language=csh, label=lst:jest-output, caption={Jest Unit
-Testing Example Output}]
-> jest
- RUNS  ./calc.test.js
- PASS  ./calc.test.js
-  ✓ calc() test (2 ms)
-
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:        0.445 s, estimated 1 s
-Ran all test suites.
-\end{lstlisting}
 
 \subsubsection{Testing the Serverless Application}
-Since we are opting for a serverless backend (using AWS Lambda),
-the Amazon Serverless Application Model CLI will be utilized for testing (and
-for deployment). Through YAML configuration files, a serverless application can
-be deployed with the right configuration automatically. It also provides a local
-testing environment for Lambda. The AWS SAM CLI also provides debugging
-capabilities that allow the developer to step through the code and view
-information about the current state of the program. For AWS Lambda, the main
-functionality will be decoupled as much as possible from the Lambda handler
-function to maximize the amount of testing that can be done locally and through
-the GitHub continuous integration pipeline without requiring access to AWS
-services.
+Since we are opting for a serverless backend (using AWS Lambda), the Amazon Serverless Application
+Model CLI will be utilized for testing (and for deployment). Through YAML configuration files,
+a serverless application can be deployed with the right configuration automatically. It also
+provides a local testing environment for Lambda. The AWS SAM CLI also provides debugging
+capabilities that allow the developer to step through the code and view information about the
+current state of the program. For AWS Lambda, the main functionality will be decoupled as much as
+possible from the Lambda handler function to maximize the amount of testing that can be done locally
+and through the GitHub continuous integration pipeline without requiring access to AWS services.
