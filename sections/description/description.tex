@@ -275,7 +275,7 @@ Another key component of our design is the LoRaWAN gateway. We do not plan on en
     \label{fig:hwBaseStationBD}
 \end{figure}
 
-Additionally, we created a block diagram to describe, at a high level, how we plan for the embedded software running on our sensor node to function. We have split the software into three major sections: the application logic, the networking stack, and the device drivers. The application logic will manage node functions, such as when the device will sleep and wake, how the device will manage its power sources, and how the device will handle measuring sensor input data. The networking stack will sending the data that was collected from the sensors to the internet over LoRaWAN. Finally, the dev
+Additionally, we created a block diagram to describe, at a high level, how we plan for the embedded software running on our sensor node to function. We have split the software into three major sections: the application logic, the networking stack, and the device drivers. The application logic will manage node functions, such as when the device will sleep and wake, how the device will manage its power sources, and how the device will handle measuring sensor input data. The networking stack will sending the data that was collected from the sensors to the internet over LoRaWAN. Finally, the device drivers section will handle all of the raw signals coming in from all of the attached sensors and hardware modules, such as the physical LoRa module, the gas sensors, and the pa
 
 \begin{figure}[H]
     \centering
