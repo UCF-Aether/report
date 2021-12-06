@@ -101,83 +101,6 @@ S.2 & The server will be able to automatically register nodes with other support
 
 On the server side, a host website should be able to display a map overlaid with different air quality data collected from the field. Additionally, the server will have the ability to send air quality reports and alerts via Twitter and SMS. Another requirement specification for the server will be its ability to register nodes with other supported LoRaWAN IoT network servers such as Helium. The server should have the ability to remotely configure nodes in the field to the user's desired operating modes and specifications. The server requirements are listed in Table \ref{tab:list-of-requirements}.
 
-
-% \begin{table}[H]
-% \centering
-% \caption{The gateway requirements}
-% \begin{tabularx}{\linewidth}{|c|X|c|c|}
-% \hline
-% No. & Requirement & Value & Units \\
-% \hline\hline
-% 1.0 & The gateway should cost no more than \$200 & 200 & dollars \\\hline
-% 1.1 & The gateway should be no larger than 6" x 6" x 6" & 6x6x6 & inches \\\hline
-% 1.2 & The gateway weight should be no more than than 5 pounds & 5 & lbs \\\hline
-% 1.3 & The gateway should utilize LoRaWAN with the base station as the gateway with the capacity to connect with up to 8 devices simultaneously. & 8 & nodes \\\hline
-% 1.4 & The gateway should be able to communicate with nodes up to 10 km away with ideal conditions & 10	& km \\\hline
-% 1.5 & The gateway should be able to communicate with nodes up to 3 km away in an urban environment & 3 & km \\\hline
-% 1.6 & The gateway should be able to manage up to 256 nodes & 256 & nodes \\\hline
-% \end{tabularx}
-% \label{tab:networkingRequirements}
-% \end{table}
-
-% \begin{table}[H]
-% \centering
-% \caption{The sensor node requirements.}
-% \begin{tabularx}{\linewidth}{|c|X|c|c|}
-% \hline
-% No. & Requirement & Value & Units \\
-% \hline\hline
-% 2.0 & The sensor node should cost no more than \$150 & 150 & dollars \\\hline
-% 2.1 & The sensor node should be no larger than 12" x 12" x 12" & 12x12x12 & inches \\\hline
-% 2.2 & The sensor node weight should be no more than 10 pounds & 10 & lbs \\\hline
-% 2.3 & The sensor node should stay operational without intervention for 1 year & 1 & year \\\hline
-% 2.4 & The sensor node sensors should have a maximum tolerance of +/- 20\% & 20 & \% \\\hline
-% 2.5 & The sensor node should transmit for no more than 30 seconds every 24 hours & 30 & seconds \\\hline
-% \end{tabularx}
-% \label{tab:nodeRequirements}
-% \end{table}
-
-% \begin{table}[H]
-% \centering
-% \caption{The gateway and networking engineering specifications}
-% \begin{tabularx}{\linewidth}{|c|X|}
-% \hline
-% No. & Requirement \\
-% \hline\hline
-% 3.0 & The gateway shall use LoRa and LoRaWAN for the wireless communication protocol \\\hline
-% 3.1 & The gateway should adhere to the LoRa Fair Access policy \\\hline
-% 3.2 & The gateway should have enough internet bandwidth to support all of its connected nodes \\\hline
-% 3.3 & The network shall utilize a star networking topology.\\\hline
-% 3.4 & We define a component of our network to be known as a cell, which shall consist of nodes connected to a gateway. \\\hline
-% 3.5 & The gateway shall be able communicate with an external server over the internet.\\\hline
-% 3.6 & The server shall be hosted on existing web hosting platform.\\\hline
-% 3.7 & The server shall host a website that displays data collected from the sensors.\\\hline
-% \end{tabularx}
-% \label{tab:networkingSpecs}
-% \end{table}
-
-% \begin{table}[H]
-% \centering
-% \caption{The node engineering specifications}
-% \begin{tabularx}{\linewidth}{|c|X|}
-% \hline
-% No. & Requirement \\
-% \hline\hline
-% 4.0 & The sensor node shall use a radio and antenna that is part of a daughterboard that can be attached to the main PCB.\\\hline
-% 4.1 & The node should use a battery and solar panel \\\hline
-% 4.2 & The sensor node shall contain a microcontroller. \\\hline
-% 4.3 & The sensor node microcontroller shall support the UART protocol.\\\hline
-% 4.4 & The sensor node microcontroller shall have at least one ADC.\\\hline
-% 4.5 & The sensor node microcontroller shall support JTAG debugging.\\\hline
-% 4.6 & The sensor node shall contain a NO2 sensor.\\\hline
-% 4.7 & The sensor node shall contain a PM sensor.\\\hline
-% 4.8 & The sensor node shall contain a SO2 sensor.\\\hline
-% 4.9 & The sensor node shall contain a O3 sensor.\\\hline
-% 4.10 & The sensor node shall contain a CO sensor.\\\hline
-% \end{tabularx}
-% \label{tab:nodeSpecs}
-% \end{table}
-
 \begin{table}[H]
 \centering
 \caption{The constraints.}
@@ -275,7 +198,7 @@ Another key component of our design is the LoRaWAN gateway. We do not plan on en
     \label{fig:hwBaseStationBD}
 \end{figure}
 
-Additionally, we created a block diagram to describe, at a high level, how we plan for the embedded software running on our sensor node to function. We have split the software into three major sections: the application logic, the networking stack, and the device drivers. The application logic will manage node functions, such as when the device will sleep and wake, how the device will manage its power sources, and how the device will handle measuring sensor input data. The networking stack will sending the data that was collected from the sensors to the internet over LoRaWAN
+Additionally, we created a block diagram to describe, at a high level, how we plan for the embedded software running on our sensor node to function. We have split the software into three major sections: the application logic, the networking stack, and the device drivers. The application logic will manage node functions, such as when the device will sleep and wake, how the device will manage its power sources, and how the device will handle measuring sensor input data. The networking stack will sending the data that was collected from the sensors to the internet over LoRaWAN. Finally, the device drivers section will handle all of the raw signals coming in from all of the attached sensors and hardware modules, such as the physical LoRa module, the gas sensors, and the pa
 
 \begin{figure}[H]
     \centering
