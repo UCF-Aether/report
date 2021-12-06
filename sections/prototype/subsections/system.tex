@@ -1,0 +1,65 @@
+\subsection{Backend and Webapp Prototype}
+As an initial prototype and proof of concept, the backend and webapp will implement very simple
+functionalities. The goal of the proof of concept (PoC) is to test simple integration with the
+development board, the AWS LNS, the database, and the React webapp. The backend services, initially,
+will only be setup to log decoded LoRaWAN packets in the AWS DynamoDB, and display the logs in
+a table using the MUI React UI framework. From there, work can be done on integrating the Google
+Maps API, and generating custom data overlays using tools available in the API. The differences
+between the proof-of-concept and the minimally-viable-concept phase are tabulated in Table
+\ref{tab:prototype-phase-comparison}.
+
+\subsubsection{The Proof of Concept}
+As aforementioned, the proof of concept will only consist of taking data readings on from the
+development board of a light sensor, transmitting it over LoRaWAN to the AWS LNS, decoding the
+binary packets and logging them into the AWS DynamoDB, and then displaying the logs in the React
+webapp using the MUI framework. There will be no user authorization, or even a concept of a user at
+this phase. End devices will be manually configured on the AWS LNS through the AWS IoT Core service.
+As tabulated in Table \ref{tab:fall-milestones}, the PoC should be completed before the Spring
+semester, but ideally before the start of the new year (2022). The proof of concept will also
+include email and SMS notifications when a light threshold is met.
+
+\subsubsection{The Minimally Viable Product}
+The Minimally-Viable-Product (MVP) prototype phase implements the absolute basic requirements of the
+project, such as the interactive map. Users will be able to register their devices on the webapp,
+but not many other features will be available for controlling and configuring devices remotely.
+Also, only the interactive map with overlays will be created, and any static or real-time
+time-series graphs/overlays won't be covered in this phase. The user will only be able to see the
+status of their sensor node and see its exact location (whereas for non-owners, the location won't
+be pinpointed). The interactive map will allow the user (doesn't require login) to toggle sensor
+readings on the overlay, and hovering over areas of the map will reveal an info window for more
+details about the sensor data in that area. The MVP will extend the notification system to tweet on
+an Aether Twitter account about levels seen in the network deemed by the EPA as mildly unhealthy or
+worse.
+
+\begin{table}[H]
+\centering
+  \begin{tabularx}{\linewidth}{|l|c|c|}
+    \hline
+    Feature & Proof of Concept & Minimally Viable Product 
+    \\\hline\hline
+  
+    Logging & \yes & \yes
+    \\\hline
+
+    Email and SMS Notifications & \yes & \yes
+    \\\hline
+
+    Twitter Tweets as Notifications & \no & \yes
+    \\\hline
+
+    AQI Sensor Data & \no & \yes
+    \\\hline
+
+    Data Map Overlay & \no & \yes
+    \\\hline
+
+    User Registration/Authorization & \no & \yes
+    \\\hline
+
+    Time Series Graphs & \no & \yes
+    \\\hline
+
+  \end{tabularx}
+  \caption{Differences between the two prototype phases}
+  \label{tab:prototype-phase-comparison}
+\end{table}
