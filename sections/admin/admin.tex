@@ -45,232 +45,240 @@ Here we display the budget for each of the major components of our project inclu
 \end{table}
 
 \subsection{Milestones}
-In Table \ref{fall-milestones} and Table \ref{spring-milestones} we describe our current milestones for the fall and spring semesters respectively. The full descriptions for the fall milestones can be found in Table \ref{fall-milestone-descriptions} and the full descriptions for the spring milestones can be found in Table \ref{spring-milestone-descriptions}. The goal of creating these milestones is to ensure that we stay on track as the semester progresses and that we do not fall behind. As is often the case, we will likely need to add new milestones as new challenges arise.
-\subsubsection{Fall Semester}
+In Table \ref{tab:fall-milestones} and Table \ref{tab:spring-milestones} we describe our current milestones
+for the fall and spring semesters respectively. The full descriptions for the fall milestones can be
+found in Table \ref{tab:fall-milestone-descriptions} and the full descriptions for the spring milestones
+can be found in Table \ref{tab:spring-milestone-descriptions}. The goal of creating these milestones is
+to ensure that we stay on track as the semester progresses and that we do not fall behind. As is
+often the case, we will likely need to add new milestones as new challenges arise.
 
+\subsubsection{Fall Semester}
 \begin{table}[H]
-    
-    \begin{tabularx}{\linewidth}{|c|X|X|}
-        \hline
-        Date & Milestone & Deliverables \\
-        \hline\hline
-        Sep. 2nd, 2021 
-        & Sensing mechanism finalized 
-        & Sensor requirements document \\
-        
-        \hline
-        Oct. 1st, 2021
-        & MCU and LoRa module finalized
-        & Order confirmation and, if available, shipment information. \\
-        
-        \hline
-        Oct. 8th, 2021 
-        & Sensors finalized 
-        & Order confirmation and, if available, shipment information. \\
-        
-        \hline
-        Nov. 5th, 2021 
-        & Software alpha 1.0 
-        & Software alpha 1.0 node and base-station release binaries. \\ 
-        
-        \hline
-        Nov. 19th, 2021 & Prototype v1.0 PCB 
-        & PCB masks, fab order confirmation and, if available, shipment information \\
-        
-        \hline
-        Dec 3rd, 2021 & Prototype v1.5 PCB 
-        & PCB masks, fab order confirmation and, if available, shipment information \\
-        
-        \hline
-        Dec 10th, 2021 
-        & Software alpha 1.5 
-        & Software alpha 1.5 node and base-station release binaries. \\ 
-        
-        \hline
+    \footnotesize  
+    \caption{Fall Milestones}
+    \label{tab:fall-milestones}
+
+    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | c | X |}
+      \hline
+      No. & Milestone & Date & Achieved & Deliverables 
+      \\\hline\hline
+
+      F.0 
+      & Sensing mechanism finalized 
+      & Sep. 2nd, 2021 
+      & Sep. 14th, 2021
+      & Sensor requirements document 
+      \\\hline
+
+      F.1 
+      & MCU and LoRa module finalized
+      & Oct. 1st, 2021 
+      & Oct. 1st, 2021 
+      & Order confirmation and, if available, shipment information. 
+      \\\hline
+
+      F.2 
+      & Sensors finalized 
+      & Oct. 8th, 2021 
+      & Oct. 27, 2021
+      & Order confirmation and, if available, shipment information. 
+      \\\hline
+
+      F.3 
+      & Prototype v1.0 PCB 
+      & Jan. 4th, 2022 
+      & -
+      & Gerber files, part and PCB order confirmations
+      \\\hline
+
+      F.4 
+      & Software alpha 1.0 
+      & Jan. 4th, 2022 
+      & -
+      & Node and base-station release binaries, React app, AWS backend code zip package 
+      \\\hline
+
     \end{tabularx}
-    \caption{Fall milestones}
-    \label{fall-milestones}
+    % \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
 \end{table}
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\linewidth}{|c|X|}
-        \hline
-        Project Milestone & Description 
-        \\
-        \hline\hline
-        Sensing mechanism finalized &
-        Finish research and create design requirements for accurately detecting wildfires in a cost effective way.
-        \\
-        
-        
-        \hline
-        MCU and LoRa module finalized &
-        The MCU, LoRa module/daughter-boards, and Raspberry Pi's are chosen, and multiple developer boards have been ordered to design and test mesh networking.
-        \\
-        
-        \hline
-        Sensors finalized 
-        & The required sensors are chosen, and multiple parts/developer-boards have been ordered.
-        \\
-        
-        \hline
-        Software alpha 1.0 
-        & The nodes can communicate and route packets to the gateway, and the gateway can communicate with all or specific nodes on the network. There also exists some sort of command line interface on the gateway to talk to the nodes, but there are no required internet capabilities of the base, yet. The nodes can go to sleep, but a sleep routine isn't configured optimally.
-        \\
-        
-        \hline
-        Prototype v1.0 PCB 
-        & A PCB first version prototype PCB has been designed and ordered from a fast-turnaround PCB fab containing all required functionalities: power subsystem, MCU, LoRa module connectivity, battery and solar I/O, and sensor I/O with adequate noise isolation and filtering.
-        \\
-        
-        \hline
-        Prototype v1.5 PCB
-        & PCB prototype with, if any, major issues fixed. Should also include sensor daughter boards.
-        \\
-        
-        \hline
-        Software alpha 1.5
-        & The software works on the prototype PCB
-        \\
-        
-        \hline
+    \footnotesize
+    \caption{Fall Milestone Descriptions}
+
+    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
+      \hline
+      No. & Milestone & Description 
+      \\\hline\hline
+
+      F.0 
+      & Sensing mechanism finalized 
+      & Research on how to properly measure the air quality has completed
+      \\\hline
+
+      F.1 
+      & MCU and LoRa module finalized
+      & The computing and radio IC(s) have been researched and one (or many) have been chosen
+      \\\hline
+
+      F.2 
+      & Sensors finalized 
+      & The sensors needed to implement the sensing mechanism in F.0 have been researched and picked
+      \\\hline
+
+      F.3 
+      & Prototype v1.0 PCB 
+      & The first fully-featured prototype PCB is complete and ready to be sent to the fab
+      \\\hline
+
+      F.4 
+      & Software alpha 1.0 
+      & A version of firmware that is fully capable of reading sensor data and transmitting them
+      over LoRaWAN to the AWS LoRaWAN network server. The AWS backend should be capable of collating
+      the data and at least be able to tabulate the data. Displaying a map overlay would be a plus.
+      \\\hline
+
     \end{tabularx}
-    \caption{Fall milestone descriptions}
-    \label{fall-milestone-descriptions}
+    \label{tab:fall-milestone-descriptions}
 \end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SPRING MILESTONES
+% 
+% Notes:
+%   PCB 1.1
+%   enclosure (prototype and final)
+%   MVP webapp and backend
+%   integrated setup with Helium and TTN
+%   CLI or TUI interface for the device (USB)
+%   stretch website goals
+%   stretch firmware goals (operate wired through USB?)
+%   PCB 1.5 (final)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Spring Semester}
 \begin{table}[H]
-    \begin{tabularx}{\linewidth}{|X|X|X|}
-        \hline
-        Date & Milestone & Deliverables \\
-        \hline\hline
-        Jan. 19th, 2022 
-        & Prototype v2.0 PCB 
-        & PCB masks, fab order confirmation and, if available, shipment information \\
-        
-        \hline
-        Jan. 19th, 2022
-        & Enclosure prototype
-        & Model and 3D printed enclosure
-        \\
-        
-        \hline
-        Jan. 29th, 2022 
-        & Software alpha 2.0 
-        & Software alpha 2.0 node and base-station release binaries
-        \\
-        
-        \hline
-        Feb. 18th, 2022
-        & REST API created
-        & REST API documentation and testing/validation scripts
-        \\
-        
-        \hline
-        Feb. 18th, 2022
-        & Enclosure finalized
-        & Model and 3D printed enclosure
-        \\
-        
-        \hline
-        Feb. 25th, 2022
-        & Final v1.0 PCB
-        & PCB masks, fab order confirmation and, if available, shipment information 
-        \\
-        
-        \hline
-        Mar. 1st, 2022
-        & Software release v1.0
-        & Software v1.0 node and base-station release binaries. 
-        \\ 
-        
-        \hline
-        Mar. 18st, 2022
-        & Software release v1.1
-        & Software v1.1 node and base-station release binaries. 
-        \\ 
-        
-        \hline
-        Mar. 18st, 2022
-        & Final v1.1 PCB
-        & PCB masks, fab order confirmation and, if available, shipment information 
-        \\
-        
-        \hline
-        Mar. 25th, 2022
-        & Simple website to visualize results
-        & Website front-end and back-end files, and website URL or IP
-        \\
-        
-        \hline
+    \footnotesize  
+    \caption{Spring Milestones}
+
+    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | c | X |}
+      \hline
+      No. & Milestone & Date & Deliverables 
+      \\\hline\hline
+
+      S.0 
+      & Model and 3D print prototype enclosure
+      & Jan. 30, 2022
+      & 3D model
+      \\\hline
+
+      S.2 
+      & MVP Firmware
+      & Feb. 13th, 2022 
+      & Gerber files, part and PCB order confirmations
+      \\\hline
+
+      S.1 
+      & MVP Webapp and supporting backend infrastructure
+      & Feb. 13th, 2022 
+      & React app, AWS backend zip package
+      \\\hline
+
+      S.3 
+      & PCB Revision 1.1
+      & Feb. 13th, 2022 
+      & Gerber files, part and PCB order confirmations
+      \\\hline
+
+      S.4 
+      & Software alpha 1.1 
+      & Mar. 6th, 2022 
+      & Node and base-station release binaries, React app, AWS backend code zip package 
+      \\\hline
+
+      S.5
+      & Finalized PCB
+      & Mar. 13th, 2022 
+      & Gerber files, part and PCB order confirmations
+      \\\hline
+
+      S.6 
+      & Stretch goal completion
+      & Apr. 1st, 2022
+      & Node and base-station release binaries, React app, AWS backend code zip package 
+      \\\hline
+
+      S.7 
+      & Finalized design
+      & Apr. 11st, 2022
+      & Code binaries, 3D model, Gerber files
+      \\\hline
+
     \end{tabularx}
-    \caption{Spring milestones}
-    \label{spring-milestones}
+    \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
+    \label{tab:spring-milestones}
 \end{table}
 
-
-
-\begin{table}[H]    
+\begin{table}[H]
     \centering
-    \begin{tabularx}{\linewidth}{|c|X|}
-        \hline
-        Project Milestone & Description 
-        \\
-        \hline\hline
-        Prototype v2.0 PCB 
-        & This version should fix most or all remaining hardware bugs, and ensure accurate sensor readings. It should also be mountable in an enclosure.
-        \\
-        
-        \hline
-        Enclosure prototype
-        & An enclosure O-rings, or some other kind of sealant, to keep out dust and water splashes. It should be able to mount the sensors to get environmental readings, and provide space for top-mounted solar-panel.
-        \\
-        
-        \hline
-        Software alpha 2.0 
-        & The gateway should be able to set the node's sleep routine settings, and schedule any specific times to wake up at. The command-line utility should be robust enough with minimal bugs.
-        \\
-        
-        \hline
-        REST API created
-        & The gateway should run a server and/or relay to bigger server to provide a REST API for clients to query data about environmental readings pertaining to wildfires.
-        \\
-        
-        \hline
-        Enclosure finalized
-        & The enclosure that can house a PCB and mostly not get wet should be good enough.
-        \\
-        
-        \hline
-        Final v1.0 PCB
-        & A PCB should be bug-free, and sent to a proper fab to have high-quality board material and a water resistant coating.
-        \\
-        
-        \hline
-        Software release v1.0
-        & The software should be able to handle errors gracefully, reliably establish connections on the mesh network, and reliably wake-up and transmit data.
-        \\ 
-        
-        \hline
-        Software release v1.1
-        & Bug fixes and minor improvements.
-        \\ 
-        
-        \hline
-        Final v1.1 PCB
-        & Only if needed. Bug fixes and minor improvements.
-        \\
-        
-        \hline
-        Simple website to visualize results
-        & The website doesn't need to look pretty, but it should provide a nice visualization of the nodes deployed plus data readings over time displayed in a graph.
-        \\
-        
-        \hline
-    \end{tabularx}
-    \caption{Spring milestone descriptions}
-    \label{spring-milestone-descriptions}
-\end{table}
+    \footnotesize
+    \caption{Spring Milestone Descriptions}
 
+    \begin{tabularx}{\linewidth}{| c | p{0.25\linewidth} | X |}
+      \hline
+      No. & Milestone & Description 
+      \\\hline\hline
+
+      S.0 
+      & Model and 3D print prototype enclosure
+      & A 3D model has been designed to house the PCB, and has been printed
+      \\\hline
+
+      S.2 
+      & MVP Firmware
+      & The firmware will be able to take sensor measurements from all sensors and upload them to
+      the AWS backend over LoRaWAN
+      \\\hline
+
+      S.1 
+      & MVP Webapp and supporting backend infrastructure
+      & The webapp will be able to allow users to view the map with sensor data overlays. Users can
+      sign up to register their devices with the AWS LNS
+      \\\hline
+
+      S.3 
+      & PCB Revision 1.1
+      & Fixes to the PCB design, and new prototype design has been ordered
+      \\\hline
+
+      S.4 
+      & Software alpha 1.1 
+      & Any bug fixes and stabilization, and a CLI and/or TUI Linux program has been created to
+      interact with the device over USB
+      \\\hline
+
+      S.5
+      & Finalized PCB
+      & Any remaining fixes and final touches to the PCB, and ordered with high quality materials
+      and production fab
+      \\\hline
+
+      S.6 
+      & Stretch goal completion
+      & Complete as many stretch goals as possible. Ideally, integration with The Things Network and
+      Helium would be nice, along with additional webapp features, such as: controlling devices
+      remotely, viewing device logs, and view time-series graphs and map overlays of sensor data
+      \\\hline
+
+      S.7 
+      & Finalized design
+      & Any final bug fixes to firmware and software, along with a finalized enclosure design with
+      pivot-able solar panel fixture. All requirement specifications should have been met, along
+      with as many stretch goals as possible, such as wired (USB) data uploads
+      \\\hline
+
+    \end{tabularx}
+    \label{tab:spring-milestone-descriptions}
+\end{table}
