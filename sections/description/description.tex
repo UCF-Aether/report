@@ -56,10 +56,14 @@ One the first requirements considered for the gateway was total cost. The goal i
 
 For the node requirement specifications, the first thing considered was total cost. It was determined that the node should cost no more than \$150 dollars. It should be cheaper than the gateway design since the node will not have the Lo-Ra-WAN board. Similar to the gateway, the dimensions should not exceed 6 x 6 x 6 inches and the weight should be under 5 pounds, two demonstrable features for the node requirements. Additionally, the nodes should be able to successfully send packets of data to the main server through central Lo-Ra-WAN gateway. Each node will be equipped with a solar panel capable of charging the lithium-ion batteries inside the node, thus giving the nodal system the ability to operate off the grid. The nodes will also be equipped with different power modes to support different demands and efficiently manage battery life. When calculating the AQI level, the nodes must be able to output AQI values in the 300 to 400 range since anything above 300 on an AQI scale is considered hazardous breathing conditions. Node data should be able to be sent to the gateway at a distance up to 10km. Lastly, the node should be able to be configured remotely from the server so field maintenance is kept at a minimum. In Table \ref{tab:list-of-requirements}, we list the node requirement specifications.  
 
+In table \ref{tab:list-of-requirements}, the requirement specification number is prefixed with the
+type of requirement. As noted below the table, the \emph{D} prefix denotes demonstrable
+requirements, \emph{G} denotes requirements pertaining to the gateway, \emph{N} denotes sensor node
+requirements, and \emph{S} denotes requirements for the backend server.
 
 \begin{table}[H]
 \centering
-\caption{List of requirements}
+\caption{List of Requirements}
 \begin{tabularx}{\linewidth}{|c|X|}
 \hline
 No. & Requirement \\
@@ -91,6 +95,7 @@ S.0 & The server will host a website to display a map overlaid with air quality 
 S.1 & The server should be able to send air quality alerts over Twitter and SMS \\\hline
 S.2 & The server will be able to automatically register nodes with other supported LoRaWAN Network Servers (Helium, The Things Community, and private networks) \\\hline
 \end{tabularx}
+\caption*{\footnotesize Table key: D = demonstrable, G = gateway, N = node/sensing-device, S = server}
 \label{tab:list-of-requirements}
 \end{table}
 
