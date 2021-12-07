@@ -1,9 +1,46 @@
-\begin{figure}[H]
-\centering
-\includegraphics[width=4in]{aqi.png}
-\caption{AQI Levels}
-\label{fig:aqiLevels}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=4in]{aqi.png}
+% \caption{AQI Levels}
+% \label{fig:aqi-levels}
+% \end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{The Different AQI Levels}
+  \begin{tabularx}{\linewidth}{|p{0.3\linewidth}|p{0.3\linewidth}|X|}
+    \hline
+    \rowcolor[HTML]{\lightblue}
+    AQI Values & Levels of Health Concern & Colors
+    \\\hline\hline
+
+    \rowcolor[HTML]{00E400}
+    0 - 50 & Good & Green
+    \\\hline
+
+    \rowcolor[HTML]{FFFF00}
+    51 - 100 & Moderate & Yellow
+    \\\hline
+
+    \rowcolor[HTML]{FF7E00}
+    101 - 150 & Unhealthy for Sensitive Groups & Orange
+    \\\hline
+
+    \rowcolor[HTML]{FF0000}
+    151 - 200 & Unhealthy & Red
+    \\\hline
+
+    \rowcolor[HTML]{\purple}
+    201 - 300 & Very Unhealthy & Purple
+    \\\hline
+
+    \rowcolor[HTML]{\maroon}
+    301 - 500 & Hazardous & Maroon
+    \\\hline
+
+  \end{tabularx}
+  \label{tab:aqi-levels}
+\end{table}
 
 
 \subsection{The Air Quality Index (AQI)}
@@ -21,5 +58,5 @@ of 7 gas pollutant measurements available. The EPA sets standards for exposure l
 the gasses based on scientific research. The levels can be advised over time. The range of the index
 is from 0 to 500 with an AQI value of 100 being the national air quality standard for each of the
 pollutants. Various levels have been defined within 0 and 500 to indicate various health risks as
-shown in Figure \ref{fig:aqiLevels}. 
+shown in Table \ref{fig:aqi-levels}. 
 
