@@ -3,7 +3,7 @@
 Lithium-Ion solar charge controllers are current and voltage regulators that are used in stand-alone solar photovoltaic systems. The solar panel takes in power from PV arrays and the charger delivers optimal power to the electrical load. Due to the overall desired goals of our project it has been decided that our design will incorporate a Li-Io solar charge controller IC to regulate the charging of the battery in the system. The heart of our solar power design behind the power system is the stand-alone Li-Ion battery charge management controller. This chip takes in a certain voltage range and can be manipulated to output the desired voltage without drawing too much current from the solar panel. 
 
 The power considerations that must be taken into account are the voltage of the micro-controller to be powered as well as the solar power output. The selected micro-controller has an input voltage range of 1.8V to 3.6V with peak performance coming from an input of 3.3V. The selected solar panel has a peak performance output of 6.12V. This means that the desired charge controller for our system must be able to take in a range of voltages around 4V-6V and output a voltage of 3.3v. The charge controller will be responsible for delivering power to the system load and only draw from the Li-Io battery when more current is needed. By prioritizing available power input over the Li-Io battery, the charge controller can efficiently power and charge the system while maximize battery life. The other major factor considered in choosing a battery charge controller was its ability to have dual-input power modes. This is because the power design is centered around not only the ability to power and charge the system through a solar panel but also charge and power the system through a USB input.
-
+\cite{Solar-Charge-Controller-Basics}
 \subsubsection{BQ24168 Charge Controller}
 The first of two Li-Io chargers considered was Texas Instrument's BQ2416xx 2.5A, dual-input, single-cell switched-mode Li-Ion battery charger with power path management and an \iic interface. The needs within our circuit design call for several things. First it must take in voltage from a solar panel at various levels and convert them into a stable DC voltage. Second it must take in power from a USB source to supplement the needs of the load and battery in cases where a solar panel won't be in use, for instance, during initial charging, or will not have sustainable output, for instance, when the panel is broken or during initial charging.
 
@@ -59,13 +59,13 @@ In this section, we provide an overview of the different types of batteries that
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.25]{figures/lead-acid-battery.png}
-    \caption{The configuration of a lead acid battery.}
+    \includegraphics[scale=1]{figures/lead-acid-battery.png}
+    \caption{The configuration of a lead acid battery. Used with permission under the CC BY 3.0 license \cite{Lead-Acid-Charging}.}
     \label{lead-acid-battery} 
 \end{figure}
 
 \subsubsection{Lead Acid Batteries}
-Lead batteries consist of two electrodes, a negative electrode consisting of lead and a positive electrode consisting of a lead oxide. The two electrodes are submerged in an electrolyte solution comprised of a mixture of water and sulfuric acid. Typically, an electrically insulating material that is chemically permeable is added to ensure the two electrodes do not come into direct contact. The configuration of a lead acid battery can be seen in Figure \ref{lead-acid-battery}, while the chemical equation of the reaction being implemented can be found in Equation \ref{lead-acid-eqn}.This figure comes from Battery University(TM) an online free website teaching hands on battery information. 
+Lead batteries consist of two electrodes, a negative electrode consisting of lead and a positive electrode consisting of a lead oxide. The two electrodes are submerged in an electrolyte solution comprised of a mixture of water and sulfuric acid. Typically, an electrically insulating material that is chemically permeable is added to ensure the two electrodes do not come into direct contact. The configuration of a lead acid battery can be seen in Figure \ref{lead-acid-battery}, while the chemical equation of the reaction being implemented can be found in Equation \ref{lead-acid-eqn}.
 
 \begin{equation}
     \text{PbO}_2 + \text{Pb} + 2\text{H}_2\text{SO}_4
@@ -75,12 +75,12 @@ Lead batteries consist of two electrodes, a negative electrode consisting of lea
 \end{equation}
 
 \subsubsection{Lithium Batteries}
-Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure \ref{lithium-ion-battery}.
+Lithium batteries differ in a few substantial ways from their lead acid counterparts. The basic component of a lithium battery is a positively charged cathode typically made of a lithium oxide metal that will give off lithium ions. A negatively charged anode that while charging, will store lithium ions from the cathode and while discharging will allow the lithium ions flow through the electrolyte and the electrons through the electrical path back to the cathode. The Electrolyte is usually a material that is highly ionic conductive, this will permit lithium ions to pass through while the electrons will be kept in the anode. The last material is called the separator and it usually consists of polyethylene or polypropylene. The separators' job is to not inhibit the other functions of the battery but also keep the anode and cathode from coming into physical contact. The configuration of a lithium-ion battery can be found in Figure \ref{lithium-ion-battery} \cite{Charging-Lithium-Ion}.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/lithium ion battery.png}
-    \caption{The configuration of a lithium ion battery.}
+    \caption{The configuration of a lithium ion battery. Used with permission under the CC BY 3.0 license \cite{lithium-batt-ref}.}
     \label{lithium-ion-battery} 
 \end{figure}
 
@@ -89,21 +89,21 @@ To utterly understand which battery is the right choice for a project one must l
 
 \paragraph{Discharge Curve}
 A discharge curve is a graph that plots Voltage against percentage of the capacity discharged. Essentially the Output voltage of a battery will lower as the battery is used up. Given this effect the most desirable curve would be flat (keeping voltage consistent at every level of discharge), so let us look at the average discharge curve of our lead acid and lithium-ion batteries. Figure \ref{fig:discharge-curve} shows example discharge curves one might find in a lithium ion and lead acid batteries. The figure has been provided by Power Tech, an energy storage system manufacturer. This figure shows first hand how steadily lead acid batteries drop in voltage as the depth of discharge increases. Meanwhile lithium is kept at a steady for the most part until the depth of discharge reaches upwards of 80 percent.
-
+\cite{Battery-Cell-Comparison}
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/discharge curve.png}
-    \caption{A comparison of a lithium ion battery discharge curve and a lead acid battery discharge curve.}
+    \caption{A comparison of a lithium ion battery discharge curve and a lead acid battery discharge curve. Used with permission under the CC BY-NC 3.0 license \cite{lithium-dis-ref}.}
     \label{fig:discharge-curve} 
 \end{figure}
 
 \paragraph{Energy Density}
 Energy density is the amount of energy you can get out of a battery per unit volume of weight required. Clearly the higher the density the better for a battery. The characteristic known as specific energy density is closely related. However, it considers the Discharge curve of the battery and how it would affect the voltage and current during the battery discharge cycle and is solely measured against weight. An example of the range of energy density and specific energy density can be found in Figure \ref{fig:energy-density} and is provided by the National Aeronautics and Space Administration. This figure shows that lithium far surpasses lead acid in energy density. When it comes to density by volume and density by weight lithium is roughly three times superior to lead acid.
-
+\cite{Differences-between-Lithium-Ion-and-Lead-acid-batteries}
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/energy density.png}
-    \caption{A comparison between volume energy density and specific energy density for various battery types.}
+    \caption{A comparison between volume energy density and specific energy density for various battery types. Used with permission under the Creative Commons Attribution 4.0 International license \cite{Energy-den-ref}.}
     \label{fig:energy-density} 
 \end{figure}
 
@@ -126,11 +126,11 @@ Li-ion        & 0 C to 45 C     & -20 C to 60 C & No charge recommended below fr
 \end{table}
 \paragraph{Service Life}
 As each recharge cycle of a rechargeable battery takes place its active components are slowly depleted, lowering its capacity. The industry service life of rechargeable batteries is defined as when the battery's capacity is 80\% of its intended use. The typical service life of rechargeable batteries could be anywhere from 500-1200 cycles. Figure \ref{fig:service-life} shows how repeated cycles influence the types of batteries were researching with the lead acid curve on the left and lithium ion on the right. As seen within the figure lithium batteries could go through 2-3 times the number of cycles as lithium batteries with a similar depth of discharge available. Meaning the the Lithium Ion batteries are capable of going through hundreds more charge and discharge cycles before reaching the same industry standard state that is end of life.
-
+\cite{Lithium-Ion-Battery-Vs-Lead-acid-battery}
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/service life.png}
-    \caption{A comparison between the service life of lead acid and lithium ion batteries}
+    \caption{A comparison between the service life of lead acid and lithium ion batteries. Used with permission from \cite{serv-life-ref}.}
     \label{fig:service-life} 
 \end{figure}
 
@@ -140,14 +140,14 @@ The charge curve shows the process of charging different batteries. This would i
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/lithium charge curve.png}
-    \caption{The charge curve for a lithium ion battery.}
+    \caption{The charge curve for a lithium ion battery. Used with permission from \cite{lith-charge-ref}.}
     \label{fig:lithium-charge-curve} 
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/lead acid charge curve.png}
-    \caption{The charge curve for a lead acid battery.}
+    \caption{The charge curve for a lead acid battery. Used with permission from \cite{lead-charge-ref}.}
     \label{fig:lead-acid-charge-curve} 
 \end{figure}
 \paragraph{Cost}
@@ -198,7 +198,7 @@ https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-13856/660520
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/PRT-13856.png}
-    \caption{Our selection of a lithium ion battery}
+    \caption{Our selection of a lithium ion battery. Used with permission under the Creative Commons Attribution 4.0 International license \cite{PRT-ref}.}
     \label{fig:PRT-13856} 
 \end{figure}
 
@@ -207,7 +207,7 @@ https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-13856/660520
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/solar panel overview.png}
-    \caption{The three types of solar panels.}
+    \caption{The three types of solar panels. Used with permission from \cite{solar-panels-ref}.}
     \label{solar-panel-overview} 
 \end{figure}
 
@@ -215,7 +215,7 @@ In this section, we will discuss the different types of solar panels that are be
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/solar cell manu.png}
-    \caption{Solar panel wafer manufacturing levels}
+    \caption{Solar panel wafer manufacturing levels. Used with permission from \cite{solar-cell-ref}.}
     \label{fig:solar cell} 
 \end{figure}
 
@@ -246,23 +246,23 @@ Like the name suggests monocrystalline solar panel cells are made from a single 
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{figures/monocrystaline.png}
-    \caption{An example of a monocrystalline solar panel.}
+    \caption{An example of a monocrystalline solar panel. Used with permission from \cite{solar-mono-ref}.}
     \label{fig:mono-sp} 
 \end{figure}
 
 \subsubsection{Polycrystalline Solar Panels}
 Unlike monocrystalline panels these solar panel cells are made from many crystals of silicon. This offers much less freedom of movement for electrons which gives a much higher efficiency. This is also simpler to build, meaning that costs are lower, which could be a factor in our decision. This structure also provides not as much durability as its monocrystalline counterpart however it does last longer than its thin film competition. An example of the features one can expect from a polycrystalline panel can be seen in Figure \ref{fig:poly-sp}. Here one can see the EVA films on either side of the silicon wafers. The wafers itself made up of silicon fragments melted together to produce individual wafers giving the solar panel its name polycrystalline. This figure was provided by Clean Energy Reviews an independent energy source review site.
-
+\cite{Monocrystalline-Vs-Polycrystalline-Solar-Panels:-Whats-best?}
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/polycrystaline solar.png}
-    \caption{Polycrystalline solar panel.}
+    \caption{Polycrystalline solar panel. Used with permission under the CC BY-NC 3.0 license \cite{solar-poly-ref}.}
     \label{fig:poly-sp} 
 \end{figure}
 
 \subsubsection{Thin Film Solar Panels}
 Unlike the previous two types of solar panels, thin film solar panels are mostly not made of silicon. They are made of a mixture of materials mostly cadmium telluride, which is comprised into a thin sheet between two transparent conductive layers that help capture sunlight. Thin film solar panels usually have the lowest efficiency and durability of all solar panel types however they make up for it in flexibility and where it can be comfortably placed . The main advantage of this type of solar panel is their low weight, profile, and its ability to adhere to whatever required surface it may need to. Figure \ref{fig:thin-film-sp} shows an example of thin film solar panels. This figure was provided by Sun Power Source, a solar energy review, news, and project work site.
-
+\cite{Thin-Film-Solar-Cell}
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{figures/thin film solar.png}
@@ -310,14 +310,8 @@ V$_{\text{p}}$/V$_{\text{oc}}$ (V) & $6.12/7.13$ & $6.7/7.7$ \\\hline
 \end{table}
 
 \subsection{USB Power}
-USB charging has become a wide spread standard for powering and charging all different kinds of systems today. Which is why it represents a great asset in our design. With how common the hardware for this method is, it would be an oversight to not incorporate it. There are a total of 6 USB specifications, USB 1.0, 2.0, 3.0, 3.1, 3.2, and USB4. To charge and power the system, USB-C will be used in the design, which incorporates USB4 technology. In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself. As such a design has been implemented as seen in Figure \ref{fig:USB-diagram}. 
+USB charging has become a wide spread standard for powering and charging all different kinds of systems today. Which is why it represents a great asset in our design. With how common the hardware for this method is, it would be an oversight to not incorporate it. There are a total of 6 USB specifications, USB 1.0, 2.0, 3.0, 3.1, 3.2, and USB4. To charge and power the system, USB-C will be used in the design, which incorporates USB4 technology. In our design we wish to plan for a scenario in which a field crew could come and charge the battery quickly and keep basic nodal functions operational without the need to wait for a solar panel. This functionality could also come in handy if certain equipment were to malfunction discontinuing the capabilities of the node to recharge itself.  
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.4]{figures/USB diagram.png}
-    \caption{USB power}
-    \label{fig:USB-diagram} 
-\end{figure}
 
-This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection. Figure \ref{fig:USB-diagram} shows the most common type of USB charger found in the home today the USB-B micro charger which will be implemented as one of our sources of power. The USB-C interface will also be used as a communication link to the Lora-E5 micro controller. Since the micro controller cannot communicate directly via USB, a USB to UART communication IC will be needed so that USB can be used as a means of communicating with the Lora-E5. 
-
+This design incorporates an IC that receives power from the solar panel and a USB charging connection. The circuit would take power from the solar panel and feed it to the load and battery, unless the input selection pin were instructed to take power from the USB connection and use that to power the load and charge the battery. This way the battery could take in power from either only the solar panel or USB connection. The USB-C interface will also be used as a communication link to the Lora-E5 micro controller. Since the micro controller cannot communicate directly via USB, a USB to UART communication IC will be needed so that USB can be used as a means of communicating with the Lora-E5. 
+\cite{USB-C}
