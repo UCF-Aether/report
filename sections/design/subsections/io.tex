@@ -27,4 +27,48 @@ source. This pin is responsible for detecting when the USB source is connected a
 microcontroller to wake up. 
 
 \subsubsection{The SWD Programming Header}
+The SWD (Serial Wire Debug) will be used for debugging and programming the device during
+development, and in the final version of our project. The SWD interface is simpler than JTAG, and
+only consists of a ground pin, to match the MCU's ground, serial data (SWDIO), serial clock
+(SWCLK), and a reset pin to drive the MCU in reset in the correct sequence to begin flash
+programming. The header will use a simple 5-pin 2.54mm male header. Table \ref{tab:swd-header} maps
+the LoRa-E5 pins to the STM32WLE5JC pins (internal to the LoRa-E5) \cite{ds-stm32wle5j8}.
+
+\begin{table}[H] 
+  \footnotesize  
+  \caption{The SWD Header Pin Mappings \cite{ds-stm32wle5j8}\cite{ds-lora-e5}}
+  \begin{tabularx}{\linewidth}{| X | X | X |}
+    \hline
+    Function & LoRa-E5 & STM32WLE5JC 
+    \\\hline\hline
+
+    Reset
+    & 17
+    & RST
+    \\\hline
+
+    SWDIO
+    & 3
+    & PA13
+    \\\hline
+
+    SWCLK
+    & 4
+    & PA14
+    \\\hline
+
+    Ground
+    & 2
+    & GND
+    \\\hline
+
+    Reserved
+    & Not connected
+    & Not connected
+    \\\hline
+
+  \end{tabularx}
+  \label{tab:swd-header}
+    % \caption*{\footnotesize Note: the paper submission date is December 7th, 2021}
+\end{table}
 
