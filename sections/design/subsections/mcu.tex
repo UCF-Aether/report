@@ -2,6 +2,14 @@
 The ultra-low power LoRa-E5 (STM32WLE5JC) will be the microcontroller responsible for providing long-range wireless communication from the nodes to the gateway. It's a Ultra-Thin Profile Fine Pitch Ball Grid Array (UFBGA) with 73 ball arrays and a 28 pin layout. The chip is powered through VCC Pin 1 which takes 3.3V from the main power rail. Pins PB15 and PA15 are the microcontroller's serial clock and serial data I2C pins which are used to communicate with the sensors in the system. The respective pins on each sensor will be connected to PB15 and PA15 so sensor data can be read at defined intervals. Pin 15 is the RFIO pin which will be connected to the antenna. Additionally, 3 GPIO pins were used to read the 3 status states of the battery charge controller. Pin 21 (PA9) is connected to the MCP73871 PG pin which indicates the system is receiving power. GPIO pin 13 (PC0) on the microcontroller is connected to pin 8 (STAT1/LBO) on the MCP73871 which indicates to the microcontroller when the battery output is low or the system is charging. The third GPIO used is pin 20 (PB10) on the microcontroller which is connected to pin 7 (STAT2) on the MCP73871 which indicates to the microcontroller when the battery has been fully  charged. The nodes will have LEDs to indicate battery status to the users in addition to having the ability to remotely monitor battery status through the LoRa microcontroller. 
 
 \subsubsection{The Embedded Flash Memory and DMA}
+The STM32WLE5JC's flash memory controller features 256 KB of flash with 72-bit read and write bus (8
+being for ECC (Error Correctly Control). It has 32 instruction caches lines of 256 bits (1 KB in total)
+and 8 data cache lines of 256 bits (256 Bytes in total). The upper 31 KB are reserved for system
+information, option bits, and system memory. The system memory, the largest section of 28 KB, is
+used to store the boot loader, which is capable to reprogram the flash memory through USART, \iic,
+or SPI. The region can be protected through to avoid anyone from being able to be able to write to
+it. The ability for the MCU to load the bootloader into RAM and use that to reprogram the flash will
+be important to satisfying one of our stretch goals of being able to do remote firmware upgrades.
 
 \subsubsection{Hardware Semaphores}
 
