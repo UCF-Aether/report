@@ -185,30 +185,35 @@ needs. Through the manager, firmware upgrades can be dispatched, and automatical
 specific devices need to be updated. Commands can be operated on fleets of devices, and allow for
 secure remote execution. The IoT device manager has integration with many of Amazon's other IoT
 specific and non-IoT services to provide a cohesive experience for the developer, and speed users
-expect.
+expect. 
+
+The pricing for the AWS services will be free for us since, for our use cases, are going to stay
+well within the free tier. The paid tiers don't kick in until applications are using millions of
+transactions, events, DB accesses, etc a month. The only potential cost is the flat DynamoDB fee of
+\$180 to get it provisioned. Everything else, will be free or less than \$5.
 
 % Add final price table for AWS
-\begin{table}[H]
-\centering%\scriptsize
-\caption{Amazon Web Services Pricing Estimate}
-\begin{tabular}{|r|c|c|}
-\hline
-Service & Use & Price (\$)\\
-\hline\hline
-
-AWS LoRaWAN IoT Core & LoRa NS & \\\hline
-AWS IoT Device Management & & \\\hline
-AWS Lambda & & \\\hline
-AWS IoT Events & & \\\hline
-Amazon DynamoDB & & \\\hline
-Amazon SNS & & \\\hline
-Amazon Cognito & & \\\hline
-AWS Amplify & & \\\hline
-AWS API Gateway & & \\\hline
-
-\end{tabular}
-\label{tbl:aws-pricing}
-\end{table}
+% \begin{table}[H]
+% \centering\scriptsize
+% \caption{Amazon Web Services Pricing Estimate}
+% \begin{tabular}{|r|c|c|}
+% \hline
+% Service & Use & Price (\$)\\
+% \hline\hline
+%
+% AWS LoRaWAN IoT Core & LoRa NS & \\\hline
+% AWS IoT Device Management & & \\\hline
+% AWS Lambda & & \\\hline
+% AWS IoT Events & & \\\hline
+% Amazon DynamoDB & & \\\hline
+% Amazon SNS & & \\\hline
+% Amazon Cognito & & \\\hline
+% AWS Amplify & & \\\hline
+% AWS API Gateway & & \\\hline
+%
+% \end{tabular}
+% \label{tbl:aws-pricing}
+% \end{table}
 
 \subsubsection{Server or Serverless}
 An another consideration that affected design decision making and cloud service providers is the
