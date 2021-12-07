@@ -307,42 +307,36 @@ Onethinx Core       & PCB trace & \yes & \no  & 12-bit, 1ch   & 1 & 1 & 1 & 8  \
 \end{table}
 
 \subsubsection{The Chosen LoRa Module: The Seeed LoRa-E5}
-Feature and cost wise, the Onethinx and the RAK4600 is a clear winner. However,
-the RAK4600's power efficiency, specifically its sleep current, is lacking when
-compared to the Seeed LoRa-E5 and Midatronics Windy.  Since the sensor node is
-going to be spending most of its time sleeping, having the lowest possible
-sleep/standby current is going to be one of the most important factors affecting
-the battery life. Not only that, but the documentation is spotty and
-inconsistent. Lastly, the RAK4600 does not come with a LoRaWAN stack, unlike
-every other module.  Writing a LoRaWAN stack from scratch wouldn't be a huge
-hurdle, but since writing a LoRaWAN stack isn't the main goal of our project and
-we would rather use already well-tested code, we opted to not use the RAK4600.
-The Onethinx then would be the next contender, but the development boards are
-costly, and the individual modules are not readily available. In order to
-purchase them, we would have to email them and negotiate a price assuming they
-would sell in super low quantities (<10). We have reached out on many occasions,
-with no response even after two full weeks. Due to not having any confidence
-that we can easily source the Onethinx Core module, we opted out of using it.
+The chosen LoRa module is the LoRa-E5, as highlighted in the tables above. Feature and cost wise,
+the Onethinx and the RAK4600 is a clear winner. However, the RAK4600's power efficiency,
+specifically its sleep current, is lacking when compared to the Seeed LoRa-E5 and Midatronics Windy.
+Since the sensor node is going to be spending most of its time sleeping, having the lowest possible
+sleep/standby current is going to be one of the most important factors affecting the battery life.
+Not only that, but the documentation is spotty and inconsistent. Lastly, the RAK4600 does not come
+with a LoRaWAN stack, unlike every other module.  Writing a LoRaWAN stack from scratch wouldn't be
+a huge hurdle, but since writing a LoRaWAN stack isn't the main goal of our project and we would
+rather use already well-tested code, we opted to not use the RAK4600. The Onethinx then would be the
+next contender, but the development boards are costly, and the individual modules are not readily
+available. In order to purchase them, we would have to email them and negotiate a price assuming
+they would sell in super low quantities (<10). We have reached out on many occasions, with no
+response even after two full weeks. Due to not having any confidence that we can easily source the
+Onethinx Core module, we opted out of using it.
 
-Next, we considered the Microchip WLR089U0. This module has the most flexibility
-when it comes to its I/O. It is unmatched in this area when compared to the
-modules tabulated above. Almost everything is great about it, like the
-integrated U.FL connector and embedded USB peripheral hardware. However, there
-is a limitation when it comes to power management: the LoRa module inside of it
-can only be configured in receive or transmit mode and cannot be turned off.
-This, and also the relatively high sleep current (that still has an operational
-clock), is what turned us away this module.
+Next, we considered the Microchip WLR089U0. This module has the most flexibility when it comes to
+its I/O. It is unmatched in this area when compared to the modules tabulated above. Almost
+everything is great about it, like the integrated U.FL connector and embedded USB peripheral
+hardware. However, there is a limitation when it comes to power management: the LoRa module inside
+of it can only be configured in receive or transmit mode and cannot be turned off. This, and also
+the relatively high sleep current (that still has an operational clock), is what turned us away this
+module.
 
-The Seeed LoRa-E5 and the Midatronics Windy are essentially the same exact
-module with the only difference being that the Midatronics Windy has an
-integrated U.FL connector. It uses almost the exact same LoRa transceiver/MCU IC
-as the Seeed LoRa-E5, but is double the price for the modules, and triple the
-price for the development boards. Both of these devices have the best sleep
-currents and transceiver performance. They are able to go into a standby mode
-with a running RTC that is still able to wake up the CPU - all while operating
-at 360 nA. One downside of using the Seeed LoRa-E5 is that it does not have an
-integrated antenna connector. However, all of the RF front-end is embedded
-inside the module, and all that is needed outside of it is a very short trace
-connecting to a U.FL or SMA connector. Another added benefit is that Seeed and
-STM worked closely together to create the module, so it can be assumed that the
-module will perform as intended.
+The Seeed LoRa-E5 and the Midatronics Windy are essentially the same exact module with the only
+difference being that the Midatronics Windy has an integrated U.FL connector. It uses almost the
+exact same LoRa transceiver/MCU IC as the Seeed LoRa-E5, but is double the price for the modules,
+and triple the price for the development boards. Both of these devices have the best sleep currents
+and transceiver performance. They are able to go into a standby mode with a running RTC that is
+still able to wake up the CPU - all while operating at 360 nA. One downside of using the Seeed
+LoRa-E5 is that it does not have an integrated antenna connector. However, all of the RF front-end
+is embedded inside the module, and all that is needed outside of it is a very short trace connecting
+to a U.FL or SMA connector. Another added benefit is that Seeed and STM worked closely together to
+create the module, so it can be assumed that the module will perform as intended.
