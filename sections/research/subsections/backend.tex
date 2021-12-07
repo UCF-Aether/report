@@ -70,7 +70,16 @@ authority through a specialized blockchain. For people and companies that would 
 a private network, an open-source network server, called Chirpstack, is available.
 
 
-\paragraph{The Chirpstack Network Server Stack}
+\paragraph{The Chirpstack Network Server Stack} 
+The Chirpstack LoRaWAN network server stack is an open source implementation of the LoRaWAN network
+server protocol standard. It provides integration with every aspect of running a private LoRaWAN
+network from the packet forwarding server to a web interface to control the configuration of the
+network and user registration onto the network. It supports all classes of the LoRaWAN protocol (A,
+B, and C), including adaptive data-rate. The Chirpstack can be setup to run on one machines, or
+spread out over multiple. Meaning, that the packet forwarder, network server, and application
+servers can be completely decoupled. The Chirpstack supports the MQTT protocol for event-based
+communication, and has built-in integration with AWS, Azure, and many other backend service
+providers.
 
 \subsubsection{Public LoRaWAN Networks} \label{public-networks}
 Public LoRaWAN networks allow users to connect their own LoRa end-devices to them and begin sending data to the internet. These networks make it easier start using LoRaWAN devices and removing the need to purchase, set up, and maintain large amounts of LoRaWAN gateways. Some public networks, like The Things Community Network, are entirely free to connect to and use. However, there are others, such as The Helium Network, that take advantage of blockchain technology to charge users for the usage of the network. This functions as a way to provide a monetary incentive for users to add gateways to the network, making it larger and increasing it's coverage.
