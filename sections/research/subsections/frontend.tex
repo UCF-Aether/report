@@ -35,7 +35,7 @@ have the ability to be woken up from the real-time clock (RTC) or specific I/O
 pins. Any choice in choosing front-end software stack components should not
 hinder the core's ability to move into either of these modes. Ideally, the
 standby low-power mode is preferred since it offers the best power efficiency -
-down to approximately 360nA. If the firmware deems that it cannot meet the
+down to approximately 360 nA. If the firmware deems that it cannot meet the
 sensor reading frequency goal, it should communicate to the back-end about its
 power deficit and inform the owner. It then will adjust the reading frequency to
 stay as self-sustaining as possible. If the user wants to, they should be able
@@ -130,7 +130,7 @@ previous loop. Interrupts can happened whenever.
 FreeRTOS is an specific type of operating system that focuses on determinism and
 predictability, rather than responsiveness, like in Linux, Mac OS X, or Windows.
 It supports preemption and co-operative scheduling, as well as priority
-inheritance to prevent priority inversion. FreeRTOS is small. It only requires 5
+inheritance to prevent priority inversion. FreeRTOS is small. It only requires 5 kB 
 to 10 kB of RAM for operation. FreeRTOS, like many other RTOSes focuses mainly
 on task scheduling and communication. In fact, the main source files provided
 for FreeRTOS are:
