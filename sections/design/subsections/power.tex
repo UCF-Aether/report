@@ -1,4 +1,4 @@
-\subsection{Power System}
+\subsection{Power System} \label{sec:power}
 This section will look at the overall design that will power the nodes in the Aether Sensing Network. The Aether nodes will consist of a solar panel capable of powering the system while also charging the Lithium-Ion battery that will be used if the load demand exceeds the capabilities of the solar panel. Additionally, the node will be equipped with a USB port to charge the battery and power the system as a second option. This gives users of the design the flexibility to directly charge a depleted battery and maintain the system operational in situations where the solar panel cannot provide sufficient power. A battery charge management controller will be responsible for a voltage proportional charge control feature that will optimize the solar cell and will also allow the USB input to power the system. At the output end of the charge controller will be a linear dropout regulator (LDO) to drop down the voltage to a constant 3.3V which will be used as the main power line for the system.
 
 \subsubsection{Overall Features}

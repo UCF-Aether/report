@@ -1,4 +1,4 @@
-\subsection{Embedded Software}
+\subsection{Embedded Software} \label{sec:embedded-software}
 This section will cover how we plan to design the software running on our sensor node's microcontroller. Due to the need to run various different tasks in parallel, we will be utilizing FreeRTOS to aid in more effectively scheduling them. This design will require different tasks for handling the reading in of data from each sensor periodically, managing the battery and power subsystem, and sending any collected data to the internet over LoRaWAN.
 
 \subsubsection{Managing Sensors}

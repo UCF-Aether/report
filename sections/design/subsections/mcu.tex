@@ -1,24 +1,169 @@
 \subsection{LoRa-E5 MCU}
-The ultra-low power LoRa-E5 (STM32WLE5JC) will be the microcontroller responsible for providing long-range wireless communication from the nodes to the gateway. It's a Ultra-Thin Profile Fine Pitch Ball Grid Array (UFBGA) with 73 ball arrays and a 28 pin layout. The chip is powered through VCC Pin 1 which takes 3.3V from the main power rail. Pins PB15 and PA15 are the microcontroller's serial clock and serial data I2C pins which are used to communicate with the sensors in the system. The respective pins on each sensor will be connected to PB15 and PA15 so sensor data can be read at defined intervals. Pin 15 is the RFIO pin which will be connected to the antenna. Additionally, 3 GPIO pins were used to read the 3 status states of the battery charge controller. Pin 21 (PA9) is connected to the MCP73871 PG pin which indicates the system is receiving power. GPIO pin 13 (PC0) on the microcontroller is connected to pin 8 (STAT1/LBO) on the MCP73871 which indicates to the microcontroller when the battery output is low or the system is charging. The third GPIO used is pin 20 (PB10) on the microcontroller which is connected to pin 7 (STAT2) on the MCP73871 which indicates to the microcontroller when the battery has been fully  charged. The nodes will have LEDs to indicate battery status to the users in addition to having the ability to remotely monitor battery status through the LoRa microcontroller. 
+The ultra-low power LoRa-E5 (STM32WLE5JC) will be the microcontroller responsible for providing
+long-range wireless communication from the nodes to the gateway. It's a Ultra-Thin Profile Fine
+Pitch Ball Grid Array (UFBGA) with 73 ball arrays and a 28 pin layout. The chip is powered through
+VCC Pin 1 which takes 3.3V from the main power rail. Pins PB15 and PA15 are the microcontroller's
+serial clock and serial data I2C pins which are used to communicate with the sensors in the system.
+The respective pins on each sensor will be connected to PB15 and PA15 so sensor data can be read at
+defined intervals. Pin 15 is the RFIO pin which will be connected to the antenna. Additionally,
+3 GPIO pins were used to read the 3 status states of the battery charge controller. Pin 21 (PA9) is
+connected to the MCP73871 PG pin which indicates the system is receiving power. GPIO pin 13 (PC0) on
+the microcontroller is connected to pin 8 (STAT1/LBO) on the MCP73871 which indicates to the
+microcontroller when the battery output is low or the system is charging. The third GPIO used is pin
+20 (PB10) on the microcontroller which is connected to pin 7 (STAT2) on the MCP73871 which indicates
+to the microcontroller when the battery has been fully  charged. The nodes will have LEDs to
+indicate battery status to the users in addition to having the ability to remotely monitor battery
+status through the LoRa microcontroller. 
 
-\subsubsection{The Embedded Flash Memory and DMA}
+\subsubsection{Memory and DMA}
 The STM32WLE5JC's flash memory controller features 256 KB of flash with 72-bit read and write bus (8
-being for ECC (Error Correctly Control). It has 32 instruction caches lines of 256 bits (1 KB in total)
-and 8 data cache lines of 256 bits (256 Bytes in total). The upper 31 KB are reserved for system
-information, option bits, and system memory. The system memory, the largest section of 28 KB, is
-used to store the boot loader, which is capable to reprogram the flash memory through USART, \iic,
-or SPI. The region can be protected through to avoid anyone from being able to be able to write to
-it. The ability for the MCU to load the bootloader into RAM and use that to reprogram the flash will
-be important to satisfying one of our stretch goals of being able to do remote firmware upgrades.
+being for ECC (Error Correctly Control). It also has 64 KB of SRAM with 32 instruction caches lines
+of 256 bits (1 KB in total) and 8 data cache lines of 256 bits (256 Bytes in total). The upper 31 KB
+are reserved for system information, option bits, and system memory. The system memory, the largest
+section of 28 KB, is used to store the boot loader, which is capable to reprogram the flash memory
+through USART, \iic, or SPI. The region can be protected through to avoid anyone from being able to
+be able to write to it. The ability for the MCU to load the bootloader into RAM and use that to
+reprogram the flash will be important to satisfying one of our stretch goals of being able to do
+remote firmware upgrades \cite{ds-stm32wle5j8}.
+
+% The sys
 
 \subsubsection{Hardware Semaphores}
+Hardware support for semaphores is key for synchronization amongst multiple threads, such as when
+using FreeRTOS since it relies on having at least two threads: idle and a single application thread,
+as described in Section \ref{sec-freertos}. The STM32WLE has 16 32-bit hardware semaphores, and can
+be locked using the core ID (COREID) and process ID (PROCID). Once locked, they can only be unlocked
+with a matching COREID and PROCID \cite{ds-stm32wle5j8}. Semaphores will be heavily used in our
+design for allocating resources (binary semaphores) and signalling threads.
 
 \subsubsection{Clock Sources}
+The microcontroller also has support for a real-time-clock (RTC), which is important for
+timestamping LoRaWAN packets, required by the LoRaWAN protocol and for location services. The RTC
+can be used to wake up the devices based on program intervals or at a programmed time. The RTC never
+stops, even in the lowest power mode, standby. The RTC will be used in the design for waking up the
+microcontroller from the low-power standby mode. The RTC gets its clock source from an external
+32.768 KHz crystal, referred to as the LSE (low-speed external) clock. The other clock, the HSE,
+(high-speed external) clock, oscillates at 32 MHz, and is used to clock the rest of the chip
+including the RF module. The RF module is sourced from an internal RC (resistor-capacitor) clock
+derived from the HSE clock, and oscillates at 13 MHz. During sleep modes, the RF module can opt for
+the 64 KHz oscillator. Other clock sources include the LSI (low-speed internal), MSI (multi-speed
+internal - a configurable RC clock), HSI (high-speed internal) 16 MHz clock, and the PLL
+(phased-lock loop) configurable clock. Several peripherals have specific requirements about which
+clock sources they can use. As for the MCU core, the core can accept any of the previously mentioned
+clock sources, but is limited to which source it can use depending on the run mode it's currently
+operating in. For example, sleep mode (stop mode 0) can only use the HSI clock \cite{ds-stm32wle5j8}.
+
+\subsection{Low Power Modes}
+Switching between different system operating states will be important to extend the microcontrollers
+battery life. We have done multiple case studies to show how important it will be to not only keep
+the sleep power low, but to shorten periods of high power operation, such as when operating the
+particulate matter sensor or transmitted data over LoRa (the most costly). The microcontroller
+supports many low power modes with varying power usages and limitations. Table
+\ref{tab:mcu-lp-modes} summarizes the low power modes detailed in the data sheet
+\cite{ds-stm32wle5j8}. In all cases, the core clock is off. The current draw was the max current
+draw at 25 degrees Celsius at 3.0V, and the max clock speed for that mode.
+
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{The STM32WLE5JC's Low Power Modes}
+  \begin{tabularx}{\linewidth}{| p{0.13\linewidth} | p{0.13\linewidth}|p{0.13\linewidth}|X|}
+    \hline
+    Power Mode & Max Clock (MHz) & Current Draw (\uA) & Peripheral Limitations 
+    \\\hline\hline
+
+    Sleep 
+    & HSE
+    & 2100
+    & None.
+    \\\hline
+
+    LPRun 
+    & 2 MHz
+    & 270
+    & PLL disabled, lower RF module power, low-power voltage regulator used for main power.
+    \\\hline
+
+    LPSleep 
+    & 2 MHz
+    & 95
+    & Same as LPRun, core disabled.
+    \\\hline
+
+    Stop 0 
+    & HSI16 
+    & 540
+    & PLL, MSI, HSI16, and HSI32 are disabled. Peripherals not supporting wakeup are power gated. Wakeup capable use HSI on request.
+    \\\hline
+
+    Stop 1 
+    & HSI16 
+    & 6.40
+    & Same as Stop 0, but with slower wakeup time.
+    \\\hline
+
+    Stop 2 
+    & HSI16 
+    & 1.40
+    & Core power domain is disabled. Only some peripherals keep their state. The radio can remain
+    on.
+    \\\hline
+
+    Standby (with SRAM2 and RTC) 
+    & MSI 4 MHz
+    & 0.345
+    & Disabled voltage regulators, SRAM1 off, only can use RTC and external pin interrupts.
+    \\\hline
+
+    Standby (with RTC)
+    & MSI 4 MHz
+    & 0.260
+    & All SRAM contents lost. Otherwise same as Standby (with SRAM2).
+    \\\hline
+
+  \end{tabularx}
+  
+  \label{tab:mcu-lp-modes}
+\end{table}
 
 \subsubsection{I/O Peripherals}
-\paragraph{GPIO}
-\paragraph{The LoRa Sub-GHz Radio}
-\paragraph{\iic}
-\paragraph{UART}
+In our design, we will using many of the peripherals available on the microcontroller to provide the
+functionality we need. The following table summarizes the functionalities of the different
+peripherals we will be using in our design, along with the section we detail its functionality.
 
-\subsubsection{The ADC}
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Used MCU Peripherals}
+  \begin{tabularx}{\linewidth}{| p{0.13\linewidth} | X |p{0.13\linewidth}|}
+    \hline
+    Peripheral & Usage & Section
+    \\\hline\hline
+
+    GPIO
+    & LED status, power subsystem status and control, reset, USB external wakeup
+    & \ref{sec:power}, \ref{sec:sys-io}
+    \\\hline
+
+    Sub-GHz RF
+    & LoRa and LoRaWAN
+    & \ref{sec:embedded-software}
+    \\\hline
+
+    \iic
+    & Sensor communication
+    & \ref{sec:sensing}
+    \\\hline
+
+    UART
+    & Communication over USB
+    & \ref{sec:sys-io}
+    \\\hline
+
+    ADC
+    & Battery capacity monitoring
+    & \ref{sec:power}
+    \\\hline
+
+  \end{tabularx}
+  
+  \label{tab:mcu-peripheral-usage}
+\end{table}
