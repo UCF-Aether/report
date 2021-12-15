@@ -12,6 +12,7 @@ jobs:
           root_file: main.tex
       - name: Release
         uses: softprops/action-gh-release@v1
+        args: -pdf -f -interaction=nonstopmode
         with:
           files: main.pdf
       
