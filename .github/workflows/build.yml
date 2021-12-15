@@ -13,6 +13,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          args: -pdf -f -interaction=nonstopmode
           files: main.pdf
       
