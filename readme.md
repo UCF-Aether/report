@@ -17,6 +17,7 @@ To download, click on "Latest Compiled Report" under "Releases", then click on "
 ### Dependencies
 - pdflatex
 - biber
+- latexmk
 
 ### To Compile
 ```sh
