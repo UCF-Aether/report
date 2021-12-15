@@ -1,5 +1,15 @@
 name: Build LaTeX document
-on: [push]
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - '**.tex'
+      - 'figures/**'
+      - 'bib/**'
+      - '**.bib'
+    branches:
+      - master
+      
 jobs:
   build_latex:
     runs-on: ubuntu-latest
