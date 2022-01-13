@@ -11,7 +11,7 @@
 This is the research and design document for the Aether Sensor Node and supporting infrastructure.
 
 ## Download
-To download, click on "Latest Compiled Report" under "Releases", then click on "main.pdf" to download the report.
+The latest version of the report is available for download [here](https://github.com/UCF-Aether/Report/releases/download/latest/main.pdf).
 
 ## Developing and Building Instructions
 ### Dependencies
